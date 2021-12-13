@@ -42,3 +42,10 @@
 > 폴더명 : 소문자
 > 파일명 : jsp- 소문자<br> js- 소문자 <br> css-소문자 <br> java-맨앞글자 대문자 and 단어가 바뀌면 대문자 ex)ProductDao.java
 > 코드규칙 : 변수명 : 소문자 <br> 단어바뀌면 _ ex)m_no <br> 메소드명 : 소문자 ex)signup() <br> 
+
+#### 컨트롤러 구조도 
+![image](https://user-images.githubusercontent.com/91596526/145777219-3022d0aa-7f87-493f-a9fe-5ffde01d0a47.png)
+
+#### DB 구조도
+![image](https://user-images.githubusercontent.com/91596526/145778716-65704766-6ae9-40c8-8e5c-ace44a0fedfb.png)
+
