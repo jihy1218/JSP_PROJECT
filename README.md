@@ -1,11 +1,14 @@
 # JSP_PROJECT
+
+## 당근
+![KakaoTalk_20211212_152241152_04](https://user-images.githubusercontent.com/91596526/145940316-5581bc88-5f7b-4a63-9097-8100c1549309.gif)
+
 ### 주제
+> 주제
+>> 심심할 시간 없는 현대인들을 위해 킬링타임 채팅 사이트!
 
-> 목적
->> 랜덤 채팅 웹 구현
-
-> 주타켓 고객
->> 인터넷에서 친구를 만들고싶은 누구나
+> 주타겟층
+>> 인터넷 상에서 친구를 만들고싶은 누구든
 
 #### 개발환경
 > Eclips Enterprise , JDK 11.0.13, Mysql , Apache Tomcat 9.0 , Bootstrap 4.0
