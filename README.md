@@ -11,17 +11,17 @@
 > Eclips Enterprise , JDK 11.0.13, Mysql , Apache Tomcat 9.0 , Bootstrap 4.0
 
 #### 주요기능 개발 우선순위
-> 1대1 채팅방
-> 회원가입
-> 로그인
-> 결제
+> 1대1 채팅방<br>
+> 회원가입<br>
+> 로그인<br>
+> 결제<br>
 > 신고
 
 #### 폰트 및 메인컬러
 > 폰트 : 엘리스디지털배움체, 카페24 동동 
->> 컬러 : #ff7915 ![image](https://user-images.githubusercontent.com/91596526/145910889-0696205c-594a-464c-9a8b-e152ead08551.png)
-, #3f7d1b ![image](https://user-images.githubusercontent.com/91596526/145910919-68333d7b-0c2e-40c6-80f3-b4683c30c290.png)
-, #ffaa21 ![image](https://user-images.githubusercontent.com/91596526/145910936-3c08e9c9-4daf-4550-b4e1-baabc98e287a.png)
+>> 컬러 : #ff7915 ![image](https://user-images.githubusercontent.com/91596526/145910889-0696205c-594a-464c-9a8b-e152ead08551.png)<br>
+, #3f7d1b ![image](https://user-images.githubusercontent.com/91596526/145910919-68333d7b-0c2e-40c6-80f3-b4683c30c290.png)<br>
+, #ffaa21 ![image](https://user-images.githubusercontent.com/91596526/145910936-3c08e9c9-4daf-4550-b4e1-baabc98e287a.png)<br>
 , #e3ad06 ![image](https://user-images.githubusercontent.com/91596526/145910857-6c18c595-f44e-41a4-8cf0-bffee24d0959.png)
 
 
