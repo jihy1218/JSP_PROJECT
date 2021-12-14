@@ -18,9 +18,8 @@
     			<div class="form-group col-md-3">
       				<input type="text" class="form-control" id="nwirte" placeholder="받으실 아이디를 입력해주세요.">
     			</div>
-    			<div class="form-group col-md-7">
-      				<input type="text" class="form-control" id="ntitle" placeholder="제목">
-    			</div>
+    		</div>
+    		<div>
     			<div class="form-group col-md-7">
       				<textarea rows="20" cols="100" name="ncontents" placeholder="보낼 내용을 입력해주세요."></textarea><br>
     			</div>
