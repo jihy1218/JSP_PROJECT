@@ -1,6 +1,6 @@
 # JSP_PROJECT
 
-## 당근
+## 심심해? 들어와! 당근
 ![KakaoTalk_20211212_152241152_04](https://user-images.githubusercontent.com/91596526/145940316-5581bc88-5f7b-4a63-9097-8100c1549309.gif)
 
 ### 주제
