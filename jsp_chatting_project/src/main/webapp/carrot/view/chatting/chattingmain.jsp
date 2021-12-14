@@ -8,10 +8,9 @@
 </head>
 <body>
 	<%@include file="../header.jsp" %>
-	<br><br><br><br><br><br><br><br>
-	<div class="divbox">
-		<a href="#"><button class="btn btn-warning p-3" style="position: relative;">친구목록</button></a>
-	</div>
+	<%@include file="../friendbar.jsp" %>
+	<br>
+	
 	<div class="container">
 		<div style="border-radius: 15px; border: solid 2px black;" class="text-center">
 			<img src="../../img/메인이미지.png">
@@ -29,5 +28,6 @@
 			</div>
 		</div>
 	</div>
+	<%@include file="../footer.jsp" %>
 </body>
 </html>
