@@ -19,10 +19,10 @@
 
 #### 폰트 및 메인컬러
 > 폰트 : 엘리스디지털배움체, 카페24 동동 
->> 컬러 : #ff7915 ![image](https://user-images.githubusercontent.com/91596526/145910889-0696205c-594a-464c-9a8b-e152ead08551.png)<br>
-    #3f7d1b ![image](https://user-images.githubusercontent.com/91596526/145910919-68333d7b-0c2e-40c6-80f3-b4683c30c290.png)<br>
-    #ffaa21 ![image](https://user-images.githubusercontent.com/91596526/145910936-3c08e9c9-4daf-4550-b4e1-baabc98e287a.png)<br>
-    #e3ad06 ![image](https://user-images.githubusercontent.com/91596526/145910857-6c18c595-f44e-41a4-8cf0-bffee24d0959.png)
+>> 컬러 : #ff7915 ![image](https://user-images.githubusercontent.com/91596526/145911414-b210ee1b-a58c-4613-8b97-b6aa476c2497.png)<br>
+    #3f7d1b ![image](https://user-images.githubusercontent.com/91596526/145911372-251b22ec-bfa5-458d-84f8-ea30806d2876.png)<br>
+    #ffaa21 ![image](https://user-images.githubusercontent.com/91596526/145911314-7485d8b8-f435-4690-97a7-9d75e4d8f784.png)<br>
+    #e3ad06 ![image](https://user-images.githubusercontent.com/91596526/145911223-8a0cf0d9-d2af-4f09-9412-db09286fbbdc.png)
 
 
 
