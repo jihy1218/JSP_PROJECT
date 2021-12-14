@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<!-- css호출 -->
 	<link rel="stylesheet" href="/jsp_chatting_project/carrot/css/main.css">
+	<link href="/jsp_chatting_project/carrot/css/simple-sidebar.css" rel="stylesheet"> <!-- 친구목록 사이드바 css -->
 </head>
 <body>
 	<!-- jquery js -->
@@ -18,5 +19,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- js 호출 -->
 	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/main.js"></script>
+	<script src="../../js/simple-sidebar.js"></script> <!-- 친구목록 사이드바 js  -->
+
+ <!-- 사이드바 열기 버튼 -->
+	<div class="container" style="border: solid 2px black;">
+		<br><br><br><h2>헤더</h2>
+	</div>
 </body>
 </html>
