@@ -1,1 +1,10 @@
 @charset "UTF-8";
+
+.divbox {
+	border-color: solid 1px red;
+	position: absolute; right: 50px;  top: 200px;
+	text-align: center;
+	box-sizing: border-box; 
+	z-index:  1; 
+	color: white;
+}
