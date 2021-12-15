@@ -24,7 +24,7 @@
 	                		<span>오동진</span><span style="color: #3BA55D;"><i class="fas fa-circle"></i></span>
 	                	</div>
 	                	<div class="col-md-5">
-	                		<a class="message" href="noteview.jsp"><button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">*</span></button></a>
+	                		<a class="message" href="/jsp_chatting_project/carrot/view/note/notelist.jsp"><button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">*</span></button></a>
 	                	</div>
                 	</div>
                 </li>
