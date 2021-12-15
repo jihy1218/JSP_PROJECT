@@ -8,7 +8,6 @@
 </head>
 <body>
 	<%
-		int b_num = Int
 	%>
 </body>
 </html>
