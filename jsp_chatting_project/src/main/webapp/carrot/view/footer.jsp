@@ -5,8 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<style type="text/css">
+		.bottom{
+			background-color: white;
+			height: 150px;
+			padding-bottom: 50px;
+			color: black;
+			border-top: solid 2px gray;
+		}
+		.bottom div { padding : 10px 0 0 5px;}
+		.bottom div li { display: inline; }
+		.bottom div a { color : white;}
+	</style>
 </head>
 <body>
+
 	<div class="bottom text-light">
 		<div class="text-center pt-2 pb-1">
 			<p>상호 : 당근 | 대표자명 : TeamEzen<br>
@@ -19,6 +32,7 @@
 				이용약관 개인정보처리방침<br>
 				Copyright &copy 당근
 		</div>	
+
 	</div>
 </body>
 </html>

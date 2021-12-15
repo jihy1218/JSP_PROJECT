@@ -68,6 +68,7 @@
 	                		<a class="message" href="noteview.jsp"><button class="form-control"></button></a>
 	                	</div>
                 	</div>
+
                 </li>
                 <li>
                     <a href="javascript:void(0)">
