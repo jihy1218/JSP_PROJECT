@@ -24,7 +24,7 @@
 					<textarea rows="18" cols="" class="form-control" placeholder="내용"></textarea>
 				</div>
 				<div>
-					<button class="btn btn-primary"> 보내기 </button>
+					<button class="btn btn-primary float-right"> 보내기 </button>
 				</div>
 			</div>
 		</div>
