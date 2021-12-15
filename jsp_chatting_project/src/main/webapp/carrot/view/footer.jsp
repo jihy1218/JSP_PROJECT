@@ -20,7 +20,6 @@
 	</style>
 </head>
 <body>
-
 	<div class="bottom text-light">
 		<div class="text-center pt-2 pb-1">
 			<p>상호 : 당근 | 대표자명 : TeamEzen<br>
