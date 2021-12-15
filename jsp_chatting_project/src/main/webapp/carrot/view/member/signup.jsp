@@ -10,7 +10,6 @@
 
 	<%@include file="../header.jsp" %>
 
-	<br><br><br><br><br><br><br><br>
 
 	<div class="container">
 	<form id ="signupform" action="../../controller/signupcontroller.jsp" method="post" onsubmit="return signupcheck()">
@@ -54,15 +53,12 @@
                   <span id="nameresult"></span>
                </div>
 				<div class="my-3">
-
 					<input type="text" placeholder="email 형식으로 입력해주세요." class="form-control" id="email" onchange="signupcheck();" name="email" >			
-
 				</div>
 				<div>
                   <span id="emailresult"></span>
                </div>
 				<div class="my-3">
-
 					<input type="text" placeholder="000-0000-0000." class="form-control" id="phone" onchange="signupcheck();" name="phone" >			
 				</div>
 				 <div>
