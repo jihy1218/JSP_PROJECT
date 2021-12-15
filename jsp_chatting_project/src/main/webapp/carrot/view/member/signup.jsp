@@ -14,7 +14,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="offset-3 col-md-6" >
+			<div class="card offset-3 col-md-6" style="max-width: 350px; margin:0 auto;">
 				<div>
 					<img alt="" src="로고">
 				</div>
@@ -31,20 +31,27 @@
 					<input type="password" placeholder="패스워드를 다시 입력해주세요." class="form-control">			
 				</div>
 				<div class="my-3">
-					<input type="text" placeholder="이름." class="form-control">			
+					<input type="text" placeholder="이름" class="form-control">			
 				</div>
 				<div class="my-3">
-					<input type="text" placeholder="이메일." class="form-control">			
+					<input type="text" placeholder="이메일" class="form-control">			
 				</div>
 				<div class="my-3">
-					<input type="text" placeholder="번호." class="form-control">			
+					<input type="text" placeholder="번호" class="form-control">			
 				</div>
 				<div class="my-3">
-					<button class="form-control"> 회원가입 </button>
+					<button class="btn btn-lg btn-primary btn-block"> 회원가입 </button>
+				</div>
+				<div style="text-align: center; padding-bottom: 10px;" >
+					<a href="login.jsp" style="font-size: 1px;">로그인</a> 
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<br><br><br><br><br><br><br><br>
+	
+	<%@include file="../footer.jsp" %>
 
 </body>
 </html>

@@ -23,7 +23,9 @@
 
  <!-- 사이드바 열기 버튼 -->
 	<div class="container" style="border: solid 2px black;">
-		<br><br><br><h2>헤더</h2>
+		<div class="row">
+			<br><br><br><h2>헤더</h2>
+		</div>
 	</div>
 </body>
 </html>

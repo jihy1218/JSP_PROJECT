@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+	
+	
 </head>
 <body>
 
@@ -14,11 +15,11 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="offset-3 col-md-6" >
+			<div class="card offset-3 col-md-6" style="max-width: 350px; margin:0 auto;">
 				<div>
 					<img alt="" src="로고">
 				</div>
-				<div style="text-align: center;">
+				<div style="text-align: center; ">
 					<h3>당근 로그인</h3>
 				</div>
 				<div class="my-3">
@@ -31,15 +32,18 @@
 					<a href="find.jsp" style="font-size: 1px;">아이디/비밀번호 찾기</a> 
 				</div>
 				<div class="my-3">
-					<button class="form-control">로그인</button>
+					<button class="btn btn-lg btn-primary btn-block">로그인</button>
 				</div>
-				<div style="text-align: center;">
+				<div style="text-align: center; ">
 					<p style="font-size: 1px;">회원이 아니신가요?<a href="signup.jsp" style="font-size: 1px;">회원가입</a> 
 				</div>
 			</div>
 		</div>
 	</div>
-
-
+	
+	<br><br><br><br><br><br><br><br>
+	
+	<%@include file="../footer.jsp" %>
+	
 </body>
 </html>
