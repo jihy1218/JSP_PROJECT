@@ -11,6 +11,7 @@
 	<!-- 쪽지 페이지 -->
 	<br><br><br><br><br>
 	<div class="container">
+
 		<div class="row">
 			<div class="offset-3 col-md-6" style="height: 600px;">
 				<div class="bg-secondary text-white p-1" style="padding-left: 3px;">

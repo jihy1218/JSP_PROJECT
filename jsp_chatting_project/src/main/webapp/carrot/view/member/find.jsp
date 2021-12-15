@@ -14,24 +14,32 @@
 	
 	<div class="container">
 		<div class="row">
-			<div class="offset-3 col-md-6" >
-				<div style="text-align: center;">
-					<h3>아이디 찾기. 비밀번호 재설정</h3> 
+			<div class="card offset-3 col-md-6" style="max-width: 350px; margin:0 auto;">
+				<div>
+					<img alt="" src="로고">
 				</div>
-				<div style="text-align: center;">
-					<p>계정에 연결된 이메일이나 전화번호를 입력하시면</p>
-					<p>아이디 조회와 비밀번호를 재설정 하실 수 있습니다</p>
+				<div style="text-align: center; ">
+					<h3>아이디/비밀번호 찾기</h3>
 				</div>
-				<div >
-					<div class="row" >
-						<input type="text" class="col-md-8 form-control">
-						<button class="col-md-4 form-control">인증번호 받기</button>
-					</div>
+				<div class="my-3">
+					<input type="text" placeholder="이름" class="form-control">			
+				</div>
+				<div class="my-3">
+					<input type="text" placeholder="이메일" class="form-control">			
+				</div>
+				<div class="my-3">
+					<button class="btn btn-lg btn-primary btn-block">아이디 찾기</button>
+				</div>
+				<div style="text-align: center; padding-bottom: 10px;">
+					<a href="login.jsp" style="font-size: 1px;">로그인</a> | <a href="signup.jsp" style="font-size: 1px;">회원가입</a> 
 				</div>
 			</div>
 		</div>
 	</div>
-
+	
+	<br><br><br><br><br><br><br><br>
+	
+	<%@include file="../footer.jsp" %>
 
 </body>
 </html>
