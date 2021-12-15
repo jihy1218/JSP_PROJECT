@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -66,7 +65,7 @@
 	                		<span>김지형</span><span style="color: #747F8D;"><i class="far fa-circle"></i></span>
 	                	</div>
 	                	<div class="col-md-5">
-	                		<a class="message" href="noteview.jsp"><button class="form-control"></button></a>
+	                		<a class="message" href="noteview.jsp"></a>
 	                	</div>
                 	</div>
 

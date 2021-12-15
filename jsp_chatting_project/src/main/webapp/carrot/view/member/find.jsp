@@ -7,37 +7,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<%@include file="../header.jsp" %>
-	
-	<br><br><br><br><br><br><br><br>
-	
-	<div class="container">
+	<div class="container loginpage">
 		<div class="row">
 			<div class="card offset-3 col-md-6" style="max-width: 350px; margin:0 auto;">
-				<div>
-					<img alt="" src="로고">
+				<div class="text-center">
+					<img src="/jsp_chatting_project/carrot/img/당근이.png" style="max-height: 100%">
 				</div>
 				<div style="text-align: center; ">
 					<h3>아이디/비밀번호 찾기</h3>
 				</div>
-				<div class="my-3">
-					<input type="text" placeholder="이름" class="form-control">			
+				<div class="my-2">
+					<input type="text" placeholder="이름을 입력하세요." class="form-control">			
 				</div>
-				<div class="my-3">
-					<input type="text" placeholder="이메일" class="form-control">			
+				<div class="my-2">
+					<input type="text" placeholder="이메일을 입력하세요." class="form-control">			
 				</div>
-				<div class="my-3">
-					<button class="btn btn-lg btn-primary btn-block">아이디 찾기</button>
+				<div class="my-2">
+					<button class="btn btn-lg btn-block" style="background: #3f7d1b; color: #ffaa21;">아이디찾기</button>
 				</div>
 				<div style="text-align: center; padding-bottom: 10px;">
-					<a href="login.jsp" style="font-size: 1px;">로그인</a> | <a href="signup.jsp" style="font-size: 1px;">회원가입</a> 
+					<a href="/jsp_chatting_project/carrot/view/member/login.jsp" style="font-size: 1rem;">로그인</a> | <a href="/jsp_chatting_project/carrot/view/member/signup.jsp" style="font-size: 1rem;">회원가입</a> 
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<br><br><br><br><br><br><br><br>
+	<br><br><br><br>
 	
 	<%@include file="../footer.jsp" %>
 
