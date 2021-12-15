@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<%
+		int b_num = Int
+	%>
 </body>
 </html>
