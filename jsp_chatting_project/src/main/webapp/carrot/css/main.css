@@ -1,10 +1,26 @@
 @charset "UTF-8";
 
-.divbox {
-	border-color: solid 1px red;
-	position: absolute; left: 50px;  top: 200px;
-	text-align: center;
-	box-sizing: border-box; 
-	z-index:  1; 
-	color: white;
+@font-face {
+    font-family: 'Cafe24Dongdong';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Dongdong.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EliceDigitalBaeum_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+	font-family: EliceDigitalBaeum_Bold;
+}
+.bottom {
+	background-color: #333333;
+}
+.bottom a{
+	color : white;
+}
+.bottom p{
+	font-size: 0.75rem;
 }

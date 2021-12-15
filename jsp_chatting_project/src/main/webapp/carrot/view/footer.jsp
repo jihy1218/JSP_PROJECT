@@ -19,26 +19,20 @@
 	</style>
 </head>
 <body>
-	<br>
-	<div class="container bottom">
-		<div class="row">
-			<div class="col-md-4">
-				<h3>BMW 커뮤니케이션 센터</h3>
-				<h1>080-700-8000</h1>
-			</div>
-			<div class="col-md-6">
-				<p>
-					주소: 서울특별시 중구 퇴계로 100 <br>
-					&copy BMW Korea 2021
-				</p>
-			</div>
-			<div class="col-md-2">
-				<ul>
-					<li><a href="#">컨택트</a></li>
-					<li><a href="#">쿠키 정책</a></li>
-				</ul>
-			</div>
-		</div>
+
+	<div class="bottom text-light">
+		<div class="text-center pt-2 pb-1">
+			<p>상호 : 당근 | 대표자명 : TeamEzen<br>
+				사업자등록번호 : 000-00-00000 | 통신판매사업신고번호 : 제0000-서울강남-0000호<br>
+				연락처 : 02-000-0000 | 팩스 : 02-000-0000 | 이메일 : Ezen@webpage.com<br>
+				주소 : 서울특별시 강남구 논현로 155 이젠빌딩 5F<br>
+			<a href="https://facebook.com" class="me-4 mr-2"><i class="fab fa-facebook fa-2x"></i></a>
+			<a href="https://www.apple.com/kr/" class="me-4 mr-2"><i class="fab fa-apple fa-2x"></i></a>
+			<a href="https://www.instagram.com" class="me-4 mr-2"><i class="fab fa-instagram fa-2x"></i></a><br>
+				이용약관 개인정보처리방침<br>
+				Copyright &copy 당근
+		</div>	
+
 	</div>
 </body>
 </html>
