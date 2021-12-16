@@ -1,12 +1,17 @@
+<%@page import="dao.NoteDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	
-</body>
-</html>
+<%
+
+	int n_no = Integer.parseInt(request.getParameter("n_no")) ;
+	boolean result = NoteDao.getNoteDao().notedelete(n_no);
+	if(result){
+		out.print("1");
+	}else{
+		out.print("0");
+	}
+
+
+
+
+%>
