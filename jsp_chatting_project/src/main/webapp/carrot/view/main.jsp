@@ -14,7 +14,7 @@
 		<div class="col-md-6 offset-3" style="margin-top: 300px;">
 			<img src="/jsp_chatting_project/carrot/img/메인후보1.gif" >
 			<a href="/jsp_chatting_project/carrot/view/member/login.jsp">
-				<button class="col-md-3 btn btn-block py-1" style="position: absolute; bottom : 20px; right: 210px; background-color: #231f20;"><span style="color : #ff7a16; font-size: 1.3rem;">입장하기</span></button>
+				<button class="col-md-3 col-sm-6 btn btn-block py-1" style="position: absolute; bottom : 20px; right: 210px; background-color: #231f20;"><span style="color : #ff7a16; font-size: 1.3rem;">입장하기</span></button>
 			</a>
 		</div>
 	</div>

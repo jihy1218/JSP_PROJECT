@@ -20,6 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- js 호출 -->
 	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/main.js"></script>
+	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/member.js"></script>
 	<script src="/jsp_chatting_project/carrot/js/simple-sidebar.js"></script> <!-- 친구목록 사이드바 js  -->
 	
 	<div class="container">

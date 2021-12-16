@@ -23,7 +23,7 @@
 					<input type="password" placeholder="비밀번호를 입력하세요" class="form-control">			
 				</div>
 				<div style="text-align: right;">
-					<a href="find.jsp" style="font-size: 0.7rem;">아이디/비밀번호 찾기</a> 
+					<a href="/jsp_chatting_project/carrot/view/member/findid.jsp" style="font-size: 0.7rem;">아이디/비밀번호 찾기</a> 
 				</div>
 				<div class="my-2">
 					<button class="btn btn-lg btn-block" style="background: #3f7d1b; color: #ffaa21;">로그인</button>
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 	</div>
-	<br><br><br><br>
+	<br><br>
 	<%@include file="../footer.jsp" %>
 </body>
 </html>

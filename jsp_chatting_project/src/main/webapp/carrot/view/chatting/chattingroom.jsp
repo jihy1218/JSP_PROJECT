@@ -8,10 +8,6 @@
 </head>
 <body>
 	<%@include file="../header.jsp" %>
-	<br><br><br><br><br><br>
-	<div class="divbox">
-		<a href="#"><button class="btn btn-warning p-3" style="position: relative;">친구목록</button></a>
-	</div>
 	<div class="container">
 		<div style="border-radius: 15px; border: solid 2px black;" class="text-center">
 			<br><br><br><br><br><br>
