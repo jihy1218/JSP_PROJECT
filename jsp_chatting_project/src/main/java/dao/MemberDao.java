@@ -45,9 +45,28 @@ public class MemberDao extends DB {
 			System.out.println("getm_no db오류");
 		}
     	return member;
-    	
-    	
     }
+    
+    //친구 정보 가져오기
+    public Member getlogin(int m_no ,int m_logincheck){
+    	String sql = "select * from member where m_no="+m_no+" and m_logincheck="+m_logincheck;
+    	Member member = new Member();
+    	try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				member = new Member(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), 
+						resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7),
+						resultSet.getInt(8), resultSet.getInt(9), resultSet.getInt(10));
+				return member;
+			}
+		} catch (Exception e) {
+			System.out.println("getm_no db오류");
+		}
+    	return member;
+    }
+    
+    
     
 
 }

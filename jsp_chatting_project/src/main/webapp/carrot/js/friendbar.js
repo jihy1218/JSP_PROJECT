@@ -11,6 +11,7 @@
 			
 			url :  "/jsp_chatting_project/carrot/view/friendbar.jsp" ,
 			success : function( result ){
+				
 			}
 	});
 	}
