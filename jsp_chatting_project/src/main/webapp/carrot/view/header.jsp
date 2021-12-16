@@ -37,6 +37,8 @@
 		</div>
 	<br><br>
 	</div>
+	<!-- 노트 js 호출 -->
+	<script src="/jsp_chatting_project/carrot/js/note.js"></script>
 </body>
 
 </html>
