@@ -7,17 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<%@include file="../header.jsp" %>
-
-	<br><br><br><br><br><br><br><br>
-
+	<%@include file="../friendbar.jsp" %>
 	<div class="container">
 		<div class="row">
 			<div class="offset-3 col-md-6" style="max-width: 700px; margin:0 auto;">
 				<div style="text-align: center;">
 					<h3>내정보</h3>
-					<br><br><br>
+					<br>
 				</div>
 				<table class="table text-center">
 					<tr>
@@ -40,18 +37,21 @@
 					</tr>
 				</table>
 				<br>
-				<div>
-					<div class="row">
-						<button class="btn btn-secondary ">차단목록</button>
-					</div>
-				</div>
+				<button class="btn btn-secondary" onclick="blocktablebtn();">차단목록</button>
+				<table class="table text-center table-hover" id="blocktable" style="display: none;">
+					<tr class="table-warning">
+						<th>차단한닉네임</th><th>삭제하기</th>
+					</tr>
+					<tr>
+						<td>동진자바</td><td><button class="btn" onclick="blockdeletebtn();"><span class="text-danger">X</span></button></td>
+					</tr>
+					<tr>
+						<td>동진자바2</td><td><button class="btn"><span class="text-danger">X</span></button></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
-	
-	<br><br><br><br><br><br><br><br>
-	
 	<%@include file="../footer.jsp" %>
-	
 </body>
 </html>

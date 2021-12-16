@@ -2,19 +2,13 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 import dto.Member;
 
 public class MemberDao extends DB {
     
-	public MemberDao() {
-		super();
-	}
-	
-    public static MemberDao memberDao = new MemberDao();
-    public static MemberDao getmMemberDao() {
-    	return memberDao;
-    }
+	public MemberDao() {super();}
+	public static MemberDao memberDao = new MemberDao();
+    public static MemberDao getmMemberDao() {return memberDao;}
     
     //아이디로 회원번호 빼오기
     public int getm_no(String m_id){

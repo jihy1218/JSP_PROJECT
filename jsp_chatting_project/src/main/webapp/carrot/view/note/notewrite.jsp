@@ -14,7 +14,6 @@
 		<%
 			//로그인 회원 번호		
 			int n_from = 1;
-			
 		%>
 		<input type="hidden" id="n_from" value="<%=n_from%>">
 		<div class="row">

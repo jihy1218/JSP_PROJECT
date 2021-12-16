@@ -28,7 +28,7 @@
 				<br><br><br><br>
 			</div>
 			<div style="position: absolute; bottom : 700px; right : 800px;">
-				<a href="notelist.jsp">뒤로가기</a>
+				<a href="/jsp_chatting_project/carrot/view/note/notelist.jsp">뒤로가기</a>
 				</div>
 		</div>
 	</div>
