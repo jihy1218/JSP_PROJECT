@@ -26,4 +26,34 @@ public class MemberDao extends DB {
     	return 0;
     }
     
+    //회원번호로 전체정보 빼오기
+    public Member getinfo(int m_no){
+    	String sql = "select * from member where m_no="+m_no;
+    	Member member = new Member();
+    	try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				member = new Member(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), 
+						resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7),
+						resultSet.getInt(8), resultSet.getInt(9), resultSet.getInt(10));
+				return member;
+			}
+		} catch (Exception e) {
+			System.out.println("getm_no db오류");
+		}
+    	return member;
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
