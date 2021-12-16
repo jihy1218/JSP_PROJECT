@@ -19,7 +19,6 @@
 		var emailj = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;//이메일 정규 표현식
 		//아이디[정규식에 어긋나면 html뜸]
 		if(!idj.test(id)){// 혹여나 패턴이 다르면
-			
 			document.getElementById("idresult").innerHTML="아이디는 소문자와 숫자조합 5~15사이만 가능합니다.";
 			document.getElementById("idresult").style.color="red";	
 			return false; //form submit 불가하디요	
