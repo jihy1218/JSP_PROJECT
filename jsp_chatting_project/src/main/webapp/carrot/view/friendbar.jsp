@@ -1,3 +1,8 @@
+<%@page import="dao.FriendDao"%>
+<%@page import="dto.Friend"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dto.Member"%>
+<%@page import="dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,6 +12,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<%
+		int m_no =1;
+		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no);
+		
+		
+	%>
+
 	<div class="sidebar">
     <span class="sidebar-brand">
     	<br><br><br><br>
@@ -17,16 +30,18 @@
         <li>
             <a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-1">로그인된 친구</a>
             <ul id="menu-collapse-1" class="collapse in">
+            	<%for(Friend friend : friends) {%>
                 <li>
                 	<div class="row">
 	                	<div class="col-md-4 offset-1">
-	                		<span>오동진</span><span style="color: #3BA55D;"><i class="fas fa-circle"></i></span>
+	                		<span><%=friend.getF_type() %></span><span style="color: #3BA55D;"><i class="fas fa-circle"></i></span>
 	                	</div>
 	                	<div class="col-md-5">
 	                		<a class="message" href="/jsp_chatting_project/carrot/view/note/notelist.jsp"><button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">*</span></button></a>
 	                	</div>
                 	</div>
                 </li>
+                <%} %>
                 <li>
                 	<div class="row">
 	                	<div class="col-md-4 offset-1">
@@ -86,7 +101,7 @@
 
  <!-- 사이드바 열기 버튼 -->
  <a href="javascript:void(0)" data-toggle="sidebar" style="margin: auto; position: fixed; top: 120px; right:180px;">
-     <button class="btn"><i class="fas fa-users fa-2x" style="color: #3f7d1b;"></i></button>
+     <button class="btn" onclick="go()"><i class="fas fa-users fa-2x" style="color: #3f7d1b;"></i></button>
  </a>
  
 

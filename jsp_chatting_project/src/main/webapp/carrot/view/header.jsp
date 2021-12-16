@@ -39,6 +39,8 @@
 	</div>
 	<!-- 노트 js 호출 -->
 	<script src="/jsp_chatting_project/carrot/js/note.js"></script>
+	<!-- 프렌드바 js 호출 -->
+	<script src="/jsp_chatting_project/carrot/js/friendbar.js"></script>
 </body>
 
 </html>

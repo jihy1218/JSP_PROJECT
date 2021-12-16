@@ -2,6 +2,8 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
+
 import dto.Member;
 
 public class MemberDao extends DB {
@@ -43,9 +45,35 @@ public class MemberDao extends DB {
 			System.out.println("getm_no db오류");
 		}
     	return member;
+    	
+    	
     }
     
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
