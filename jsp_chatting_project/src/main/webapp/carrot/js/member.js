@@ -39,7 +39,31 @@ function findpasswordcheck(){
 }
 /*아이디 비번찾기 유효성 검사 end*/
 /*아이디 비번찾기 start*/
-function findid(){
-		
-}
+$(function(){
+	$("#findid").click(function(){
+		$.ajax({
+			url : "/jsp_chatting_project/carrot/controller/findidcontroller.jsp",
+			data : {name:document.getElementById("name").value,
+					email:document.getElementById("email").value
+			},
+			success : function(result){
+				alert(result);
+				location.reload();
+			}
+		});
+	});	
+});
+$(function(){
+	$("#findpassword").click(function(){
+		$.ajax({
+			url : "/jsp_chatting_project/carrot/controller/findpasswordcontroller.jsp",
+			data : {id:document.getElementById("id").value,
+					email:document.getElementById("email").value},
+			success : function(result){
+				alert(result);
+				location.reload();
+			}
+		});
+	});	
+});
 /*아이디 비번찾기 end*/

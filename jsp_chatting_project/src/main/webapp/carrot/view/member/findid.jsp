@@ -27,7 +27,7 @@
 					<span id="emailresult"></span>
 				</div>
 				<div class="my-2">
-					<button onclick="findid();" class="btn btn-lg btn-block" style="background: #3f7d1b; color: #ffaa21;">아이디찾기</button>
+					<button id="findid" class="btn btn-lg btn-block" style="background: #3f7d1b; color: #ffaa21;">아이디찾기</button>
 				</div>
 				<div style="text-align: center; padding-bottom: 10px;">
 					<a href="/jsp_chatting_project/carrot/view/member/login.jsp" style="font-size: 1rem;">로그인</a> | <a href="/jsp_chatting_project/carrot/view/member/signup.jsp" style="font-size: 1rem;">회원가입</a> 
