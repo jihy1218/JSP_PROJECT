@@ -50,8 +50,6 @@
 				<td> <button class="btn-danger" onclick="notedelete(<%=note.getN_no()%>)">삭제</button> </td>	
 			</tr>		
 			<% }%>		
-		
-			
 		</table>
 		<div class="row">
 			<div class="col-md-4 offset-4">

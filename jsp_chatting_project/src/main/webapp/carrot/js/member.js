@@ -19,8 +19,7 @@ function findidcheck(){
 		document.getElementById("emailresult").style.color="red";
 		return false;
 	}else{
-		document.getElementById("emailresult").innerHTML="사용 가능한 이메일입니다.";
-		document.getElementById("emailresult").style.color="green";
+		document.getElementById("emailresult").innerHTML="";
 	}
 }
 function findpasswordcheck(){
@@ -33,8 +32,7 @@ function findpasswordcheck(){
 		document.getElementById("emailresult").style.color="red";
 		return false;
 	}else{
-		document.getElementById("emailresult").innerHTML="사용 가능한 이메일입니다.";
-		document.getElementById("emailresult").style.color="green";
+		document.getElementById("emailresult").innerHTML="";
 	}
 }
 /*아이디 비번찾기 유효성 검사 end*/
