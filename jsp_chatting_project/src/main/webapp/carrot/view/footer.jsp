@@ -5,19 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-	<style type="text/css">
-		.bottom{
-			background-color: white;
-			height: 150px;
-			padding-bottom: 50px;
-			color: black;
-			border-top: solid 2px gray;
-		}
-		.bottom div { padding : 10px 0 0 5px;}
-		.bottom div li { display: inline; }
-		.bottom div a { color : white;}
-	</style>
 </head>
 <body>
 	<div class="bottom text-light">
