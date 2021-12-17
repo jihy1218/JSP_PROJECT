@@ -8,6 +8,7 @@
 		var n_from = document.getElementById("n_from").value;
 		var n_to = document.getElementById("n_to").value;
 		var n_contents = document.getElementById("n_contents").value;
+		n_contents = n_contents.replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
 		if(n_to==""){
 			alert("수신자를 입력해주세요");
 			return;
@@ -42,6 +43,7 @@
 
 	function notedelete(n_no){
 		var n_no = n_no*1;
+		if(confirm("삭제할까요?") == true){
 		$.ajax({
 			url:"../../controller/notedeletecontroller.jsp",
 			data:{
@@ -52,11 +54,12 @@
 					alert("삭제 되었습니다");
 					location.href="notelist.jsp";
 				}else{
-					alert("삭제 되었습니다");
+					alert("삭제오류");
 					location.href="notelist.jsp";
 				}
 			}
 		})
+		}
 	}
 
 

@@ -1,4 +1,4 @@
-<%@page import="dto.Note"%>
+ <%@page import="dto.Note"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.NoteDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

@@ -1,3 +1,8 @@
+<%@page import="dao.FriendDao"%>
+<%@page import="dto.Friend"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dto.Member"%>
+<%@page import="dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,6 +12,38 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<%
+		int m_no =1;
+		//친구 목록
+		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no);
+		//친구 정보
+		ArrayList<Member> friendsinfolist = new ArrayList<>();
+		//접속 맴버
+		ArrayList<Member> loginlist = new ArrayList<>();
+		//비접속 친구
+		ArrayList<Member> logoutlist = new ArrayList<>();
+		//친구정보 받아와서
+		for(Friend temp : friends){
+			if(temp.getM_no1()==m_no){
+				Member member = MemberDao.getmMemberDao().getinfo(temp.getM_no2());
+				friendsinfolist.add(member);
+			}else if (temp.getM_no2()==m_no){
+				Member member = MemberDao.getmMemberDao().getinfo(temp.getM_no1());
+				friendsinfolist.add(member);
+			}
+		}
+		//분류
+		for(Member temp : friendsinfolist){
+			if(temp.getM_logincheck()==1){
+				loginlist.add(temp);
+			}else if(temp.getM_logincheck()==2){
+				logoutlist.add(temp);
+			}
+		}
+		
+	%>
+
 	<div class="sidebar">
     <span class="sidebar-brand">
     	<br><br><br><br>
@@ -17,26 +54,18 @@
         <li>
             <a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-1">로그인된 친구</a>
             <ul id="menu-collapse-1" class="collapse in">
+            	<%for(Member login : loginlist) {%>
                 <li>
                 	<div class="row">
 	                	<div class="col-md-4 offset-1">
-	                		<span>오동진</span><span style="color: #3BA55D;"><i class="fas fa-circle"></i></span>
+	                		<span><%=login.getM_name() %></span><span style="color: #3BA55D;"><i class="fas fa-circle"></i></span>
 	                	</div>
 	                	<div class="col-md-5">
 	                		<a class="message" href="/jsp_chatting_project/carrot/view/note/notelist.jsp"><button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">*</span></button></a>
 	                	</div>
                 	</div>
                 </li>
-                <li>
-                	<div class="row">
-	                	<div class="col-md-4 offset-1">
-	                		<span>이예지</span><span style="color: #3BA55D;"><i class="fas fa-circle"></i></span>
-	                	</div>
-	                	<div class="col-md-5">
-	                		<a class="message" href="noteview.jsp"><button class="form-control"><i class="far fa-sticky-note"></i></button></a>
-	                	</div>
-                	</div>
-                </li>
+                <%} %>
                 <li>
                     <a href="javascript:void(0)">
                         친구
@@ -49,27 +78,18 @@
                로그아웃 친구
             </a>
             <ul id="menu-collapse-2" class="collapse in">
+            	<%for(Member logout : logoutlist) {%>
                 <li>
                 	<div class="row">
 	                	<div class="col-md-4 offset-1">
-	                		<span>이민욱</span><span style="color: #747F8D;"><i class="far fa-circle"></i></span>
+	                		<span><%=logout.getM_name() %></span><span style="color: #747F8D;"><i class="far fa-circle"></i></span>
 	                	</div>
 	                	<div class="col-md-5">
 	                		<a class="message" href="noteview.jsp"><button class="form-control"><i class="far fa-sticky-note"></i></button></a>
 	                	</div>
                 	</div>
                 </li>
-                <li>
-                	<div class="row">
-	                	<div class="col-md-4 offset-1">
-	                		<span>김지형</span><span style="color: #747F8D;"><i class="far fa-circle"></i></span>
-	                	</div>
-	                	<div class="col-md-5">
-	                		<a class="message" href="noteview.jsp"></a>
-	                	</div>
-                	</div>
-
-                </li>
+                <%} %>
                 <li>
                     <a href="javascript:void(0)">
                         친구

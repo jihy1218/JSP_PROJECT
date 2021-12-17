@@ -85,7 +85,51 @@ public class NoteDao extends DB {
 		return false;
 	}
 	
+	//쪽지 번호로 찾기
+	public Note getnote(int n_no) {
+		String sql = "select * from note where n_no="+n_no;
+		Note note = new Note();
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				note = new Note(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3), 
+						resultSet.getInt(4),resultSet.getInt(5), resultSet.getString(6));
+				return note;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return note;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
