@@ -23,7 +23,7 @@
 		ArrayList<Member> loginlist = new ArrayList<>();
 		//비접속 친구
 		ArrayList<Member> logoutlist = new ArrayList<>();
-		
+		//친구정보 받아와서
 		for(Friend temp : friends){
 			if(temp.getM_no1()==m_no){
 				Member member = MemberDao.getmMemberDao().getinfo(temp.getM_no2());
@@ -33,6 +33,7 @@
 				friendsinfolist.add(member);
 			}
 		}
+		//분류
 		for(Member temp : friendsinfolist){
 			if(temp.getM_logincheck()==1){
 				loginlist.add(temp);
