@@ -68,7 +68,6 @@
 function sideadtoggle(){
 	$("#adtoggle").click(function(){
 		$("#sidead").toggleClass("toggled");
-		document.getElementById("#adtext").style.display="none";
 	});
 }
 
