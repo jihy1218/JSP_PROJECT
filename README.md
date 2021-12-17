@@ -24,7 +24,7 @@
 
 
 #### 폰트 및 메인컬러
-> 폰트 : 엘리스디지털배움체![image](https://user-images.githubusercontent.com/91596526/145939894-7d823d5e-8d8e-4713-b715-742a5325f61d.png)<br>
+> 폰트 : 롯데마트드림체 ![image](https://user-images.githubusercontent.com/91596526/146474567-6bc3b0e5-db48-4e79-8bb9-17ba6143b343.png)<br>
 > 카페24 동동  ![image](https://user-images.githubusercontent.com/91596526/145939938-f0ddec36-0da4-45a9-ae70-f6fe6bac173d.png)
 
 >> 컬러 : #ff7915 ![image](https://user-images.githubusercontent.com/91596526/145911414-b210ee1b-a58c-4613-8b97-b6aa476c2497.png)<br>
