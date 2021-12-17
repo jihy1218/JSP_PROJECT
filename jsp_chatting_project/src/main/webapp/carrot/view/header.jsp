@@ -40,6 +40,7 @@
 		</div>
 	<br><br>
 	</div>
+
 	<div id="sidead" style="position: absolute; top :200px; left: 20px;" class="col-md-2 col-sm-4 sidead">
 		<img src="/jsp_chatting_project/carrot/img/당근광고.png" style="max-width: 80%;">
 	</div>
