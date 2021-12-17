@@ -63,6 +63,14 @@
 		}
 	
 	}//function signupcheck()끝
-
-
 /*회원가입 유효성 검사 end */
+/*사이드광고 start*/
+function sideadtoggle(){
+	$("#adtoggle").click(function(){
+		$("#sidead").toggleClass("toggled");
+		document.getElementById("#adtext").style.display="none";
+	});
+}
+
+
+/*사이드광고 end*/
