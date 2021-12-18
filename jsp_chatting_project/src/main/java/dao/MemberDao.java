@@ -66,7 +66,26 @@ public class MemberDao extends DB {
     	return member;
     }
     
-    
+    public boolean signup(Member member) {
+    	String sql = "insert into member(m_id,m_nickname,m_password,m_name,m_email,m_phone,m_grade,m_logincheck,m_enter) value(?,?,?,?,?,?,?,?,?)";
+    	try {
+			preparedStatement= connection.prepareStatement(sql);
+			preparedStatement.setString(1, member.getM_id());
+			preparedStatement.setString(2, member.getM_nickname());
+			preparedStatement.setString(3, member.getM_password());
+			preparedStatement.setString(4, member.getM_name());
+			preparedStatement.setString(5, member.getM_email());
+			preparedStatement.setString(6, member.getM_phone());
+			preparedStatement.setInt(7, member.getM_grade());
+			preparedStatement.setInt(8, member.getM_logincheck());
+			preparedStatement.setInt(9, member.getM_enter());
+			preparedStatement.executeUpdate();
+			return true;
+			
+		} catch (Exception e) {
+			System.out.println("signup DB오류");
+		}return false;
+    }
     
 
 }
