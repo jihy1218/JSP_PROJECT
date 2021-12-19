@@ -13,20 +13,20 @@
 				<div class="text-center">
 					<img src="/jsp_chatting_project/carrot/img/당근이.png" style="max-height: 100%">
 				</div>
-				<div style="text-align: center; ">
+				<div style="text-align: center;">
 					<h3>로그인</h3>
 				</div>
 				<div class="my-2">
-					<input type="text" placeholder="아이디를 입력하세요" class="form-control">			
+					<input type="text" id="m_id" placeholder="아이디를 입력하세요" class="form-control">			
 				</div>
 				<div class="my-2">
-					<input type="password" placeholder="비밀번호를 입력하세요" class="form-control">			
+					<input type="password" id="m_password" placeholder="비밀번호를 입력하세요" class="form-control">			
 				</div>
 				<div style="text-align: right;">
 					<a href="/jsp_chatting_project/carrot/view/member/findid.jsp" style="font-size: 0.7rem;">아이디/비밀번호 찾기</a> 
 				</div>
 				<div class="my-2">
-					<button class="btn btn-lg btn-block" style="background: #3f7d1b; color: #ffaa21;">로그인</button>
+					<button class="btn btn-lg btn-block" onclick="login()" style="background: #3f7d1b; color: #ffaa21;">로그인</button>
 				</div>
 				<div style="text-align: center; ">
 					<p style="font-size: 1rem;">당근회원이 아니신가요?<a href="signup.jsp" style="font-size: 1.2rem;">회원가입</a> 
