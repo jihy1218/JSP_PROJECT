@@ -16,7 +16,7 @@
 				<div style="text-align: center;">
 					<h3>로그인</h3>
 				</div>
-				<div class="my-2">
+				<div class="my-2"> 
 					<input type="text" id="m_id" placeholder="아이디를 입력하세요" class="form-control">			
 				</div>
 				<div class="my-2">
