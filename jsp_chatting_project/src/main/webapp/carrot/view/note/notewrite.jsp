@@ -22,7 +22,7 @@
 					<p class="px-2"> 새 쪽지 </p>
 				</div>
 				<div style="border-bottom: solid 1px #000000;">
-					<input class="form-control" type="text" id="n_to" placeholder="수신자">
+					<input class="form-control" type="text" id="n_to" placeholder="수신자 ID">
 				</div>
 				<div>
 					<textarea rows="18" cols="" id="n_contents" class="form-control" placeholder="내용"></textarea>

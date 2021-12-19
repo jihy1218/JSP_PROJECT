@@ -66,6 +66,23 @@ public class MemberDao extends DB {
     	return member;
     }
     
+
+	//맴버 닉네임 가져오기
+	public String getnickname(int m_no) {
+		String sql = "select m_nickname from member where m_no="+m_no;
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getString(1);
+			}else {
+				return null;
+			}
+		} catch (Exception e) {
+			System.out.println("getnickname db오류");
+		}
+		return null;
+	}
     
     
 
