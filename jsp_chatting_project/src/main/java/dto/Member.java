@@ -22,7 +22,7 @@ public class Member {
     private String m_phone; 
     private int m_grade; 
     private int m_logincheck; 
-    private int  m_enter; 
+    private int m_enter; 
        
     //빈생성자
     public Member() {}
@@ -43,18 +43,24 @@ public class Member {
     }
     
     //회원가입 생성자
-    public Member(String m_id, String m_nickname, String m_password, String m_name, String m_email, String m_phone) {
+	public int getM_no() {return m_no;}
+    public Member(String m_id, String m_nickname, String m_password, String m_name,
+    		String m_email, String m_phone,
+			int m_grade, int m_logincheck, int m_enter) {
+		super();
 		this.m_id = m_id;
 		this.m_nickname = m_nickname;
 		this.m_password = m_password;
 		this.m_name = m_name;
 		this.m_email = m_email;
 		this.m_phone = m_phone;
+		this.m_grade = m_grade;
+		this.m_logincheck = m_logincheck;
+		this.m_enter = m_enter;
 	}
+    // get, set 메소드
 
-	// get, set 메소드
-	public int getM_no() {return m_no;}
-    public void setM_no(int m_no) {this.m_no = m_no;}
+	public void setM_no(int m_no) {this.m_no = m_no;}
     public String getM_id() {return m_id;}
     public void setM_id(String m_id) {this.m_id = m_id;}
     public String getM_nickname() {return m_nickname;}

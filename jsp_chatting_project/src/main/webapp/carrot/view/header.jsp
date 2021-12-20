@@ -24,11 +24,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- js 호출 -->
 	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/main.js"></script>
+	
 	<!-- 멤버 js 호출 -->
 	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/member.js"></script>
 	<!-- 노트 js 호출 -->
 	<script src="/jsp_chatting_project/carrot/js/note.js"></script>
-	<script src="/jsp_chatting_project/carrot/js/simple-sidebar.js"></script> <!-- 친구목록 사이드바 js  -->
+	<!-- 친구목록 사이드바 js 호출 -->
+	<script src="/jsp_chatting_project/carrot/js/simple-sidebar.js"></script> 
 	
 	<div class="container">
 		<div class="row justify-content-between align-items-center">
@@ -49,10 +51,10 @@
 		</div>
 	<br><br>
 	</div>
-
+	<!-- 세션에서 받아온 회원의 grade가 1이면 표시 아니면 표시안함 -->
 	<div id="sidead" style="position: absolute; top :200px; left: 20px;" class="col-md-2 col-sm-4 sidead">
+	    <button data-toggle="sidead" id="adtoggle" onclick="sideadtoggle();" class="btn" style="background-color :#ffffff;  margin: auto; position: absolute ; top: 0px; left:180px;"><span id="adtext" class="text-danger">X</span></button>
 		<img src="/jsp_chatting_project/carrot/img/당근광고.png" style="max-width: 80%;">
-	    <button data-toggle="sidead" id="adtoggle" onclick="sideadtoggle();" class="btn" style="background-color :#ffffff;  margin: auto; position: absolute ; top: 150px; left:180px;"><span id="adtext" class="text-danger">X</span></button>
 	</div>
 </body>
 

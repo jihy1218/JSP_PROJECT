@@ -1,9 +1,5 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.ArrayList;
-
 import dto.Member;
 
 public class MemberDao extends DB {
@@ -103,8 +99,59 @@ public class MemberDao extends DB {
 		}
     	return member;
     }
+    // 결제 업데이트
+    public boolean gradeupdate(int m_no) {
+    	String sql ="update member set m_grade = m_grade+1 where m_no=?";
+    	try {
+    		preparedStatement =connection.prepareStatement(sql);
+    		preparedStatement.setInt(1, m_no);
+    		preparedStatement.executeUpdate();
+    		return true;
+    	} catch (Exception e) {} return false;
+    }
+    // 아이디 찾기 메소드
+    public String findid(String m_name , String m_email) {
+		String sql = "select m_id from member where m_name=? and m_email=?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, m_name);
+			preparedStatement.setString(2, m_email);
+			resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {return resultSet.getString(1);}	
+		} catch (Exception e) {} return null;
+	}
+    // 비밀번호 찾기 메소드
+    public String findpassword(String m_id , String m_email) {
+    	String sql = "select m_password from member where m_id=? and m_email=?";
+    	try {
+    		preparedStatement = connection.prepareStatement(sql);
+    		preparedStatement.setString(1, m_id);
+    		preparedStatement.setString(2, m_email);
+    		resultSet = preparedStatement.executeQuery();
+    		if(resultSet.next()) {return resultSet.getString(1);}	
+    	} catch (Exception e) {} return null;
+    }
     
-    
+    public boolean signup(Member member) {
+    	String sql = "insert into member(m_id,m_nickname,m_password,m_name,m_email,m_phone,m_grade,m_logincheck,m_enter) value(?,?,?,?,?,?,?,?,?)";
+    	try {
+			preparedStatement= connection.prepareStatement(sql);
+			preparedStatement.setString(1, member.getM_id());
+			preparedStatement.setString(2, member.getM_nickname());
+			preparedStatement.setString(3, member.getM_password());
+			preparedStatement.setString(4, member.getM_name());
+			preparedStatement.setString(5, member.getM_email());
+			preparedStatement.setString(6, member.getM_phone());
+			preparedStatement.setInt(7, member.getM_grade());
+			preparedStatement.setInt(8, member.getM_logincheck());
+			preparedStatement.setInt(9, member.getM_enter());
+			preparedStatement.executeUpdate();
+			return true;
+			
+		} catch (Exception e) {
+			System.out.println("signup DB오류");
+		}return false;
+    }
     
 
 }

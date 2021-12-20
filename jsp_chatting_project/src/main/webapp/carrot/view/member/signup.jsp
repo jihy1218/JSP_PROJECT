@@ -10,7 +10,7 @@
 	<div class="container">
 		<form id ="signupform" action="../../controller/signupcontroller.jsp" method="post" onsubmit="return signupcheck()">
 			<div class="row">
-				<div class="card offset-3 col-md-6" style="max-width: 350px; margin:0 auto;">
+				<div class=card offset-3 col-md-6" style="max-width: 350px; margin:0 auto;">
 					<div class="mt-3" style="text-align: center;">
 						<h3>당근 회원가입</h3>
 					</div>
