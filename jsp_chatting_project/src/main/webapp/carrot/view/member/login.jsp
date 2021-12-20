@@ -6,10 +6,12 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	
-	
-	
 	<%@include file="../header.jsp" %>
+	<%
+		if(request.getParameter("logout")!=null){
+			 session.invalidate();
+		}
+	%>
 	<div class="container loginpage">
 		<div class="row">
 			<div class="card offset-3 col-md-6" style="max-width: 350px; margin:0 auto;">
