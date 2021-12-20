@@ -11,7 +11,7 @@
 	<%@include file="/carrot/view/friendbar.jsp" %>
 	<!-- 결제 API  -->
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-	<input type="hidden" id="m_no" value="<%=1%>"> <!-- 세션에서멤버넘버 가져오거나 멤버에서 가져오면될듯 -->
+	<input type="hidden" id="m_no" value="<%=logininfo.getM_no() %>"> <!-- 세션에서멤버넘버 가져오거나 멤버에서 가져오면될듯 -->
 	<div class="container">
 		<div class="text-center">
 			<img src="/jsp_chatting_project/carrot/img/당근프리미엄.png"  style="max-width: 100%">
