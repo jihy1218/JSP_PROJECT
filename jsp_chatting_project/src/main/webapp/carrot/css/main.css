@@ -12,9 +12,20 @@
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}@font-face {
+  font-family: 'LotteMartHappy';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
+}
+@font-face {
+  font-family: 'LotteMartDream';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
 }
 body{
-	font-family: EliceDigitalBaeum_Bold;
+	font-family: LotteMartDream;
 }
 .bottom {
 	background-color: #333333;
@@ -24,4 +35,23 @@ body{
 }
 .bottom p{
 	font-size: 0.75rem;
+}
+.loginpage a{
+	color : #3f7d1b;
+}
+.sidead {
+  z-index: 1000;
+  position: fixed;
+  top: 200px;
+  left: 20px;
+  margin-left: 0;
+  width: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.sidead.toggled {
+  margin-left: -250px;
 }

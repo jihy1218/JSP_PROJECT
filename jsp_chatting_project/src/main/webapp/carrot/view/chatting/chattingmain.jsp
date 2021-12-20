@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<%@include file="../header.jsp" %>
 	<%@include file="../friendbar.jsp" %>
 	<br>
-	
 	<div class="container">
 		<div style="border-radius: 15px; border: solid 2px black;" class="text-center">
 			<img src="/jsp_chatting_project/carrot/img/메인이미지.png">
