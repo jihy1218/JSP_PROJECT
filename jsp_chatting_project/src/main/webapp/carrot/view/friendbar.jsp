@@ -20,11 +20,7 @@
 		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no);
 		//친구 정보
 		ArrayList<Member> friendsinfolist = new ArrayList<>();
-		//접속 맴버
-		ArrayList<Member> loginlist = new ArrayList<>();
-		//비접속 친구
-		ArrayList<Member> logoutlist = new ArrayList<>();
-		//친구정보 받아와서
+		//친구목록 받아와서
 		for(Friend temp : friends){
 			if(temp.getM_no1()==m_no){
 				Member member = MemberDao.getmMemberDao().getinfo(temp.getM_no2());
@@ -32,14 +28,6 @@
 			}else if (temp.getM_no2()==m_no){
 				Member member = MemberDao.getmMemberDao().getinfo(temp.getM_no1());
 				friendsinfolist.add(member);
-			}
-		}
-		//분류
-		for(Member temp : friendsinfolist){
-			if(temp.getM_logincheck()==1){
-				loginlist.add(temp);
-			}else if(temp.getM_logincheck()==2){
-				logoutlist.add(temp);
 			}
 		}
 		
@@ -55,7 +43,8 @@
         <li>
             <a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-1">로그인된 친구</a>
             <ul id="menu-collapse-1" class="collapse in">
-            	<%for(Member loginM : loginlist) {%>
+            	<%for(Member loginM : friendsinfolist) {%>
+            	<%if(loginM.getM_logincheck()==1){ %>
                 <li>
                 	<div class="row">
 	                	<div class="col-md-4 offset-1">
@@ -69,7 +58,7 @@
 	                	</div>
                 	</div>
                 </li>
-                <%} %>
+                <%}} %>
             </ul>
         </li>
         <li>
@@ -77,7 +66,8 @@
                로그아웃 친구
             </a>
             <ul id="menu-collapse-2" class="collapse in">
-            	<%for(Member logoutM : logoutlist) {%>
+            	<%for(Member logoutM : friendsinfolist) {%>
+            	<%if(logoutM.getM_logincheck()==2){ %>
                 <li>
                 	<div class="row">
 	                	<div class="col-md-4 offset-1">
@@ -91,7 +81,7 @@
 	                	</div>
                 	</div>
                 </li>
-                <%} %>
+                <%} }%>
             </ul>
         </li>
         <li>
