@@ -7,15 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<%@ include file="../header.jsp" %>
-	<br><br><br><br><br>
-	<!-- 쪽지 리스트 페이지 -->
+	<%@include file="/carrot/view/friendbar.jsp" %>
 	<%
 		//로그인 회원 번호		
-		int m_no = 1;
 		
 		String pagenum = request.getParameter("pagenum");
 		if(pagenum==null){

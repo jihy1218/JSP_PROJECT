@@ -8,6 +8,7 @@
 </head>
 <body>
 	<%@include file="header.jsp" %>
+	<%@include file="/carrot/view/friendbar.jsp" %>
 	<!-- 결제 API  -->
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<input type="hidden" id="m_no" value="<%=1%>"> <!-- 세션에서멤버넘버 가져오거나 멤버에서 가져오면될듯 -->

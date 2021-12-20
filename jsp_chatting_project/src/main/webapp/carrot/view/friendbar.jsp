@@ -9,10 +9,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
-	
 	<%
 		int m_no =1;
 		//친구 목록
@@ -41,9 +39,7 @@
 				logoutlist.add(temp);
 			}
 		}
-		
 	%>
-
 	<div class="sidebar">
     <span class="sidebar-brand">
     	<br><br><br><br>
@@ -101,7 +97,6 @@
        		<img src="/jsp_chatting_project/carrot/img/당근친구만들기.png">
         </li>
     </ul>
-   
 </div>
 
 <!-- 사이드바 열기 버튼 -->
