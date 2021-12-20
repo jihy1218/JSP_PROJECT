@@ -14,10 +14,14 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"> <!-- 아이콘 불러오는 css -->
 </head>
 <body>
-	<%
+	<%	
+		int m_no =0;
+		int m_grade=0;
 		Member logininfo = (Member)session.getAttribute("login");
-		int m_no = logininfo.getM_no();
-		int m_grade = logininfo.getM_grade();
+		if(session.getAttribute("login")!=null){
+			m_no =	logininfo.getM_no();
+			m_grade = logininfo.getM_grade();
+		}
 	%>
 	<!-- jquery js -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -37,17 +41,25 @@
 	<div class="container">
 		<div class="row justify-content-between align-items-center">
 			<div class="col-4 offset-4 text-center mt-2">
+				<%if(logininfo!=null){ %>
 				<a href="/jsp_chatting_project/carrot/view/chatting/chattingmain.jsp"><img src="/jsp_chatting_project/carrot/img/당근후보3.png" style="max-width: 100%"></a>
+				<%}else{ %>
+				<img src="/jsp_chatting_project/carrot/img/당근후보3.png" style="max-width: 100%">
+				<%} %>
 			</div>
 			<div class="col-4 d-flex justify-content-end align-items-center">
 				<ul class="nav header-topmenu">	<!-- 로그인 했을때 랑 안했을때 구별해서 해야합니다. 나중에 수정해야함 (12.15 15:58)-->
 					<%
 						if(session.getAttribute("login")!=null) {
 					%>
-					<li><%=logininfo.getM_nickname() %></li>
-					<% } %>
+					<li><%=logininfo.getM_nickname() %>님</li>
+					<li><a href="/jsp_chatting_project/carrot/view/note/notelist.jsp" class="text-success mx-1">게시판</a>|</li>
+					<li><a href="/jsp_chatting_project/carrot/view/member/myinfo.jsp" class="text-success mx-1">내정보</a>|</li>
+					<li><a href="/jsp_chatting_project/carrot/controller/logoutcontroller.jsp" class="text-success mx-1">로그아웃</a>|</li>
+					<% }else{ %>
 					<li><a href="/jsp_chatting_project/carrot/view/member/login.jsp" class="text-success mx-1">로그인</a>|</li>
 					<li><a href="/jsp_chatting_project/carrot/view/member/signup.jsp" class="text-success mx-1">회원가입</a></li>
+					<%} %>
 				</ul>
 			</div>	
 		</div>

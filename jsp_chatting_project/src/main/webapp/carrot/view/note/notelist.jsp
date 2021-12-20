@@ -53,7 +53,7 @@
 				<%if(noteList.get(i).getN_check()==1){ %>
 				<td> <a href="noteview.jsp?n_no=<%=noteList.get(i).getN_no()%>&n_check=2"><%=noteList.get(i).getN_contents() %></a> </td>
 				<%}else{ %>
-				<td> <a style="color: #B6B6B6" href="noteview.jsp?n_no=<%=noteList.get(i).getN_no()%>&n_check=2"><%=noteList.get(i).getN_contents() %></a> </td>
+				<td> <a style="color: #B6B6B6" href="noteview.jsp?n_no=<%=noteList.get(i).getN_no()%>"><%=noteList.get(i).getN_contents() %></a> </td>
 				<%} %>
 				<td><%=MemberDao.getmMemberDao().getnickname(noteList.get(i).getN_from())%></td>
 				<td><%=noteList.get(i).gettime() %></td>
