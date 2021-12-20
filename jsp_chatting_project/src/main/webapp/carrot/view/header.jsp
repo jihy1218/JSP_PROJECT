@@ -20,6 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- js 호출 -->
 	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/main.js"></script>
+	
 	<!-- 멤버 js 호출 -->
 	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/member.js"></script>
 	<!-- 노트 js 호출 -->
