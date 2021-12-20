@@ -13,7 +13,8 @@
 </head>
 <body>
 	<%
-		int m_no =1;
+		Member logininfo = (Member)session.getAttribute("login");
+		int m_no =	logininfo.getM_no();
 		//친구 목록
 		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no);
 		//친구 정보

@@ -13,8 +13,6 @@
 	<%@ include file="../header.jsp" %>
 	<%@include file="/carrot/view/friendbar.jsp" %>
 	<%
-		//로그인 회원 번호		
-		int m_no = 1;
 		//보낸사람 번호
 		int n_from = 0;
 		if(request.getParameter("n_from")!=null){
