@@ -104,10 +104,11 @@
    
 </div>
 
- <!-- 사이드바 열기 버튼 -->
- <a href="javascript:void(0)" data-toggle="sidebar" style="margin: auto; position: fixed; top: 120px; right:180px;">
-     <button class="btn"><i class="fas fa-users fa-2x" style="color: #3f7d1b;"></i></button>
- </a>
+<!-- 사이드바 열기 버튼 -->
+<!-- 결제한 사람이면 바로 친구목록 아니면 결제페이지 이동 --> 
+<a href="javascript:void(0)" data-toggle="sidebar" style="margin: auto; position: fixed; top: 120px; right:180px;">
+	<button class="btn"><i class="fas fa-users fa-2x" style="color: #3f7d1b;"></i></button>
+</a>
  
 
 </body>

@@ -22,7 +22,7 @@ public class Member {
     private String m_phone; 
     private int m_grade; 
     private int m_logincheck; 
-    private int  m_enter; 
+    private int m_enter; 
        
     //빈생성자
     public Member() {}
