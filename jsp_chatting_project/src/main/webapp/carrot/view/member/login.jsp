@@ -6,9 +6,6 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	
-	
-	
 	<%@include file="../header.jsp" %>
 	<%
 		if(request.getParameter("logout")!=null){
