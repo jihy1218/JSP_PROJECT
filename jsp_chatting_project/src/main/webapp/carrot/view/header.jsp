@@ -16,7 +16,7 @@
 <body>
 	<%
 		Member logininfo = (Member)session.getAttribute("login");
-		int m_no =	logininfo.getM_no();
+		int m_no = logininfo.getM_no();
 		int m_grade = logininfo.getM_grade();
 	%>
 	<!-- jquery js -->
@@ -54,10 +54,13 @@
 	<br><br>
 	</div>
 	<!-- 세션에서 받아온 회원의 grade가 1이면 표시 아니면 표시안함 -->
+	<%
+		if(m_grade==1){
+	%>
 	<div id="sidead" style="position: absolute; top :200px; left: 20px;" class="col-md-2 col-sm-4 sidead">
-	    <button data-toggle="sidead" id="adtoggle" onclick="sideadtoggle();" class="btn" style="background-color :#ffffff;  margin: auto; position: absolute ; top: 0px; left:180px;"><span id="adtext" class="text-danger">X</span></button>
+	    <button data-toggle="sidead" id="adtoggle" onclick="sideadtoggle(<%=m_grade %>);" class="btn" style="background-color :#ffffff;  margin: auto; position: absolute ; top: 0px; left:180px;"><span id="adtext" class="text-danger">X</span></button>
 		<img src="/jsp_chatting_project/carrot/img/당근광고.png" style="max-width: 80%;">
 	</div>
+	<%} %>
 </body>
-
 </html>
