@@ -1,3 +1,4 @@
+<%@page import="dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,6 +14,11 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"> <!-- 아이콘 불러오는 css -->
 </head>
 <body>
+	<%
+		Member logininfo = (Member)session.getAttribute("login");
+		int m_no =	logininfo.getM_no();
+		int m_grade = logininfo.getM_grade();
+	%>
 	<!-- jquery js -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<!-- 부트스트랩 js설정 -->
@@ -20,6 +26,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- js 호출 -->
 	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/main.js"></script>
+	
 	<!-- 멤버 js 호출 -->
 	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/member.js"></script>
 	<!-- 노트 js 호출 -->
@@ -34,6 +41,11 @@
 			</div>
 			<div class="col-4 d-flex justify-content-end align-items-center">
 				<ul class="nav header-topmenu">	<!-- 로그인 했을때 랑 안했을때 구별해서 해야합니다. 나중에 수정해야함 (12.15 15:58)-->
+					<%
+						if(session.getAttribute("login")!=null) {
+					%>
+					<li><%=logininfo.getM_nickname() %></li>
+					<% } %>
 					<li><a href="/jsp_chatting_project/carrot/view/member/login.jsp" class="text-success mx-1">로그인</a>|</li>
 					<li><a href="/jsp_chatting_project/carrot/view/member/signup.jsp" class="text-success mx-1">회원가입</a></li>
 				</ul>
