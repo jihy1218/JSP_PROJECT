@@ -13,18 +13,18 @@
 </head>
 <body>
 	<%
-		Member logininfo = (Member)session.getAttribute("login");
-		int m_no =	logininfo.getM_no();
+		Member logininfo2 = (Member)session.getAttribute("login");
+		int m_no2 =	logininfo2.getM_no();
 		//친구 목록
-		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no);
+		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no2);
 		//친구 정보
 		ArrayList<Member> friendsinfolist = new ArrayList<>();
 		//친구목록 받아와서
 		for(Friend temp : friends){
-			if(temp.getM_no1()==m_no){
+			if(temp.getM_no1()==m_no2){
 				Member member = MemberDao.getmMemberDao().getinfo(temp.getM_no2());
 				friendsinfolist.add(member);
-			}else if (temp.getM_no2()==m_no){
+			}else if (temp.getM_no2()==m_no2){
 				Member member = MemberDao.getmMemberDao().getinfo(temp.getM_no1());
 				friendsinfolist.add(member);
 			}
@@ -50,7 +50,7 @@
 	                	<div class="col-md-5">
 	                		<a class="message" href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=loginM.getM_no()%>">
 	                		<button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">
-	                		<%if(NoteDao.getNoteDao().countN_check(loginM.getM_no(), m_no)!=0)out.print(NoteDao.getNoteDao().countN_check(loginM.getM_no(), m_no)); %> 
+	                		<%if(NoteDao.getNoteDao().countN_check(loginM.getM_no(), m_no2)!=0)out.print(NoteDao.getNoteDao().countN_check(loginM.getM_no(), m_no2)); %> 
 	                		</span></button></a>
 	                	</div>
                 	</div>
@@ -73,7 +73,7 @@
 	                	<div class="col-md-5">
 	                		<a class="message" href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=logoutM.getM_no()%>">
 	                		<button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">
-	                		<%if(NoteDao.getNoteDao().countN_check(logoutM.getM_no(), m_no)!=0)out.print(NoteDao.getNoteDao().countN_check(logoutM.getM_no(), m_no)); %> 
+	                		<%if(NoteDao.getNoteDao().countN_check(logoutM.getM_no(), m_no2)!=0)out.print(NoteDao.getNoteDao().countN_check(logoutM.getM_no(), m_no2)); %> 
 	                		</span></button></a>
 	                	</div>
                 	</div>
