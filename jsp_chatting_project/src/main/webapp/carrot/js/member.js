@@ -67,11 +67,8 @@ $(function(){
 /*아이디 비번찾기 end*/
 /* 로그인 Start */
 function login(){
-	alert("login이 되었습니다.");
-	
 	var m_id = document.getElementById("m_id").value;
 	var m_password = document.getElementById("m_password").value;
-	
 	$.ajax({
 		url: "../../controller/logincontroller.jsp",
 		data: {m_id:m_id, m_password:m_password},
