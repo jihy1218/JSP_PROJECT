@@ -27,7 +27,6 @@
 		if(n_check==2){
 			NoteDao.getNoteDao().updaten_check(n_no);
 		}
-		
 	%>
 	<!-- 쪽지 확인 -->
 	<br><br><br>
@@ -49,7 +48,7 @@
 				<br><br><br><br>
 			</div>
 			<div style="position: absolute; bottom : 700px; right : 800px;">
-				<a href="/jsp_chatting_project/carrot/view/note/notelist.jsp">뒤로가기</a>
+				<a href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=note.getN_from()%>">뒤로가기</a>
 				</div>
 		</div>
 	</div>

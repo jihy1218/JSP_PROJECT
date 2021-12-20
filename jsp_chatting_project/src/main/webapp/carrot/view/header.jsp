@@ -1,3 +1,7 @@
+<%@page import="dao.MemberDao"%>
+<%@page import="dao.FriendDao"%>
+<%@page import="dto.Friend"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -22,6 +26,8 @@
 			m_no =	logininfo.getM_no();
 			m_grade = logininfo.getM_grade();
 		}
+		
+		
 	%>
 	<!-- jquery js -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -37,6 +43,8 @@
 	<script src="/jsp_chatting_project/carrot/js/note.js"></script>
 	<!-- 친구목록 사이드바 js 호출 -->
 	<script src="/jsp_chatting_project/carrot/js/simple-sidebar.js"></script> 
+	<!-- 친구목록 js 호출 -->
+	<script src="/jsp_chatting_project/carrot/js/friendbar.js"></script>
 	
 	<div class="container">
 		<div class="row justify-content-between align-items-center">
@@ -70,9 +78,10 @@
 		if(m_grade==1){
 	%>
 	<div id="sidead" style="position: absolute; top :200px; left: 20px;" class="col-md-2 col-sm-4 sidead">
-	    <button data-toggle="sidead" id="adtoggle" onclick="sideadtoggle(<%=m_grade %>);" class="btn" style="background-color :#ffffff;  margin: auto; position: absolute ; top: 0px; left:180px;"><span id="adtext" class="text-danger">X</span></button>
+	    <button data-toggle="sidead" id="adtoggle" onclick="sideadtoggle();" class="btn" style="background-color :#ffffff;  margin: auto; position: absolute ; top: 0px; left:180px;"><span id="adtext" class="text-danger">X</span></button>
 		<img src="/jsp_chatting_project/carrot/img/당근광고.png" style="max-width: 80%;">
 	</div>
-	<%}%>
+	<%} %>
 </body>
+
 </html>

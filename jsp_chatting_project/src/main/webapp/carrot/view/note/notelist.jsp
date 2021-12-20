@@ -12,6 +12,7 @@
 <body>
 	<%@ include file="../header.jsp" %>
 	<%@include file="/carrot/view/friendbar.jsp" %>
+	
 	<%
 		//보낸사람 번호
 		int n_from = 0;
@@ -37,6 +38,7 @@
 		int startrow = (currentpage-1)*listsize; 
 		ArrayList<Note> noteList = NoteDao.getNoteDao().notelist(startrow, listsize ,m_no,n_from);
 	%>
+	
 	<div class="container">
 		<table class="table" style="max-width: 1000px; margin: 0 auto;">
 			<tr>
