@@ -131,8 +131,23 @@ public class MemberDao extends DB {
     		if(resultSet.next()) {return resultSet.getString(1);}	
     	} catch (Exception e) {} return null;
     }
-    
-    public boolean signup(Member member) {
+	//맴버 닉네임 가져오기
+	public String getnickname(int m_no) {
+		String sql = "select m_nickname from member where m_no="+m_no;
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getString(1);
+			}else {
+				return null;
+			}
+		} catch (Exception e) {
+			System.out.println("getnickname db오류");
+		}
+		return null;
+	}
+  public boolean signup(Member member) {
     	String sql = "insert into member(m_id,m_nickname,m_password,m_name,m_email,m_phone,m_grade,m_logincheck,m_enter) value(?,?,?,?,?,?,?,?,?)";
     	try {
 			preparedStatement= connection.prepareStatement(sql);
@@ -152,8 +167,6 @@ public class MemberDao extends DB {
 			System.out.println("signup DB오류");
 		}return false;
     }
-    
-
 }
 
 
