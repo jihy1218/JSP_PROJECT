@@ -16,6 +16,8 @@
 <body>
 	<%
 		Member logininfo = (Member)session.getAttribute("login");
+		int m_no =	logininfo.getM_no();
+		int m_grade = logininfo.getM_grade();
 	%>
 	<!-- jquery js -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
