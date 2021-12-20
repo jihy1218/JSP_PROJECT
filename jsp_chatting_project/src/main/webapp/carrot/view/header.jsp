@@ -61,6 +61,6 @@
 	    <button data-toggle="sidead" id="adtoggle" onclick="sideadtoggle(<%=m_grade %>);" class="btn" style="background-color :#ffffff;  margin: auto; position: absolute ; top: 0px; left:180px;"><span id="adtext" class="text-danger">X</span></button>
 		<img src="/jsp_chatting_project/carrot/img/당근광고.png" style="max-width: 80%;">
 	</div>
-	<%} %>
+	<%}%>
 </body>
 </html>
