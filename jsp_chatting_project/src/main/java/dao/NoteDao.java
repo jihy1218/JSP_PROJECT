@@ -33,8 +33,13 @@ public class NoteDao extends DB {
 	}
 	
 	//쪽지 총 개수 반환 
-	public int notecount() {
-		String sql="select count(*) from note";
+	public int notecount(int n_from) {
+		String sql ;
+		if(n_from==0) {
+			sql="select count(*) from note";
+		}else {
+			sql="select count(*) from note where n_from="+n_from;
+		}
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet= preparedStatement.executeQuery();
@@ -50,10 +55,16 @@ public class NoteDao extends DB {
 	}
 	
 	// 쪽지 출력
-	public ArrayList<Note> notelist(int startrow, int listsize ,int m_no){
+	public ArrayList<Note> notelist(int startrow, int listsize ,int m_no ,int n_from){
 		
 		ArrayList<Note> notes = new ArrayList<Note>();
-		String sql ="select * from note where n_from="+m_no+" order by n_no DESC limit ? , ?";
+		String sql=null;
+		if(n_from==0) {
+			sql ="select * from note where n_to="+m_no+" order by n_no DESC limit ? , ?";
+		}else {
+			sql ="select * from note where n_from="+n_from+" and n_to="+m_no+" order by n_no DESC limit ? , ?";
+		}
+		
 		
 		try {
 			preparedStatement=connection.prepareStatement(sql);
@@ -102,6 +113,33 @@ public class NoteDao extends DB {
 		}
 		return note;
 	}
+	//쪽지 체크 업데이트 
+	public void updaten_check(int n_no) {
+		String sql = "update note set n_check=2 where n_no="+n_no;
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("updaten_check db 오류");
+		}
+	}
+	
+	//읽지않은 쪽지 개수 
+	public int countN_check(int n_from , int n_to) {
+		String sql = "SELECT count(n_check) from note where n_check=1 and n_from="+n_from+" and n_to="+n_to;
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet= preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println("countN_check db 오류");
+		}
+		return 0;
+	}
+	
+	
 	
 }
 
