@@ -65,3 +65,69 @@ $(function(){
 	});	
 });
 /*아이디 비번찾기 end*/
+/* 로그인 Start */
+function login(){
+	var m_id = document.getElementById("m_id").value;
+	var m_password = document.getElementById("m_password").value;
+	$.ajax({
+		url: "../../controller/logincontroller.jsp",
+		data: {m_id:m_id, m_password:m_password},
+		success: function(result){
+			if(result==1){
+				alert("로그인이 되셨습니다.");
+				location.href="../chatting/chattingmain.jsp";
+			} else {
+				alert("아이디, 비밀번호가 잘못 되었습니다.");
+				location.reload();
+			}
+		}
+	});
+}
+/* 로그인 End */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

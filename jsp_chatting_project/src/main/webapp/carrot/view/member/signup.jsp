@@ -8,7 +8,7 @@
 <body>
 	<%@include file="../header.jsp" %>
 	<div class="container">
-		<form id ="signupform" action="../../controller/signupcontroller.jsp" method="post" onsubmit="return signupcheck()">
+		<form id ="signupform" action="/jsp_chatting_project/carrot/controller/signupcontroller.jsp" method="post" onsubmit="return signupcheck()">
 			<div class="row">
 				<div class="card offset-3 col-md-6" style="max-width: 350px; margin:0 auto;">
 					<div class="mt-3" style="text-align: center;">
@@ -36,7 +36,7 @@
 						<span id="nicknameresult"></span>
 					</div>	
 					<div class="my-2">
-						<input type="text" placeholder="이름." class="form-control" id="name" onchange="signupcheck();" name="name">			
+						<input type="text" placeholder="이름을 입력하세요." class="form-control" id="name" onchange="signupcheck();" name="name">			
 					</div>
 					<div>
 	                	<span id="nameresult"></span>
@@ -48,13 +48,13 @@
 						<span id="emailresult"></span>
 					</div>
 					<div class="my-2">
-						<input type="text" placeholder="000-0000-0000." class="form-control" id="phone" onchange="signupcheck();" name="phone" >			
+						<input type="text" placeholder="-제외한11자리번호를입력하세요." class="form-control" id="phone" onchange="signupcheck();" name="phone" >			
 					</div>
 					<div>
 	                	<span id="phoneresult"></span>
 	               	</div>
 					<div class="p-2 my-2">
-						<input type="submit" value="가입 하기" class="btn btn-lg btn-block" style="background: #3f7d1b; color: #ffaa21;" >
+						<input type="submit" value="가입하기" class="btn btn-lg btn-block" style="background: #3f7d1b; color: #ffaa21;" >
 					</div>
 				</div>
 			</div>

@@ -63,6 +63,49 @@
 		}
 	
 	}//function signupcheck()끝
-
-
 /*회원가입 유효성 검사 end */
+/* 결제 start*/
+function payment(){
+	var IMP = window.IMP; // 생략 가능
+    IMP.init("imp96520987"); // 예: imp00000000
+     // IMP.request_pay(param, callback) 결제창 호출
+      IMP.request_pay({ // param
+          pg: "html5_inicis",							
+          pay_method: "card",	
+          merchant_uid: "ORD20180131-0000011",
+          name: "당근프리미엄",
+          amount: 9900,
+          buyer_email: "gildong@gmail.com",
+          buyer_name: "가입시받아온이름",
+          buyer_tel: "가입시받아온폰",
+          buyer_addr: "주소",
+          buyer_postcode: "상세주소"
+      }, function (rsp) {
+          if(rsp.success) {
+	
+          }else{// 결제 실패했을시
+          		// 테스트 : 결제 성공이라고 생각
+          		$.ajax({
+					url : "/jsp_chatting_project/carrot/controller/paymentcontroller.jsp",
+					data : {m_no : $("#m_no").val()},
+					success : function(result){
+						if(result==1){
+						alert("당근 프리미엄 회원이 되셨습니다.");
+							// 결제완료 페이지						
+							location.href="/jsp_chatting_project/carrot/view/chatting/chattingmain.jsp";
+						}else{
+							alert("이미 프리미엄회원 이십니다.");
+						}
+					}
+				});
+          }
+      });
+}
+/*결제 end*/
+/*사이드광고 start*/
+function sideadtoggle(){
+	$("#adtoggle").click(function(){
+		$("#sidead").toggleClass("toggled");
+	});
+}
+/*사이드광고 end*/

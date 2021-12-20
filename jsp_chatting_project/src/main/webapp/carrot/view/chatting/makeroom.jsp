@@ -4,14 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<%@include file="../header.jsp" %>
-	<br><br><br><br><br><br><br><br>
-	<div class="divbox">
-		<a href="#"><button class="btn btn-warning p-3" style="position: relative;">친구목록</button></a>
-	</div>
+	<%@include file="/carrot/view/friendbar.jsp" %>
 	<div class="container">
 		<div style="border-radius: 15px; border: solid 2px black;" class="text-center">
 			<img src="../../img/당근프리미엄.png" style="max-width: 100%"> <!-- 이미지 좀더 큰거로 해야할거같음 -->

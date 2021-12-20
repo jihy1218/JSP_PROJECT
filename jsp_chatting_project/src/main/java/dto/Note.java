@@ -1,5 +1,8 @@
 package dto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Note {
 	
 	// 필드
@@ -12,6 +15,18 @@ public class Note {
 	
 	// 빈생성자
 	public Note() {}
+	
+	public String gettime() {
+		SimpleDateFormat datetimeformat1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat datetimeformat = new SimpleDateFormat("MM-dd hh:mm");
+		try {
+			Date date =  datetimeformat1.parse( n_date );
+			return datetimeformat.format(date);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return n_date;
+	}
 
 	// 풀생성자
 	public Note(int n_no, String n_contents, int n_from, int n_to, int n_check, String n_date) {
