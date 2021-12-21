@@ -12,7 +12,7 @@
 	<%@include file="../friendbar.jsp" %>
 	<br>
 	<div class="container">
-	<form action="#" method="POST">
+	<form  method="POST">
 	
 		<div class="form-group">
 			<label for="title">Title:</label>
