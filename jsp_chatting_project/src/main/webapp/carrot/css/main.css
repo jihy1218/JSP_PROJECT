@@ -29,6 +29,10 @@ body{
 }
 .bottom {
 	background-color: #333333;
+	height: 200px;
+}
+.bottomitems{
+	padding-top: 50px;
 }
 .bottom a{
 	color : white;

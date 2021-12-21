@@ -58,6 +58,7 @@ public class Member {
 		this.m_logincheck = m_logincheck;
 		this.m_enter = m_enter;
 	}
+  
     // get, set 메소드
 
 	public void setM_no(int m_no) {this.m_no = m_no;}
