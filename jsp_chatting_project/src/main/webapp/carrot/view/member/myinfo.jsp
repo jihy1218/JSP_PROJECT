@@ -22,9 +22,9 @@
 	%>
 	<div class="container">
 		<div class="row">
-			<div class="offset-3 col-md-6" style="max-width: 700px; margin:0 auto;">
+			<div class="card col-md-6 offset-3 " style="max-width: 700px; margin:0 auto;">
 				<div style="text-align: center;">
-					<h3>내정보</h3>
+					<h3 class="pt-3">내정보</h3>
 					<br>
 				</div>
 				<table class="table text-center">
@@ -47,7 +47,17 @@
 						<td>핸드폰번호</td><td><%=logininfo.getM_phone() %> </td><td></td>
 					</tr>
 					<tr>
-						<td>회원등급</td><td> <%=logininfo.getM_grade()%> </td><td></td>
+						<%
+						String grade;
+						if(logininfo.getM_grade()==1){
+								grade = "일반회원";		%>
+						<td>회원등급</td><td><%=grade %> </td><td></td>
+						<%}else if(logininfo.getM_grade()==2){
+							grade = "프리미엄회원";%>
+						<td>회원등급</td><td><%=grade %> </td><td></td>
+						<%
+						}
+						%>
 					</tr>
 				</table>
 				<br>
@@ -69,6 +79,7 @@
 				
 			</div>
 		</div>
+		<br><br>
 	</div>
 	<%@include file="../footer.jsp" %>
 </body>

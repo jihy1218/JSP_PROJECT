@@ -44,6 +44,8 @@
 	<script type="text/javascript" src="/jsp_chatting_project/carrot/js/member.js"></script>
 	<!-- 노트 js 호출 -->
 	<script src="/jsp_chatting_project/carrot/js/note.js"></script>
+	<!-- 채팅 js 호출 -->
+	<script src="/jsp_chatting_project/carrot/js/chatting.js"></script>
 	<!-- 친구목록 사이드바 js 호출 -->
 	<script src="/jsp_chatting_project/carrot/js/simple-sidebar.js"></script> 
 	<!-- 친구목록 js 호출 -->
@@ -66,7 +68,17 @@
 					<%
 						if(session.getAttribute("login")!=null) {
 					%>
-					<li><%=logininfo.getM_nickname() %>님</li>
+					<li style="color : #ff7915; " ><%
+						String grade;
+						if(logininfo.getM_grade()==1){
+								grade = "일반회원";%>
+						<%=grade %>
+						<%}else if(logininfo.getM_grade()==2){
+							grade = "프리미엄회원";%>
+						<%=grade %>
+						<%}	%>
+					</li>
+					<li class="text-success mx-1"><%=logininfo.getM_nickname() %>님<span style="color: black;"> | </span></li>
 					<li><a href="/jsp_chatting_project/carrot/view/note/notelist.jsp" class="text-success mx-1">게시판</a>|</li>
 					<li><a href="/jsp_chatting_project/carrot/view/member/myinfo.jsp" class="text-success mx-1">내정보</a>|</li>
 					<li><a href="/jsp_chatting_project/carrot/controller/logoutcontroller.jsp" class="text-success mx-1">로그아웃</a>|</li>
@@ -77,7 +89,7 @@
 				</ul>
 			</div>	
 		</div>
-	<br><br>
+	<br>
 	</div>
 	<!-- 세션에서 받아온 회원의 grade가 1이면 표시 아니면 표시안함 -->
 	<%
@@ -89,5 +101,4 @@
 	</div>
 	<%} %>
 </body>
-
 </html>

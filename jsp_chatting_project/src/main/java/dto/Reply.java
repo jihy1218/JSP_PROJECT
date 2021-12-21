@@ -2,7 +2,7 @@ package dto;
 
 public class Reply {
 
-    private int r_num;  
+    private int r_no;  
     private String r_contents; 
     private String r_date;  
     private int m_num;  
@@ -10,21 +10,21 @@ public class Reply {
     
     public Reply() {}
     
-    public Reply(int r_num, String r_contents, String r_date, int m_num, int b_num) {
+    public Reply(int r_no, String r_contents, String r_date, int m_num, int b_num) {
 	super();
-	this.r_num = r_num;
+	this.r_no = r_no;
 	this.r_contents = r_contents;
 	this.r_date = r_date;
 	this.m_num = m_num;
 	this.b_num = b_num;
     }
 
-    public int getR_num() {
-        return r_num;
+    public int getR_no() {
+        return r_no;
     }
 
-    public void setR_num(int r_num) {
-        this.r_num = r_num;
+    public void setR_no(int r_no) {
+        this.r_no = r_no;
     }
 
     public String getR_contents() {
