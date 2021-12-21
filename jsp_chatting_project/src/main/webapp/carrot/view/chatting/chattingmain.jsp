@@ -22,10 +22,18 @@
 						<br><br><br><br><br><br><br><br><br><br><br>채팅방들어갈공간<br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</div>
 				</div>
-				<div class="col-md-8">
-					<div>
+				<div style="margin: 10px 10px 10px 0;">
+					<div class="carousel slide" data-ride="carousel" data-interval="5000">
+						<div class="carousel-inner">
+							<div class="carousel-item active"><img src="/jsp_chatting_project/carrot/img/유의사항1.png"></div>
+							<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/유의사항2.png"></div>
+							<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/유의사항3.png"></div>
+						</div>
 					</div>
-					<img src="/jsp_chatting_project/carrot/img/메인이미지.png">
+					<div class="text-center">
+						<img src="/jsp_chatting_project/carrot/img/메인이미지.png">
+					</div>
+					<button class="btn btn-lg btn-outline-success">빠른방입장</button>
 				</div>
 			
 			</div>
