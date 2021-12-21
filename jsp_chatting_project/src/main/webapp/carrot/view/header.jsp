@@ -52,7 +52,8 @@
 	<script src="/jsp_chatting_project/carrot/js/friendbar.js"></script>
 	<!-- 글쓰기 js 호출 -->
   	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
+  	<!-- 글쓰기 js 호출 -->
+  	<script src="/jsp_chatting_project/carrot/js/board.js"></script>
 	
 	<div class="container">
 		<div class="row justify-content-between align-items-center">
