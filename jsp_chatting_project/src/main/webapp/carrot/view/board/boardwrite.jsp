@@ -11,7 +11,7 @@
 	<%@include file="/carrot/view/friendbar.jsp" %>
 	<br>
 	<div class="container">
-	<form action="#" method="POST">
+	<form  method="POST">
 		<div class="form-group">
 			<label for="title">Title:</label>
 			<input type="text" class="form-control" placeholder="title" id="title" name="title">
