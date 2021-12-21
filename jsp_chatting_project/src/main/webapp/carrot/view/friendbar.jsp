@@ -13,11 +13,13 @@
 </head>
 <body>
 	<%
+		
 		Member logininfo2 = (Member)session.getAttribute("login");
 		int m_no2 =	logininfo2.getM_no();
 		int m_grade2 = logininfo2.getM_grade();
 		//친구 목록
-		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no2);
+		
+		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no2 ,1);
 		//친구 정보
 		ArrayList<Member> friendsinfolist = new ArrayList<>();
 		//친구목록 받아와서
@@ -35,11 +37,7 @@
     <span class="sidebar-brand">
     	<br><br><br><br>
         <a href="javascript:void(0)" data-toggle="sidebar"><i class="glyphicon glyphicon-arrow-left"></i> HIDE</a><br>
-	<%
-		if(m_grade2==2){
-			
-		
-	%>
+        <%if(m_grade2==2){%>
         <span>친구 목록 </span>
     </span>
     <ul class="sidebar-nav">
@@ -95,7 +93,6 @@
     	<p class="text-dark">친구기능은 프리미엄회원을 위한 기능입니다.<br>이용하시려면 아래 이용하기버튼을 눌러주세요.</p>
     	<a href="/jsp_chatting_project/carrot/view/payment.jsp"><button class="btn btn-outline-primary">이용하기</button></a>
     <%} %>
-    
 </div>
 
 <!-- 사이드바 열기 버튼 -->

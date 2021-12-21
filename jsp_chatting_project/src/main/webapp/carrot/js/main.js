@@ -87,14 +87,14 @@ function payment(){
           		// 테스트 : 결제 성공이라고 생각
           		$.ajax({
 					url : "/jsp_chatting_project/carrot/controller/paymentcontroller.jsp",
-					data : {m_no : $("#m_no").val()},
 					success : function(result){
 						if(result==1){
 						alert("당근 프리미엄 회원이 되셨습니다.");
 							// 결제완료 페이지						
 							location.href="/jsp_chatting_project/carrot/view/chatting/chattingmain.jsp";
 						}else{
-							alert("이미 프리미엄회원 이십니다.");
+							alert("결제 오류");
+							location.href="payment.jsp";
 						}
 					}
 				});
