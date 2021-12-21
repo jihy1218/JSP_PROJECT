@@ -8,24 +8,38 @@
 <body>
 	<%@include file="../header.jsp" %>
 	<%@include file="../friendbar.jsp" %>
-	<br>
 	<div class="container">
-		<div style="border-radius: 15px; border: solid 2px black;" class="text-center">
-			<img src="/jsp_chatting_project/carrot/img/메인이미지.png">
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-md-3 offset-1">
-				<a href="/jsp_chatting_project/carrot/view/chatting/chattingroom.jsp"><button class="btn btn-info p-3">빠른 입장</button></a>
+		<div style="border-radius: 15px; border: solid 2px #ff7915;" class="text-center">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card m-2" style="border: solid 2px #ff7915; ">
+						<div class="text-center">
+							<input type="text" class="col-md-8 offset-2 form-control mt-2" placeholder="방제목을입력해주세요!">						
+							<button class="btn" style="background-color: #3f7d1b; color : white; margin: 10px 0 10px 0;">방만들기</button>
+						</div>
+					</div>
+					<div class="card m-2" style="border: solid 2px #ff7915;">
+						<br><br><br><br><br><br><br><br><br><br><br>채팅방들어갈공간<br><br><br><br><br><br><br><br><br><br><br><br><br>
+					</div>
+				</div>
+				<div style="margin: 10px 10px 10px 0;">
+					<div class="carousel slide" data-ride="carousel" data-interval="5000">
+						<div class="carousel-inner">
+							<div class="carousel-item active"><img src="/jsp_chatting_project/carrot/img/유의사항1.png"></div>
+							<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/유의사항2.png"></div>
+							<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/유의사항3.png"></div>
+						</div>
+					</div>
+					<div class="text-center">
+						<img src="/jsp_chatting_project/carrot/img/메인이미지.png">
+					</div>
+					<button class="btn btn-lg btn-outline-success">빠른방입장</button>
+				</div>
+			
 			</div>
-			<div class="col-md-3 offset-1">
-				<a href="/jsp_chatting_project/carrot/view/chatting/makeroom.jsp"><button class="btn btn-info p-3">방 만들기</button></a>
-			</div>
-			<div class="col-md-3 offset-1">
-				<a href="/jsp_chatting_project/carrot/view/chatting/chooseroom.jsp"><button class="btn btn-info p-3">방 선택</button></a>
-			</div>	
 		</div>
-		<br><br><br><br><br><br><br><br><br>
+		
+		<br><br><br><br>
 	</div>
 	<%@include file="../footer.jsp" %>
 </body>

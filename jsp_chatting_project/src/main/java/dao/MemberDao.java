@@ -148,7 +148,7 @@ public class MemberDao extends DB {
 		return null;
 	}
   public boolean signup(Member member) {
-    	String sql = "insert into member(m_id,m_nickname,m_password,m_name,m_email,m_phone,m_grade,m_logincheck,m_enter) value(?,?,?,?,?,?,?,?,?)";
+    	String sql = "insert into member(m_id,m_nickname,m_password,m_name,m_email,m_phone,m_grade,m_logincheck,m_enter)values(?,?,?,?,?,?,?,?,?)";
     	try {
 			preparedStatement= connection.prepareStatement(sql);
 			preparedStatement.setString(1, member.getM_id());
