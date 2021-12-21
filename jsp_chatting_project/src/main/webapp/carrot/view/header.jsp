@@ -12,6 +12,9 @@
 	<link rel="stylesheet" href="/jsp_chatting_project/carrot/css/main.css">
 	<link href="/jsp_chatting_project/carrot/css/simple-sidebar.css" rel="stylesheet"> <!-- 친구목록 사이드바 css -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"> <!-- 아이콘 불러오는 css -->
+		<!-- 글쓰기 호출 -->
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  
 </head>
 <body>
 	<%	
@@ -37,6 +40,8 @@
 	<script src="/jsp_chatting_project/carrot/js/note.js"></script>
 	<!-- 친구목록 사이드바 js 호출 -->
 	<script src="/jsp_chatting_project/carrot/js/simple-sidebar.js"></script> 
+	<!-- 글쓰기 js 호출 -->
+  	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 	
 	<div class="container">
 		<div class="row justify-content-between align-items-center">
