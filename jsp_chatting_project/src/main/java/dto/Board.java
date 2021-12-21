@@ -1,10 +1,11 @@
 package dto;
 
 public class Board {
-	private int b_no;
-	private String b_title;
-	private String b_contents;
-	private String b_file;
+
+  private int b_no;
+  private String b_title;
+  private String b_contents;
+  private String b_file;
 	private int m_no;
 	private String b_date;
 	private int b_view;

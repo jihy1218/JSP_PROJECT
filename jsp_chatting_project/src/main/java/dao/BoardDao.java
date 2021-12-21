@@ -1,12 +1,5 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-
-import dto.Board;
-
 public class BoardDao extends DB {
 	private PreparedStatement preparedStatement;
 	private Connection connection;
@@ -31,4 +24,5 @@ public class BoardDao extends DB {
 	
 	// 모든 게시물 출력
 	
+
 }

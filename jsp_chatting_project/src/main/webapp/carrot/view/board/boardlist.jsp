@@ -9,7 +9,6 @@
 <body>
 <%@include file="../header.jsp" %>
 <%@include file="../friendbar.jsp" %>
-
 	<div class=container>
 		<h3> 자유 게시판 </h3>
 		<br><br>
