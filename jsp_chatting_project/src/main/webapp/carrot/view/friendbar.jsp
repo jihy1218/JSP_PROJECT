@@ -13,11 +13,12 @@
 </head>
 <body>
 	<%
+		
 		Member logininfo2 = (Member)session.getAttribute("login");
 		int m_no2 =	logininfo2.getM_no();
 		int m_grade2 = logininfo2.getM_grade();
-		System.out.print(m_grade2);
 		//친구 목록
+		
 		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no2 ,1);
 		//친구 정보
 		ArrayList<Member> friendsinfolist = new ArrayList<>();
