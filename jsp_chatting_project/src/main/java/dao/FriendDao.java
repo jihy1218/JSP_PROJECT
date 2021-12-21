@@ -16,13 +16,15 @@ public class FriendDao extends DB {
 	}
 	
 	//친구 목록 불러오기
-	public ArrayList<Friend> getfriendelist(int m_no) {
+	public ArrayList<Friend> getfriendelist(int m_no ,int type) {
 		ArrayList<Friend> arrayList = new ArrayList<Friend>();
-		String sql = "select * from friend where f_type=1 and (m_no1=? or m_no2=?)";
+		
+			String sql = "select * from friend where f_type=1 and (m_no1="+m_no+" or m_no2="+m_no+")";
+			if(type==2) {
+				sql = "select * from friend where f_type=2 and m_no1="+m_no;
+			}
 		try {
 			preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setInt(1, m_no);
-			preparedStatement.setInt(2, m_no);
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				Friend friend = new Friend(resultSet.getInt(1),resultSet.getInt(2),
@@ -30,13 +32,43 @@ public class FriendDao extends DB {
 						arrayList.add(friend);
 			}
 			return arrayList;
-			
 		} catch (Exception e) {
 			System.out.println("getfriendelist db 오류");
 		}
 		return arrayList;
 	}
 	
+	//친구 목록 삭제
+	public boolean deletefriende(int f_no) {
+		String sql = "delete from friend where f_no="+f_no;
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(" deletefriende db 오류");
+		}
+			return false;
+	}
+	
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

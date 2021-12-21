@@ -101,7 +101,7 @@ public class MemberDao extends DB {
     }
     // 결제 업데이트
     public boolean gradeupdate(int m_no) {
-    	String sql ="update member set m_grade = m_grade+1 where m_no=?";
+    	String sql ="update member set m_grade =2  where m_no=?";
     	try {
     		preparedStatement =connection.prepareStatement(sql);
     		preparedStatement.setInt(1, m_no);
