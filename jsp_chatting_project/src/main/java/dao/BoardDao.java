@@ -3,7 +3,6 @@ package dao;
 import dto.Board;
 
 public class BoardDao extends DB {
-	
 	public static BoardDao boardDao = new BoardDao();
 	public static BoardDao getboardDao() {return boardDao;}
 	

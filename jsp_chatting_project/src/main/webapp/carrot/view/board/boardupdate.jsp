@@ -7,18 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<%@include file="../header.jsp" %>
 	<%@include file="../friendbar.jsp" %>
 	<br>
 	<div class="container">
-	<form  method="POST">
-	
+	<form action="/jsp_chatting_project/carrot/view/board/boardview.jsp" method="POST">
 		<div class="form-group">
 			<label for="title">Title:</label>
 			<input type="text" class="form-control" placeholder="title" id="title" name="title">
 		</div>
-	
 		<div class="form-group">
 			<label for="content">Content:</label>
 			<textarea class="form-control" rows="5" id="summernote" name="content"></textarea>
@@ -27,7 +24,6 @@
 			<button type="submit" class="btn btn-primary">수정 완료</button>
 		</div>
 	</form>
-
 </div>
 
   <script>

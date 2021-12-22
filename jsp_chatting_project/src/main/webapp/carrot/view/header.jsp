@@ -57,14 +57,14 @@
 	
 	<div class="container">
 		<div class="row justify-content-between align-items-center">
-			<div class="col-4 offset-4 text-center mt-2">
+			<div class="col-3 offset-4 text-center mt-2">
 				<%if(logininfo!=null){ %>
 				<a href="/jsp_chatting_project/carrot/view/chatting/chattingmain.jsp"><img src="/jsp_chatting_project/carrot/img/당근후보3.png" style="max-width: 100%"></a>
 				<%}else{ %>
 				<img src="/jsp_chatting_project/carrot/img/당근후보3.png" style="max-width: 100%">
 				<%} %>
 			</div>
-			<div class="col-4 d-flex justify-content-end align-items-center">
+			<div class="col-5 d-flex justify-content-end align-items-center">
 				<ul class="nav header-topmenu">	<!-- 로그인 했을때 랑 안했을때 구별해서 해야합니다. 나중에 수정해야함 (12.15 15:58)-->
 					<%
 						if(session.getAttribute("login")!=null) {
@@ -80,8 +80,9 @@
 						<%}	%>
 					</li>
 					<li class="text-success mx-1"><%=logininfo.getM_nickname() %>님<span style="color: black;"> | </span></li>
-					<li><a href="/jsp_chatting_project/carrot/view/note/notelist.jsp" class="text-success mx-1">게시판</a>|</li>
+					<li><a href="/jsp_chatting_project/carrot/view/board/boardlist.jsp" class="text-success mx-1">게시판</a>|</li>
 					<li><a href="/jsp_chatting_project/carrot/view/member/myinfo.jsp" class="text-success mx-1">내정보</a>|</li>
+					<li><a href="/jsp_chatting_project/carrot/view/note/notelist.jsp" class="text-success mx-1">쪽지</a>|</li>
 					<li><a href="/jsp_chatting_project/carrot/controller/logoutcontroller.jsp" class="text-success mx-1">로그아웃</a>|</li>
 					<% }else{ %>
 					<li><a href="/jsp_chatting_project/carrot/view/member/login.jsp" class="text-success mx-1">로그인</a>|</li>

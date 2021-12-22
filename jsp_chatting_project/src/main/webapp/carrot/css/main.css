@@ -59,3 +59,16 @@ body{
 .sidead.toggled {
   margin-left: -250px;
 }
+#msgbox{
+	height : 550px;
+	margin-bottom: 10px;
+	overflow: auto;	/* 박스 크기보다 내용물이 넘쳤을때 스크롤 만들기 */
+}
+#msgbox2{
+	height : 590px;
+	margin-bottom: 10px;
+	overflow: auto;	/* 박스 크기보다 내용물이 넘쳤을때 스크롤 만들기 */
+}
+.chattingmain{
+	background-color: #C4E8C4;
+}

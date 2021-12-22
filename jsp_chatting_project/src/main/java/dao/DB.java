@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DB {
-
 	protected Connection connection;
 	protected ResultSet resultSet;
 	protected PreparedStatement preparedStatement;	
