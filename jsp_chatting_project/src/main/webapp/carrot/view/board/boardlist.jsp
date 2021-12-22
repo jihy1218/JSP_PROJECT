@@ -19,7 +19,9 @@
 		
 	<table class="table">
 		<tr style="border-top: solid 2px navy; border-bottom: solid 1.5px navy;">
-			<th>번호</th><th>제목</th><th>글쓴이</th><th>작성일</th><th>조회수</th><th>추천</th>
+			<th>번호</th>
+			<th>제목</th>
+			<th>글쓴이</th><th>작성일</th><th>조회수</th><th>추천</th>
 		</tr>
 		<tr>
 			<td>1</td><td>안녕하세요</td><td>홍길동</td><td>2021-12-20</td><td>0</td><td>1</td>
