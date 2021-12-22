@@ -28,11 +28,9 @@ public class Board {
 	}
 
 	// 등록 생성자
-	public Board(String b_title, String b_contents, String b_file, int m_no) {
-		super();
+	public Board(String b_title, String b_contents,  int m_no) {
 		this.b_title = b_title;
 		this.b_contents = b_contents;
-		this.b_file = b_file;
 		this.m_no = m_no;
 	}
 	

@@ -1,4 +1,3 @@
-
 <%@page import="dao.BoardDao"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
@@ -20,7 +19,7 @@
 	Member login = (Member)session.getAttribute("login");
 	int m_no = login.getM_no();
 	
-	Board board = new Board(title, contents, file, m_no);
+	Board board = new Board(title, contents, m_no);
 	BoardDao.getboardDao().boardwrite(board);
 	
 	response.sendRedirect("../view/board/boardlist.jsp");
