@@ -11,7 +11,7 @@
 	<%@include file="../friendbar.jsp" %>
 	<div class ="container">
 		<form class="form-control" >
-			<div class ="form-group">
+			<div class="form-group">
 				<label for="title">Title:</label>
 				<input type="text" class="form-control" placeholder="title" id="title" name="title">
 			</div>
@@ -23,13 +23,8 @@
 				<button type="submit" class="btn btn-primary">삭제</button>
 			</div>
 		</form>
-			<a href="boardupdate.jsp" ><button class="btn btn-primary" >수정하기</button></a>
+		<a href="boardupdate.jsp" ><button class="btn btn-primary" >수정하기</button></a>
 	</div>
-
-
-
-
-
 <%@include file="../footer.jsp" %>
 
 

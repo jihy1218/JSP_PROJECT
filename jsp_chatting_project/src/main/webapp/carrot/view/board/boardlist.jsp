@@ -13,8 +13,8 @@
 		<h3> 자유 게시판 </h3>
 		<br><br>
 		<div class="row">
-			<button class="mr-2 ml-3"> 전체글 </button>		
-			<button> 인기글 </button>
+			<button class="mr-2 ml-3 btn btn-outline-danger"> 전체글 </button>		
+			<button class="btn btn-outline-success"> 인기글 </button>
 		</div><br>
 		
 	<table class="table">
@@ -30,7 +30,7 @@
 	</table>
 	<div class="row">
 		<div class="col-md-2 offset-10">
-			<a href="boardwirte.jsp"><button type="button" class="form-control">글 등록</button></a>
+			<a href="boardwrite.jsp"><button type="button" class="form-control">글 등록</button></a>
 		</div>
 		
 		<nav aria-label="...">
