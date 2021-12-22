@@ -16,3 +16,113 @@ function makeroom(){
 		})
 	}
 }
+
+
+function makeroom(){
+	var makeroom = document.getElementById("makeroom").value;
+	if(makeroom==""){
+		alert("방제목을 입력해주세요");
+		return
+	}
+	if(confirm("방을 팔까요?")==true){
+		$.ajax({
+			url : "/jsp_chatting_project/carrot/controller/makeroomcontroller.jsp",
+			data : {
+				makeroom : makeroom
+				},
+			success : function(result){
+				if(result==1){
+					alert("방이만들어졌습니다");
+					location.href="chattingmain.jsp?roomname="+makeroom;
+				}else{
+					alert("동일한 이름의 방이 존재합니다");
+					location.href="chattingmain.jsp";
+				}
+				
+				
+			}
+		})
+	}	
+}
+	
+	function enterroom(enter,close){
+		
+		if(confirm("입장할까요?")==true){
+			$.ajax({
+				url : "/jsp_chatting_project/carrot/controller/enterroomcontroller.jsp",
+				data : {
+					enter : enter,
+					close : close
+					},
+				success : function(result){
+					if(result==1){
+						alert("입장했습니다");
+						location.href="chattingmain.jsp?roomname="+enter;
+					}else{
+						alert("방이 가득찼습니다");
+						location.href="chattingmain.jsp";
+					}
+					
+					
+				}
+			})
+	}
+	}
+	
+	function outroom(makeroom){
+		if(confirm("나갈까요?")==true){
+			$.ajax({
+				url : "/jsp_chatting_project/carrot/controller/outroomcontroller.jsp",
+				data : {
+					makeroom : makeroom
+					},
+				success : function(result){
+					if(result==1){
+						alert("나갔습니다");
+						location.href="chattingmain.jsp";
+					}else{
+						alert("나가기 오류");
+						location.href="chattingmain.jsp";
+					}
+					
+					
+				}
+			})
+	}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
