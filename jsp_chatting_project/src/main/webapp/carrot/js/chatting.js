@@ -20,9 +20,14 @@ function makeroom(){
 
 function makeroom(){
 	var makeroom = document.getElementById("makeroom").value;
+	var m_grade = document.getElementById("m_grade").value*1;
+	if(m_grade==1){
+		alert("등급을 올려주세요");
+		return;
+	}
 	if(makeroom==""){
 		alert("방제목을 입력해주세요");
-		return
+		return;
 	}
 	if(confirm("방을 팔까요?")==true){
 		$.ajax({

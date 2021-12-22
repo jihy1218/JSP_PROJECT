@@ -10,18 +10,21 @@
 	<%@include file="../header.jsp" %>
 	<%@include file="../friendbar.jsp" %>
 	<%
-		String roomname = request.getParameter("roomname");
-	
+		String roomname = "자유방";
+		if(request.getParameter("roomname")!=null){
+			roomname = request.getParameter("roomname");
+		}
 		ArrayList<Room> roomlist = MemberDao.getmMemberDao().getroom();
 	%>
 	<input type="hidden" value="<%=logininfo.getM_id()%>" id="m_id"> <input type="hidden" value="<%=roomname%>" id="roomname">
+	<input type="hidden" value="<%=logininfo.getM_grade()%>" id="m_grade">
 	<div class="container">
 		<div style="border-radius: 15px; border: solid 2px #ff7915;" class="text-center">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="card m-2" style="border: solid 2px #ff7915; ">
 						<div class="text-center">
-							<%if(roomname!=null){ %>
+							<%if(roomname!=null&&!roomname.equals("자유방")){ %>
 							<button onclick="outroom('<%=roomname%>')">방나가기</button>
 							<%}else{ %>
 								<input type="text" id="makeroom" class="col-md-8 offset-2 form-control mt-2" placeholder="방제목을입력해주세요!">						
@@ -77,14 +80,14 @@
 		var loginid = document.getElementById("m_id").value;
 		// 채팅창자리
 		var msgbox =  document.getElementById("msgbox");
-		
+		var webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
 		if(roomname!="null"){
-			var	webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
+			webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
 		}
 		
 		
 		webSocket.onopen = function( event ) { onOpen(event) }; // 웹소켓 실행시 메소드 
-		webSocket.onclose = function close( event ) { onClose(event) }; // 웹소켓 종료시 메소드 
+		webSocket.onclose = function( event ) { onClose(event) }; // 웹소켓 종료시 메소드 
 		webSocket.onmessage = function( event ) { onMessage(event) }; // 웹소켓 메시지전송 메소드 
 		webSocket.onerror = function( event ) { onError(event) }; // 웹소켓 오류 메소드 
 		

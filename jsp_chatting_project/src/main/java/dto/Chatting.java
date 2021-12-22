@@ -43,8 +43,14 @@ public class Chatting {
 		// 3. 클라이언트가 서버로부터 접속 해지
 		@OnClose // 소켓 닫는 어노테이션 
 		public void onClose( Session session ,@PathParam("roomname")String roomname,@PathParam("loginid")String loginid) {
-			String clientname = roomname+"@"+loginid;
-			clients.remove(clientname); // 리스트에 제거
+			Set<Entry<String, Session>> entry = clients.entrySet();
+			for(Entry<String, Session> ent : entry)	{
+					//방이름이 같으면서 아이디가 다르면
+				//로그인 아이디를 포함하는 클라이언트가 있으면 기존값
+				if(ent.getKey().contains(loginid)) {
+					clients.remove(ent.getKey()); // 리스트에 제거
+				}
+			}
 		}
 		
 		// 4.서버가 클라이언트로부터 메시지 받는 메소드 
