@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+
 import dto.Board;
 
 public class BoardDao extends DB {
@@ -21,6 +23,33 @@ public class BoardDao extends DB {
 	}
 	
 	// 모든 게시물 출력
+
+	public ArrayList<Board> boardlist(){
+	    ArrayList<Board>boards= new ArrayList<Board>();
+	    String sql = "select * from board order by b_no DESC";
+	    try {
+		preparedStatement = connection.prepareStatement(sql);
+		resultSet = preparedStatement.executeQuery();
+		while(resultSet.next()) {
+		    Board board2 = new Board(
+			    resultSet.getInt(1),
+			    resultSet.getString(2),
+			    resultSet.getString(3),
+			    resultSet.getString(4),
+			    resultSet.getInt(5),
+			    resultSet.getString(6),
+			    resultSet.getInt(7),
+			    resultSet.getInt(8));
+		    boards.add(board2);
+			   
+		}
+		return boards;
+	    } catch (Exception e) { 
+		System.out.println(e);
+	    }
+	    return null;  
+	}
+
 	
 
 }
