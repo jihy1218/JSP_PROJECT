@@ -11,7 +11,14 @@
 <body>
 	<%@include file="../header.jsp" %>
 	<%@include file="../friendbar.jsp" %>
-	<%ArrayList<Board> boards = BoardDao.getboardDao().boardlist(); %>
+	<%	
+		//검색처리 :키워드 입력하고 검색 버튼을 눌렀을떄
+		String key =request.getParameter("key");
+		String keyword = request.getParameter("keyword");
+		
+		ArrayList<Board> boards = BoardDao.getboardDao().boardlist(); 
+	%>
+	
 	<div class=container>
 		<h3> 자유 게시판 </h3>
 		<br><br>
