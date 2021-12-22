@@ -1,10 +1,8 @@
 package dao;
 
+import dto.Board;
+
 public class BoardDao extends DB {
-	private PreparedStatement preparedStatement;
-	private Connection connection;
-	private ResultSet resultSet;
-	
 	public static BoardDao boardDao = new BoardDao();
 	public static BoardDao getboardDao() {return boardDao;}
 	

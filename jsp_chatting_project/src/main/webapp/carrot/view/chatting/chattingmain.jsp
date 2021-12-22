@@ -17,6 +17,7 @@
 							<input type="hidden" id="m_grade" value="<%=logininfo.getM_grade()%>">
 							<input type="text" id="title" class="col-md-8 offset-2 form-control mt-2" placeholder="방제목을입력해주세요!">						
 							<button class="btn" onclick="makeroom();" style="background-color: #3f7d1b; color : white; margin: 10px 0 10px 0;">방 만들기</button>
+							<button class="btn" onclick="quickenter();" style="border-color: #3f7d1b; color : #3f7d1b; margin: 10px 0 10px 0;">빠른입장</button>
 						</div>
 					</div>
 					<div class="card m-2" style="border: solid 2px #ff7915;">
