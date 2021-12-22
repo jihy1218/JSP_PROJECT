@@ -1,9 +1,8 @@
 package dao;
 
+import dto.Board;
+
 public class BoardDao extends DB {
-	private PreparedStatement preparedStatement;
-	private Connection connection;
-	private ResultSet resultSet;
 	
 	public static BoardDao boardDao = new BoardDao();
 	public static BoardDao getboardDao() {return boardDao;}
@@ -17,12 +16,11 @@ public class BoardDao extends DB {
 			preparedStatement.setString(2, board.getB_contents());
 			preparedStatement.setString(3, board.getB_file());
 			preparedStatement.setInt(4, board.getM_no());
-			preparedStatement.executeQuery();
+			preparedStatement.executeUpdate();
 			return true;
-		} catch (Exception e) {System.out.println("게시물 작성오류");} return false;
+		} catch (Exception e) {System.out.println("게시물 작성 오류");} return false;
 	}
 	
-	// 모든 게시물 출력
+	// 
 	
-
 }
