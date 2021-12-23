@@ -59,6 +59,21 @@ body{
 .sidead.toggled {
   margin-left: -250px;
 }
+.from{
+		font-size : 1.0rem;
+		background: #ffeb33;
+		border-radius: 10px;
+		padding: 10px;	
+	}
+	.msgtime{
+		font-size: 0.8rem;
+	}
+	.to{
+		font-size : 1.0rem;
+		background: white;
+		border-radius: 10px;
+		padding: 10px;
+	}
 #msgbox{
 	height : 550px;
 	margin-bottom: 10px;
@@ -72,18 +87,4 @@ body{
 .chattingmain{
 	background-color: #C4E8C4;
 }
-.frommsg{
-	background-color: #FFEB33;
-	border-radius: 5px;
-	padding: 4px 8px 4px 8px;
-	margin: 5px;
-}
-.msgtime{
-	font-size: 0.9rem;
-}
-.tomsg{
-	background-color: #FFFFFF;
-	border-radius: 5px;
-	padding: 4px 8px 4px 8px;
-	margin: 5px;
-}
+
