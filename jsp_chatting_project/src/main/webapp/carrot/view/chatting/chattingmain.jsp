@@ -29,21 +29,30 @@
 							<button onclick="outroom('<%=roomname%>')">방나가기</button>
 							<%}else{ %>
 								<input type="text" id="makeroom" class="col-md-8 offset-2 form-control mt-2" placeholder="방제목을입력해주세요!">						
-              <input type="hidden" id="m_grade" value="<%=logininfo.getM_grade()%>">
+             				<input type="hidden" id="m_grade" value="<%=logininfo.getM_grade()%>">
 							<button class="btn btn-success" onclick="makeroom();" style="margin: 10px 0 10px 0;">방 만들기</button>
-							<button class="btn btn-outline-success" onclick="quickenter();" style="margin: 10px 0 10px 0;">빠른입장</button>
+							<a href="/jsp_chatting_project/carrot/controller/quickentercontroller.jsp"><button class="btn btn-outline-success" style="margin: 10px 0 10px 0;">빠른입장</button></a>
 							<%} %>
 
 						</div>
 					</div>
-					<div class="card m-2" style="border: solid 2px #ff7915;">
-						<p>현재방 :<%=roomname %></p>
-						<%for(Room room : roomlist){ %>
-						<%if(room.getR_count()==2||logininfo.getM_grade()==1||room.getR_name().equals(roomname)){ %>
-						<a> <%=room.getR_name() %> 입장불가 </a>
-						<%}else{ %>
-						<a href="javascript:void(0);" onclick="enterroom('<%=room.getR_name()%>','<%=roomname%>')" > <%=room.getR_name() %> 입장가능 </a>
-						<%}} %>
+					<div class="card m-2 roomlist" style="border: solid 2px #ff7915;">
+						<table class="table table-hover">
+							<tr>
+								<th style="color : #ff7915">현재방 : <%=roomname %></th>
+							</tr>
+							<%for(Room room : roomlist){ %>
+							<%if(room.getR_count()==2||logininfo.getM_grade()==1||room.getR_name().equals(roomname)){ %>
+							<tr>
+								<td><a style="color :#A39699;"> <%=room.getR_name() %> 입장불가 </a></td>
+							</tr>
+								
+							<%}else{ %>
+							<tr>
+								<td><a class="text-info" href="javascript:void(0);" onclick="enterroom('<%=room.getR_name()%>','<%=roomname%>')" > <%=room.getR_name() %> 입장가능 </a></td>
+							</tr>
+							<%}} %>
+						</table>
 					</div>
 				</div>
 				<div class="col-md-8 col-sm-9" >
@@ -82,9 +91,9 @@
 		var loginid = document.getElementById("m_id").value;
 		// 채팅창자리
 		var msgbox =  document.getElementById("msgbox");
-		var webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
+		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
 		if(roomname!="null"){
-			webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
+			webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
 		}
 		
 		
@@ -105,31 +114,24 @@
 			// 날짜 
 			let today = new Date(); // js에서 현재 날짜/시간 객체 
 			var time = today.toLocaleTimeString(); // 시간만 가져오기 
-			
 			// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
 			var msg = loginid +","+time+","+msginput;
-			
 			// 입력된 문자 와 날짜를 채팅발 div 에 추가
 			msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'>"+msginput+"</span></div>";
-				
 			webSocket.send( msg );	 // *****************서버로 부터 메시지 전송 
-			
 			document.getElementById("msginput").value = "";	// 전송후 입력창 내용물 지우기 [ 초기화 ]
-			
 			// 스크롤 있을경우 스크롤 위치를 가장 아래로 이동 
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이[ 바닥 ] */
 			
 		}
 		
 		function onMessage(event) { 
-
 			var from = event.data.split(",")[0];	// , 기준으로 문자열 분리해서 첫번째 문자열
 			var time = event.data.split(",")[1];	// , 기준으로 문자열 분리해서 두번째 문자열
 			var msg = event.data.split(",")[2];		// , 기준으로 문자열 분리해서 세번째 문자열
-			msgbox.innerHTML += "<div class='profile mx-2 my-2'>"+from+"</div>"
+			msgbox.innerHTML += "<div class='profile d-flex justify-content-start mx-2 my-2'>"+from+"</div>"
 			msgbox.innerHTML += "<div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div>"
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
-				
 		}
 		
 	</script>

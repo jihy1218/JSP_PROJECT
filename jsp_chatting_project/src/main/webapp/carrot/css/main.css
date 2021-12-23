@@ -63,7 +63,7 @@ body{
 		font-size : 1.0rem;
 		background: #ffeb33;
 		border-radius: 10px;
-		padding: 10px;	
+		padding: 7px;
 	}
 	.msgtime{
 		font-size: 0.8rem;
@@ -87,4 +87,16 @@ body{
 .chattingmain{
 	background-color: #C4E8C4;
 }
+.roomlist{
+	height: 535px;
+	background-color: #C4E8C4;
+	overflow: auto;
+}
+.roomlist::-webkit-scrollbar{width: 16px;}
+.roomlist::-webkit-scrollbar-track {background-color:#C4E8C4;}
+.roomlist::-webkit-scrollbar-thumb {background-color:#f1ef79;border-radius: 15px;}
+.roomlist::-webkit-scrollbar-thumb:hover {background: #C4C4C4;}
+.roomlist::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+width:16px;height:16px;background:#f1ef79;} 
+
 
