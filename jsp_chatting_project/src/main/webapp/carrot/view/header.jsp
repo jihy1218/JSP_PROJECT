@@ -25,6 +25,7 @@
 		int m_no =0;
 		int m_grade=0;
 		Member logininfo = (Member)session.getAttribute("login");
+		// 로그인 하면 세션에 그 사람 정보가 로그인 인포에 다 들어간다
 		if(session.getAttribute("login")!=null){
 			m_no =	logininfo.getM_no();
 			m_grade = logininfo.getM_grade();
