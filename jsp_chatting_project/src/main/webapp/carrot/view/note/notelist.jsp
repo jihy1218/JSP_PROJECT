@@ -40,8 +40,10 @@
 	%>
 	
 	<div class="container">
-		<table class="table" style="max-width: 1000px; margin: 0 auto;">
-			<tr>
+		<h3> 쪽지함 </h3>
+		<br><br>
+		<table class="table">
+			<tr style="border-top: solid 2px navy; border-bottom: solid 1.5px navy;">
 				<th> 확인 </th> <th> 내용 </th> <th> 보낸사람 </th> <th> 작성일 </th> <th> 삭제 </th>
 			</tr>
 			<%if(noteList.size()==0){ %>	

@@ -5,7 +5,6 @@
 	function go(){
 		setInterval(dbload, 2000);
 	}
-	
 	function dbload(){
 		$.ajax({ 
 			
@@ -15,7 +14,6 @@
 			}
 	});
 	}
-	
 	function frienddelete(){
 		var f_no = document.getElementById("f_no").value;
 		if(confirm("차단을 취소할까요?")==true){
@@ -24,7 +22,6 @@
 			data : {
 				f_no : f_no
 			},
-		
 			success : function(result){
 				if(result==1){
 					alert("삭제 되었습니다");
@@ -33,8 +30,6 @@
 					alert("삭제 오류");
 					location.reload();
 				}
-				
-				
 			}
 		})
 		}

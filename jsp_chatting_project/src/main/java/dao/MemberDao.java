@@ -1,6 +1,9 @@
 package dao;
 
+import java.util.ArrayList;
+
 import dto.Member;
+import dto.Room;
 
 public class MemberDao extends DB {
     
@@ -167,6 +170,90 @@ public class MemberDao extends DB {
 			System.out.println("signup DB오류");
 		}return false;
     }
+  
+  	// 채팅방 가져오기 
+	public ArrayList<Room> getroom(){
+		ArrayList<Room> room = new ArrayList<Room>();
+		String sql = "SELECT * FROM carrot.room";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet= preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				Room rom = new Room(resultSet.getInt(1),resultSet.getString(2), resultSet.getInt(3));
+				room.add(rom);
+			}
+			return room;
+		} catch (Exception e) {
+			System.out.println("getroom() db 오류");
+		}
+		return null;
+	}
+	
+	// 채팅방 만들기
+	public boolean makeroom(String roomname) {
+		String sql = "insert into room(r_name , r_count) value(?,1)";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, roomname);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("makeroom() db 오류");
+		}
+		return false;
+	}
+	
+	//채팅방 입장
+	public boolean enterroom(String roomname) {
+		String sql = "select r_count from room WHERE r_name='"+roomname+"'";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				if(resultSet.getInt(1)==2) {
+					return false;
+				}
+			}
+		} catch (Exception e) {	}
+		sql = "UPDATE room SET r_count = r_count+1 WHERE r_name='"+roomname+"'";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {	System.out.println("enterroom() db 오류");}
+		return false;
+	}
+	// 채팅방 나가기
+	public boolean outroom(String roomname) {
+		String sql = "UPDATE room SET r_count = r_count-1 WHERE r_name='"+roomname+"'";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			sql = "select r_count from room WHERE r_name='"+roomname+"'";
+				preparedStatement = connection.prepareStatement(sql);
+				resultSet= preparedStatement.executeQuery();
+				if(resultSet.next()) {
+					if(resultSet.getInt(1)==0) {
+						sql="delete from room where r_name='"+roomname+"'";
+						preparedStatement=connection.prepareStatement(sql);
+						preparedStatement.executeUpdate();
+						return true;
+					}
+				}else {return false;}
+		} catch (Exception e) {	System.out.println("outroom() db 오류");}return false;
+	}
+	// 빠른방입장
+	public String quickenter() {
+		String sql = "select r_name from room where r_count=1 order by rand() limit 1";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getString(1);
+			}
+		} catch (Exception e) {	} return null;
+	}
+  
 }
 
 
