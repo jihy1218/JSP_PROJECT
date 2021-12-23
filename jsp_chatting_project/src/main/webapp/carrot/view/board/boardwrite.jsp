@@ -22,7 +22,7 @@
 		</div>
 			<button type="submit" class="btn btn-primary">등록</button>
 		<br>
-	</form>
+	</form> 
 </div>
 <script>
 	$('#summernote').summernote({
