@@ -58,11 +58,18 @@ public class Member {
 		this.m_logincheck = m_logincheck;
 		this.m_enter = m_enter;
 	}
+    
+    // 로그인
+    public Member(int m_no, String m_id) {
+		super();
+		this.m_no = m_no;
+		this.m_id = m_id;
+	}
   
     // get, set 메소드
 
 	public void setM_no(int m_no) {this.m_no = m_no;}
-    public String getM_id() {return m_id;}
+	public String getM_id() {return m_id;}
     public void setM_id(String m_id) {this.m_id = m_id;}
     public String getM_nickname() {return m_nickname;}
     public void setM_nickname(String m_nickname) {this.m_nickname = m_nickname;}
