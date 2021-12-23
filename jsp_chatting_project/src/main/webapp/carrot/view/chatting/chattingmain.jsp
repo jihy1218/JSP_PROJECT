@@ -34,9 +34,11 @@
 							</div>
 						</div>
 						<div id="msgbox"> <!-- 채팅창 -->
+							<div class='d-flex justify-content-start mx-2 my-1'><span class='tomsg'>안녕민욱쒸</span><span class='msgtime d-flex align-items-end'>12:12</span></div>
+							<div class='d-flex justify-content-end mx-2 my-1'><span class='msgtime d-flex align-items-end'>12:24</span><span class='frommsg'>하잉</span></div>
 						</div>
 						<button class="col-md-4 offset-4 btn btn-outline-success mb-2">전체 채팅방 입장</button>
-						<div class="row no-gutters"> <!-- 채팅입렵 -->
+						<div class="row no-gutters"> <!-- 채팅입력 -->
 							<div class="col-md-10">
 								<input class="form-control" type="text" id="msginput" onkeyup="entersend();" placeholder="내용을 입력하세요.">
 							</div>
@@ -51,5 +53,9 @@
 		<br><br><br><br>
 	</div>
 	<%@include file="../footer.jsp" %>
+	<script type="text/javascript">
+	
+	
+	</script>
 </body>
 </html>

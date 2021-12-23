@@ -72,3 +72,18 @@ body{
 .chattingmain{
 	background-color: #C4E8C4;
 }
+.frommsg{
+	background-color: #FFEB33;
+	border-radius: 5px;
+	padding: 4px 8px 4px 8px;
+	margin: 5px;
+}
+.msgtime{
+	font-size: 0.9rem;
+}
+.tomsg{
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	padding: 4px 8px 4px 8px;
+	margin: 5px;
+}
