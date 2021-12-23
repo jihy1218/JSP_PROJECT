@@ -22,7 +22,6 @@ public class BoardDao extends DB {
 	}
 	
 	// 모든 게시물 출력
-
 	public ArrayList<Board> boardlist(){
 		ArrayList<Board>boards= new ArrayList<Board>();
 		String sql = "select * from board order by b_no DESC";
