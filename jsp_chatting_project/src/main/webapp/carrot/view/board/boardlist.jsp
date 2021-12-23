@@ -26,6 +26,7 @@
 			<button class="mr-2 ml-3 btn btn-outline-danger"> 전체글 </button>		
 			<button class="btn btn-outline-success"> 인기글 </button>
 		</div><br>
+			<a href="boardwrite.jsp"><button class="btn btn-outline-success"> 등록 </button></a>
 		
 	<table class="table">
 		<tr style="border-top: solid 2px navy; border-bottom: solid 1.5px navy;">

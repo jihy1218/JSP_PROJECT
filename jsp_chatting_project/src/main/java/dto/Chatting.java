@@ -34,7 +34,7 @@ public class Chatting {
 			String clientname = roomname+"@"+loginid;
 			System.out.println("방이름 :"+roomname+" 접속 아이디 :"+loginid);
 			System.out.println(clientname);
-			clients.put(clientname,session);	// 리스트에 추가 
+			clients.put(clientname,session);	// 리스트에 추가
 			
 			//System.out.print( session.getId() ); // 세션 번호 확인 
 			//System.out.print("현재 접속한 세션들 : " + clients ); // 현재 접속된 세션들 
