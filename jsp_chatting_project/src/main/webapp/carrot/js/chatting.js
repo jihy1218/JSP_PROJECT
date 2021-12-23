@@ -11,7 +11,7 @@ function makeroom(){
 			data : {title : title},
 			success : function(result){
 				alert("채팅방개설완료");
-				location.reload();
+				location.href="chattingroom.jsp";
 			}
 		})
 	}

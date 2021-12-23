@@ -24,12 +24,16 @@
 				<div class="col-md-4">
 					<div class="card m-2" style="border: solid 2px #ff7915; ">
 						<div class="text-center">
+
 							<%if(roomname!=null&&!roomname.equals("자유방")){ %>
 							<button onclick="outroom('<%=roomname%>')">방나가기</button>
 							<%}else{ %>
 								<input type="text" id="makeroom" class="col-md-8 offset-2 form-control mt-2" placeholder="방제목을입력해주세요!">						
-								<button class="btn" onclick="makeroom()" style="background-color: #3f7d1b; color : white; margin: 10px 0 10px 0;">방 만들기</button>
+              <input type="hidden" id="m_grade" value="<%=logininfo.getM_grade()%>">
+							<button class="btn btn-success" onclick="makeroom();" style="margin: 10px 0 10px 0;">방 만들기</button>
+							<button class="btn btn-outline-success" onclick="quickenter();" style="margin: 10px 0 10px 0;">빠른입장</button>
 							<%} %>
+
 						</div>
 					</div>
 					<div class="card m-2" style="border: solid 2px #ff7915;">
@@ -43,7 +47,7 @@
 					</div>
 				</div>
 				<div class="col-md-8 col-sm-9" >
-					<div class="card m-2">
+					<div class="card m-2 chattingmain">
 						<div style="max-width: 100%" class="carousel slide col-d" data-ride="carousel" data-interval="5000">
 							<div class="carousel-inner">
 								<div class="carousel-item active"><img src="/jsp_chatting_project/carrot/img/유의사항1.png"></div>
@@ -66,10 +70,8 @@
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
-		
 		<br><br><br><br>
 	</div>
 	<script type="text/javascript">
@@ -134,6 +136,10 @@
 	
 	
 	<%@include file="../footer.jsp" %>
+	<script type="text/javascript">
+	
+	
+	</script>
 </body>
 </html>
 
