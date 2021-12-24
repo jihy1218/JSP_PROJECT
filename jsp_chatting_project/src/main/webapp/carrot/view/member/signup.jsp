@@ -56,6 +56,9 @@
 					<div class="p-2 my-2">
 						<input type="submit" value="가입하기" class="btn btn-lg btn-block" style="background: #3f7d1b; color: #ffaa21;" >
 					</div>
+					<div class="my-2 text-center">
+						<button class="btn btn-outline-success">뒤로가기</button>
+					</div>
 				</div>
 			</div>
 		</form>

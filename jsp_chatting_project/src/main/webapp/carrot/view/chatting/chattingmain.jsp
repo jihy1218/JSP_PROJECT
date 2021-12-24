@@ -18,13 +18,25 @@
 	%>
 	<input type="hidden" value="<%=logininfo.getM_id()%>" id="m_id"> <input type="hidden" value="<%=roomname%>" id="roomname">
 	<input type="hidden" value="<%=logininfo.getM_grade()%>" id="m_grade">
+	<button id="show">모달테스트</button>
+	<div class="background">
+		<div class="window">
+			<div class="popup">
+				<button id="close" class="btn btn-light" style="float: right; display: block;"><span class="text-danger">X</span></button>
+				<div style=" margin: 35px 0 33px 0;">
+					<p style="font-weight: bold; text-align: center"> 채팅방 이용시 바르고 고운말부탁드립니다.<br>
+					비속어,욕설 사용시 이용이 제한 될 수 있습니다.<br>
+					즐거운 이용되세요.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<div style="border-radius: 15px; border: solid 2px #ff7915;" class="text-center">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="card m-2" style="border: solid 2px #ff7915; ">
 						<div class="text-center">
-
 							<%if(roomname!=null&&!roomname.equals("자유방")){ %>
 							<button onclick="outroom('<%=roomname%>')">방나가기</button>
 							<%}else{ %>
@@ -84,7 +96,19 @@
 		<br><br><br><br>
 	</div>
 	<script type="text/javascript">
-		
+		function show () { // modal 표시하기
+		  document.querySelector(".background").className = "background show";
+		}	// 백그라운드의 클래스 이름을 background 에서 background show로 바꿔서 modal이 뜨게 표시
+
+		function close () { // modal 닫기
+		  document.querySelector(".background").className = "background";
+		}	// 백그라운드의 클래스 이름을 background show 에서 background로 바꿔서 modal이 닫히게
+
+		document.querySelector("#show").addEventListener('click', show);
+		document.querySelector("#close").addEventListener('click', close);	
+			// querySelector는 구체적인 그룹과 일치하는 문서 안의 첫번째 엘리먼트를 반환 없으면 null 반환
+			// 설명 :  id값이라서 #show 를 클릭하면 클릭시 이벤트를 show로 설정 
+			// addEventListener은 이벤트를 등록하는 가장 권장되는 방식
 		// 방이름
 		var roomname = document.getElementById("roomname").value;
 		// 현재아이디
