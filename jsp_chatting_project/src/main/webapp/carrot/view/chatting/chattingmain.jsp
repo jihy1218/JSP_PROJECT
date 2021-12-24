@@ -45,7 +45,6 @@
 							<button class="btn btn-success" onclick="makeroom();" style="margin: 10px 0 10px 0;">방 만들기</button>
 							<a href="/jsp_chatting_project/carrot/controller/quickentercontroller.jsp"><button class="btn btn-outline-success" style="margin: 10px 0 10px 0;">빠른입장</button></a>
 							<%} %>
-
 						</div>
 					</div>
 					<div class="card m-2 roomlist" style="border: solid 2px #ff7915;">
