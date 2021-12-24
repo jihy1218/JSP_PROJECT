@@ -26,8 +26,8 @@
 			},
 			success : function(result){
 				if(result==1){
-					alert("쪽지 보냈습니다");
-					location.reload;
+					alert("쪽지 보냈습니다");				
+					close();
 				}else{
 					alert("수신인을 확인해주세요");
 					location.reload;
@@ -63,8 +63,29 @@
 	}
 
 
+//쪽지 쓰기 팝업
+function shownote(){
+	var width = 500;
+	var height = 600;
+	
+	var left = (window.screen.width / 2) - (width/2); 
+	var top = (window.screen.height / 4);
 
-
+	
+	//연결 url
+    var url = "notewrite.jsp";
+	//팝업 이름
+   	var name = "쪽지 보내기";
+	//팝업 설정
+    var option = "width = "+width+", height = "+height+", top = "+top+", left = "+left+", location = no"
+	
+	//연결할 url
+	
+	// 팝업창 올리기
+	//window.open("URL", "팝업이름", "팝업 옵션");
+	window.open(url, name, option);
+	
+}
 
 
 

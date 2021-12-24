@@ -50,7 +50,7 @@
 				</div>
 				
 				<div class="col-md-8">
-					<textarea rows="" cols="" class="form-control" name="contents"></textarea>
+					<input type="text" class="form-control" name="contents">
 				</div>
 				<div class="col-md-2">
 					<input type="submit" value="등록" class="form-control">
