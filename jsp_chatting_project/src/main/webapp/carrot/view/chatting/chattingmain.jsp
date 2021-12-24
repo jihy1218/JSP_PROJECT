@@ -18,7 +18,6 @@
 	%>
 	<input type="hidden" value="<%=logininfo.getM_id()%>" id="m_id"> <input type="hidden" value="<%=roomname%>" id="roomname">
 	<input type="hidden" value="<%=logininfo.getM_grade()%>" id="m_grade">
-	<button id="show">모달테스트</button>
 	<div class="background">
 		<div class="window">
 			<div class="popup">
@@ -54,7 +53,7 @@
 					<div class="card m-2 roomlist" style="border: solid 2px #ff7915;">
 						<table class="table table-hover">
 							<tr>
-								<th style="color : #ff7915">현재방 : <span id="modaltest"><%=roomname %></span></th>
+								<th style="color : #ff7915">현재방 : <span id="thisroom"><%=roomname %></span></th>
 							</tr>
 							<%for(Room room : roomlist){ %>
 							<%if(room.getR_count()==2||logininfo.getM_grade()==1||room.getR_name().equals(roomname)){ %>
@@ -99,24 +98,21 @@
 		<br><br><br><br>
 	</div>
 	<script type="text/javascript">
-		var modal = document.getElementById("modaltest").innerHTML;
+		var modal = document.getElementById("thisroom").innerHTML;
 		if(modal!="자유방"){
 		  document.querySelector(".background").className = "background show";
 			
 		}
-		function show () { // modal 표시하기
-		}	// 백그라운드의 클래스 이름을 background 에서 background show로 바꿔서 modal이 뜨게 표시
-
 		function close () { // modal 닫기
 		  document.querySelector(".background").className = "background";
 		}	// 백그라운드의 클래스 이름을 background show 에서 background로 바꿔서 modal이 닫히게
 
-		document.querySelector("#show").addEventListener('click', show);
 		document.querySelector("#close").addEventListener('click', close);	
 			// querySelector는 구체적인 그룹과 일치하는 문서 안의 첫번째 엘리먼트를 반환 없으면 null 반환
 			// 설명 :  id값이라서 #show 를 클릭하면 클릭시 이벤트를 show로 설정 
 			// addEventListener은 이벤트를 등록하는 가장 권장되는 방식
 		// 방이름
+		var count=0;
 		var roomname = document.getElementById("roomname").value;
 		// 현재아이디
 		var loginid = document.getElementById("m_id").value;
@@ -133,8 +129,14 @@
 		webSocket.onmessage = function( event ) { onMessage(event) }; // 웹소켓 메시지전송 메소드 
 		webSocket.onerror = function( event ) { onError(event) }; // 웹소켓 오류 메소드 
 		
-		function onOpen(event) { alert("접속 되었습니다.");}
-		function onClose(event) { alert("퇴장 했습니다.");}
+		function onOpen(event) {
+			alert(roomname + " 에 접속 되었습니다.");
+			msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+roomname+"에 입장했습니다.</span></div>";
+		}
+		function onClose(event) { 
+			alert("퇴장 했습니다.");
+			count==0;
+		}
 		function onError(event) { alert( "에러사유 :"+event.data +"[관리자에게문의]" );}
 		
 		function btnsend() {
@@ -148,6 +150,10 @@
 			// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
 			var msg = loginid +","+time+","+msginput;
 			// 입력된 문자 와 날짜를 채팅발 div 에 추가
+			if(count=="0"){
+				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+loginid+"님이 입장했습니다.</span></div>";
+				count++;
+			}
 			msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'>"+msginput+"</span></div>";
 			webSocket.send( msg );	 // *****************서버로 부터 메시지 전송 
 			document.getElementById("msginput").value = "";	// 전송후 입력창 내용물 지우기 [ 초기화 ]
@@ -155,11 +161,37 @@
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이[ 바닥 ] */
 			
 		}
-		
-		function onMessage(event) { 
+		function entersend() {
+			// 1. 입력창에 입력된 데이터를 가져온다
+			if(window.event.keyCode == 13){
+			var msginput = document.getElementById("msginput").value;
+				// 입력이 없을때 유효성검사 [ 전송 막기 ]
+				if( msginput == ""){  return; }
+			// 날짜 
+			let today = new Date(); // js에서 현재 날짜/시간 객체 
+			var time = today.toLocaleTimeString(); // 시간만 가져오기 
+			// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
+			var msg = loginid +","+time+","+msginput;
+			// 입력된 문자 와 날짜를 채팅발 div 에 추가
+			if(count=="0"){
+				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+loginid+"님이 입장했습니다.</span></div>";
+				count++;
+			}
+			msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'>"+msginput+"</span></div>";
+			webSocket.send( msg );	 // *****************서버로 부터 메시지 전송 
+			document.getElementById("msginput").value = "";	// 전송후 입력창 내용물 지우기 [ 초기화 ]
+			// 스크롤 있을경우 스크롤 위치를 가장 아래로 이동 
+			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이[ 바닥 ] */
+			}
+		}
+		function onMessage(event) {
 			var from = event.data.split(",")[0];	// , 기준으로 문자열 분리해서 첫번째 문자열
 			var time = event.data.split(",")[1];	// , 기준으로 문자열 분리해서 두번째 문자열
 			var msg = event.data.split(",")[2];		// , 기준으로 문자열 분리해서 세번째 문자열
+			if(count=="0"){
+				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>";
+				count++;
+			}
 			msgbox.innerHTML += "<div class='profile d-flex justify-content-start mx-2 my-2'>"+from+"</div>"
 			msgbox.innerHTML += "<div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div>"
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]

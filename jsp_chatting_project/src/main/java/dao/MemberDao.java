@@ -174,7 +174,7 @@ public class MemberDao extends DB {
   	// 채팅방 가져오기 
 	public ArrayList<Room> getroom(){
 		ArrayList<Room> room = new ArrayList<Room>();
-		String sql = "SELECT * FROM carrot.room";
+		String sql = "SELECT * FROM room";
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet= preparedStatement.executeQuery();
@@ -191,7 +191,7 @@ public class MemberDao extends DB {
 	
 	// 채팅방 만들기
 	public boolean makeroom(String roomname) {
-		String sql = "insert into room(r_name , r_count) value(?,1)";
+		String sql = "insert into room(r_name , r_count)values(?,1)";
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, roomname);
