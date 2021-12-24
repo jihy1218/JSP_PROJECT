@@ -34,11 +34,21 @@ public class Board {
 		this.m_no = m_no;
 	}
 	
+	// 수정 생성자
+	public Board(int b_no, String b_title, String b_contents) {
+		super();
+		this.b_no = b_no;
+		this.b_title = b_title;
+		this.b_contents = b_contents;
+	}
+	
+	
 	// Get, Set
 	public int getB_no() {
 		return b_no;
 	}
 	
+
 	public void setB_no(int b_no) {
 		this.b_no = b_no;
 	}

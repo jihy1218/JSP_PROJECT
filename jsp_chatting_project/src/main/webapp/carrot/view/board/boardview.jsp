@@ -11,8 +11,9 @@
 </head>
 <body>
 	<%@include file="../header.jsp" %>
+	
 <%
-	int b_no = Integer.parseInt( request.getParameter("b_no"));
+	int b_no = Integer.parseInt(request.getParameter("b_num"));
 	
 	String boardviews = logininfo.getM_id()+" : " + b_no;
 	
@@ -28,19 +29,30 @@
 
 	<%@include file="../friendbar.jsp" %>
 	<div class ="container">
-		<form class="form-control" >
-			<div class="form-group">
-				<label for="title">Title:</label>
-				<input type="text" class="form-control" placeholder="title" id="title" name="title">
-			</div>
-			<div class="form-grop">
-				<label for="content">Content : </label>
-				<textarea class="form-control" rows="5" id="summernote" name="content"></textarea>
-			</div>
-			<div class ="text-right">
-				<button type="submit" class="btn btn-primary">삭제</button>
-			</div>
-		</form>
+		<div class="row">
+			<div class="m-2"><button class="form-control">목록</button></div>
+			<div class="m-2"><a href="boardupdate.jsp?b_no=<%=b_no %>"><button class="btn btn-primary">수정</button></a></div>
+			<div class="m-2"><button class="btn btn-danger" onclick="boarddelete(<%=b_no%>)">삭제</button></div>
+		</div>
+		
+		<table class="table">
+			<tr>
+				<td style="width: 20%"> 작성자 : <%=board.getM_no() %></td>
+				<td> 작성일 : <%=board.getB_date() %></td>
+				<td> 조회수 : <%=board.getB_view()%></td>
+			</tr>
+		
+			<tr>
+				<td>제목 <%=board.getB_title() %></td>
+				<td colspan="2"></td>
+			</tr>
+		
+			<tr>
+				<td style="height: 300px;">내용 <%=board.getB_contents() %></td>
+				<td colspan="2"></td>
+			</tr>
+		</table>
+		
 		<a href="boardupdate.jsp" ><button class="btn btn-primary">수정하기</button></a>
 		<br><br><br>
 		<form action="../../controller/replywritecontroller.jsp" method="post" class="row">
@@ -60,12 +72,19 @@
 			<tr>
 				<th>작성자</th><th>내용</th><th>작성일</th>
 			</tr>
+			<%
+				ArrayList<Reply> replies = BoardDao.getboardDao().replylist(b_no);
+				for(Reply reply : replies) {
+			%>
+			<tr>
+				<th><%=reply.getB_no() %>
+				<th><%=reply.getR_contents() %>
+				<th><%=reply.getR_date() %>
+				<th><a href="../../controller/replydeletecontroller.jsp"></a>
+			</tr>
+			<% } %>
 		</table>
 	</div>
 <%@include file="../footer.jsp" %>
-
-
-
-
 </body>
 </html>
