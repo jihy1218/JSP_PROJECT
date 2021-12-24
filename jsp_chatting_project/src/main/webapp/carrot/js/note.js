@@ -65,7 +65,6 @@
 
 //쪽지 쓰기 팝업
 function shownote(){
-	
 	var width = 500;
 	var height = 600;
 	
