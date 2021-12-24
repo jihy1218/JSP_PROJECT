@@ -34,7 +34,6 @@ function makeroom(){
 }
 	
 	function enterroom(enter,close){
-		
 		if(confirm("방을 입장하시겠습니까?")==true){
 			$.ajax({
 				url : "/jsp_chatting_project/carrot/controller/enterroomcontroller.jsp",
@@ -44,8 +43,8 @@ function makeroom(){
 					},
 				success : function(result){
 					if(result==1){
-						alert("방에 입장했습니다");
 						location.href="chattingmain.jsp?roomname="+enter;
+						document.querySelector(".background").className = "background show";
 					}else{
 						alert("방이 가득찼습니다");
 						location.href="chattingmain.jsp";
