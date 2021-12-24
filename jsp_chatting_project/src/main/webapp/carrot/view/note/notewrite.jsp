@@ -1,3 +1,4 @@
+<%@page import="dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,19 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-	<%@ include file="../header.jsp" %>
 	<!-- 쪽지 페이지 -->
-	<br><br><br><br><br>
 	<div class="container">
 		<%
 			//로그인 회원 번호		
-			int n_from = 1;
+			Member logininfo = (Member)session.getAttribute("login");
+			int n_from = logininfo.getM_no();
 		%>
 		<input type="hidden" id="n_from" value="<%=n_from%>">
 		<div class="row">
-			<div class="offset-3 col-md-6" style="height: 600px;">
+			<div class="p-3" style="height: 600px; width: 500px;">
 				<div class="bg-secondary text-white p-1" style="padding-left: 3px;">
 					<p class="px-2"> 새 쪽지 </p>
 				</div>
@@ -33,6 +34,12 @@
 			</div>
 		</div>
 	</div>
-	<br><br><br><br><br>
+		<!-- jquery js -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<!-- 부트스트랩 js설정 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    	<!-- 노트 js 호출 -->
+	<script src="/jsp_chatting_project/carrot/js/note.js"></script>
 </body>
 </html>
