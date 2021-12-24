@@ -38,6 +38,10 @@
 					<div class="card m-2" style="border: solid 2px #ff7915; ">
 						<div class="text-center">
 							<%if(roomname!=null&&!roomname.equals("자유방")){ %>
+							<div class="text-center">
+								<button >친구추가</button>
+								<button >차단하기</button>
+							</div>
 							<button onclick="outroom('<%=roomname%>')">방나가기</button>
 							<%}else{ %>
 								<input type="text" id="makeroom" class="col-md-8 offset-2 form-control mt-2" placeholder="방제목을입력해주세요!">						
@@ -50,7 +54,7 @@
 					<div class="card m-2 roomlist" style="border: solid 2px #ff7915;">
 						<table class="table table-hover">
 							<tr>
-								<th style="color : #ff7915">현재방 : <%=roomname %></th>
+								<th style="color : #ff7915">현재방 : <span id="modaltest"><%=roomname %></span></th>
 							</tr>
 							<%for(Room room : roomlist){ %>
 							<%if(room.getR_count()==2||logininfo.getM_grade()==1||room.getR_name().equals(roomname)){ %>
@@ -60,7 +64,7 @@
 								
 							<%}else{ %>
 							<tr>
-								<td><a class="text-info" href="javascript:void(0);" onclick="enterroom('<%=room.getR_name()%>','<%=roomname%>')" > <%=room.getR_name() %> 입장가능 </a></td>
+								<td><a class="text-info" href="javascript:void(0);" onclick="enterroom('<%=room.getR_name()%>','<%=roomname%>');" > <%=room.getR_name() %> 입장가능 </a></td>
 							</tr>
 							<%}} %>
 						</table>
@@ -95,8 +99,12 @@
 		<br><br><br><br>
 	</div>
 	<script type="text/javascript">
-		function show () { // modal 표시하기
+		var modal = document.getElementById("modaltest").innerHTML;
+		if(modal!="자유방"){
 		  document.querySelector(".background").className = "background show";
+			
+		}
+		function show () { // modal 표시하기
 		}	// 백그라운드의 클래스 이름을 background 에서 background show로 바꿔서 modal이 뜨게 표시
 
 		function close () { // modal 닫기
