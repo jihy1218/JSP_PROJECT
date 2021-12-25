@@ -6,5 +6,5 @@
 	int r_no = Integer.parseInt(request.getParameter("r_no"));
 	int b_no = Integer.parseInt(request.getParameter("b_no"));
 	
-	boolean result = BoardDao.getboardDao().re
+	boolean result = BoardDao.getboardDao().
 %>

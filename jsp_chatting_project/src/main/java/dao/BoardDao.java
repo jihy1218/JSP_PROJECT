@@ -126,6 +126,9 @@ public class BoardDao extends DB {
 	}
 	
 	// 댓글 삭제
+	public boolean replydelete(int r_no) {
+		
+	}
 	
 	// 현재 게시물의 댓글만 가져오기
 	public ArrayList<Reply> replylist(int b_no) {
