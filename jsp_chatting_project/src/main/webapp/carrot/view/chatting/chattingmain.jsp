@@ -31,63 +31,67 @@
 		</div>
 	</div>
 	<div class="container">
-		<div style="border-radius: 15px; border: solid 2px #ff7915;" class="text-center">
+		<div style="border-radius: 28px; border: solid 1px #D9D9D9; height: 750px;" class="text-center">
 			<div class="row">
-				<div class="col-md-4">
-					<div class="card m-2" style="border: solid 2px #ff7915; ">
-						<div class="text-center">
-							<%if(roomname!=null&&!roomname.equals("자유방")){ %>
-							<div class="text-center">
-								<button >친구추가</button>
-								<button >차단하기</button>
-							</div>
-							<button onclick="outroom('<%=roomname%>')">방나가기</button>
-							<%}else{ %>
-								<input type="text" id="makeroom" class="col-md-8 offset-2 form-control mt-2" placeholder="방제목을입력해주세요!">						
+				<div class="col-lg-4" style="">
+					<div class="" style="height: 116px;">
+						<div class="text-center" id="room_title">
+							<div id="serch" ><input type="text" id="makeroom"  class="intput1" placeholder="방제목을입력해주세요!"><button id="btn1">검색</button></div>					
              				<input type="hidden" id="m_grade" value="<%=logininfo.getM_grade()%>">
-							<button class="btn btn-success" onclick="makeroom();" style="margin: 10px 0 10px 0;">방 만들기</button>
-							<a href="/jsp_chatting_project/carrot/controller/quickentercontroller.jsp"><button class="btn btn-outline-success" style="margin: 10px 0 10px 0;">빠른입장</button></a>
-							<%} %>
 						</div>
 					</div>
-					<div class="card m-2 roomlist" style="border: solid 2px #ff7915;">
-						<table class="table table-hover">
+					<div class="roomlist" id="roomtable">
+						<table class="table table-hover" >
 							<tr>
-								<th style="color : #ff7915">현재방 : <span id="thisroom"><%=roomname %></span></th>
+								<td id="td_head" > <div class="td2"  style="color: #222222;">현재방 : <%=roomname %></div> </td>
 							</tr>
 							<%for(Room room : roomlist){ %>
 							<%if(room.getR_count()==2||logininfo.getM_grade()==1||room.getR_name().equals(roomname)){ %>
 							<tr>
-								<td><a style="color :#A39699;"> <%=room.getR_name() %> 입장불가 </a></td>
+								<td id="td1"> <div class="td3"><%=room.getR_name() %> 입장불가</div>  </td>
 							</tr>
 								
 							<%}else{ %>
 							<tr>
-								<td><a class="text-info" href="javascript:void(0);" onclick="enterroom('<%=room.getR_name()%>','<%=roomname%>');" > <%=room.getR_name() %> 입장가능 </a></td>
+								<td id="td1"> <div class="td1"> <a class="td1" href="javascript:void(0);" onclick="enterroom('<%=room.getR_name()%>','<%=roomname%>')" > <%=room.getR_name() %> 입장가능  </a></div></td>
 							</tr>
 							<%}} %>
 						</table>
-					</div>
+						</div>
+						<div style="border: solid 1px #E5E5E5; border-radius: 0px 0px 0px 28px; height: 131px;">
+							<%if(roomname!=null&&!roomname.equals("자유방")){ %>
+							<a href="/jsp_chatting_project/carrot/controller/quickentercontroller.jsp">
+							<button id="btn_enter1"  >빠른입장</button></a>
+							<button id="btn_enter2" onclick="outroom('<%=roomname%>')"> 방나가기</button>
+							<%}else{ %>
+							<a href="/jsp_chatting_project/carrot/controller/quickentercontroller.jsp">
+							<button id="btn_enter1"  >빠른입장 </button></a>
+							<button id="btn_enter2"  onclick="makeroom();" > 방 만들기  </button>
+							<%} %>
+						</div>
 				</div>
-				<div class="col-md-8 col-sm-9" >
-					<div class="card m-2 chattingmain">
-						<div style="max-width: 100%" class="carousel slide col-d" data-ride="carousel" data-interval="5000">
+				<div class="col-lg-8 col-sm-9" >
+					<div class="card chattingmain">
+						<div id="nowroom">
+							<div id="nowroomname"><%=roomname %></div>
+						</div>
+<!-- 						<div style="max-width: 100%" class="carousel slide col-d" data-ride="carousel" data-interval="5000">
 							<div class="carousel-inner">
 								<div class="carousel-item active"><img src="/jsp_chatting_project/carrot/img/유의사항1.png"></div>
 								<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/유의사항2.png"></div>
 								<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/유의사항3.png"></div>
 							</div>
-						</div>
+						</div> -->
 						<div class="text-center">
 							<div id="msgbox">	<!-- 채팅창 -->
 								<!-- 채팅 메시지가 추가 되는 위치 -->
 							</div>
-							<div class="row no-gutters">	<!-- 채팅입력 창  , 전송버튼 -->
+							<div class="row no-gutters" id="chattingserch">	<!-- 채팅입력 창  , 전송버튼 -->
 								<div class="col-md-10"><!-- 채팅입력 창 -->
 									<input id="msginput" class="form-control" type="text" placeholder="내용 입력" onkeyup="entersend();">
 								</div>
 								<div class="col-md-2">	<!-- 전송버튼 -->
-									<button class="form-control" onclick="btnsend()">전송</button>
+									<button id="btnmsginput" class="form-control" onclick="btnsend()">전송</button>
 								</div>
 							</div>
 						</div>
@@ -118,9 +122,9 @@
 		var loginid = document.getElementById("m_id").value;
 		// 채팅창자리
 		var msgbox =  document.getElementById("msgbox");
-		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
+		var webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
 		if(roomname!="null"){
-			webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
+			webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
 		}
 		
 		
