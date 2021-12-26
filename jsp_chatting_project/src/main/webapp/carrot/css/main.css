@@ -195,11 +195,14 @@ width:16px;height:16px;background:#66D965;}
 #msginput{
 	height: 50px;
 	border-radius: 8px 0px 0px 8px;
+	color: #ABABAB;
 }
 #btnmsginput{
 	height: 50px;
 	border-radius: 0px 8px 8px 0px;
 	background-color: #66D965;
+	color: white;
+	font-size: 16px;
 }
 #nowroom{
 	background-color: #66D965;
