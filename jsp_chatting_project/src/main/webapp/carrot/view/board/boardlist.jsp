@@ -43,7 +43,7 @@
 	      <div class="row">
 	         <button class="mr-2 ml-3 btn btn-outline-danger"> 전체글 </button>      
 	         <button class="btn btn-outline-success"> 인기글 </button>
-	         <a href="boardwrite.jsp" ><button style="background-color:green;">글쓰기</button></a>
+	         <a href="boardwrite.jsp" ><button class="mr-1 ml-2 btn btn-outline-info">글쓰기</button></a>
 	      
 	      </div><br>
 	      

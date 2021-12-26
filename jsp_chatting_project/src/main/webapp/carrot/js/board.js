@@ -30,5 +30,6 @@ function boarddelete(b_no) {
 		});
 	}
 	
+	
 }
 

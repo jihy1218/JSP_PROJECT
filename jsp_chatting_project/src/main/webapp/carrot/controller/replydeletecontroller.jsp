@@ -6,5 +6,13 @@
 	int r_no = Integer.parseInt(request.getParameter("r_no"));
 	int b_no = Integer.parseInt(request.getParameter("b_no"));
 	
-	boolean result = BoardDao.getboardDao().
+	boolean result = BoardDao.getboardDao().replydelete(r_no);
+	
+	if(result) {
+		out.print("<script>alert('댓글삭제 되었습니다');</script>");
+		out.println("<script>location.href='../view/board/boardview.jsp?b_num="+b_no+"';</script>");
+	} else {
+		out.print("<script>alert('[관리자 문의] 댓글삭제 오류');</script>");
+		out.println("<script>location.href='../view/board/boardview.jsp?b_num="+b_no+"';</script>");
+	}
 %>

@@ -114,8 +114,8 @@ public class BoardDao extends DB {
 	
 	// 댓글 등록 메소드
 	public boolean replywrite(Reply reply) {
+		String sql="insert into reply(r_contents, m_no, b_no) values(?,?,?)";
 		try {
-			String sql="insert into reply(r_contents, m_no, b_no) values(?, ?, ?)";
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, reply.getR_contents());
 			preparedStatement.setInt(2, reply.getM_no());
@@ -127,20 +127,27 @@ public class BoardDao extends DB {
 	
 	// 댓글 삭제
 	public boolean replydelete(int r_no) {
-		
+		String sql="delete from reply where r_no=?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setInt(1, r_no);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {System.out.println("댓글 삭제 오류");} return false;
 	}
 	
 	// 현재 게시물의 댓글만 가져오기
 	public ArrayList<Reply> replylist(int b_no) {
 		ArrayList<Reply> replist = new ArrayList<Reply>();
+		String sql = "select * from reply where b_no=?";
 		try {
-			String sql = "select * from reply where b_no="+b_no;
 			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setInt(1, b_no);
 			resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				Reply reply = new Reply(
-						resultSet.getInt(1), resultSet.getString(2),
-						resultSet.getString(3), resultSet.getInt(4), resultSet.getInt(5));
+						resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3),
+						resultSet.getString(4), resultSet.getInt(5));
 				replist.add(reply);
 			} return replist;
 		} catch (Exception e) {System.out.println("현재 게시물 댓글 불러오기 오류");} return null;
@@ -149,7 +156,6 @@ public class BoardDao extends DB {
 	// 게시물 삭제
 	public boolean boaderdelete(int b_no) {
 		String sql = "delete from board where b_no=?";
-		
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setInt(1, b_no);
@@ -187,6 +193,9 @@ public class BoardDao extends DB {
 	
 	
 	
+	
+	
+
 	
 	
 	

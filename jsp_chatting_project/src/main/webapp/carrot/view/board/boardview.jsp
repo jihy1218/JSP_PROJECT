@@ -14,6 +14,7 @@
 	
 <%
 	int b_no = Integer.parseInt(request.getParameter("b_num"));
+	System.out.println(b_no);
 	
 	String boardviews = logininfo.getM_id()+" : " + b_no;
 	
@@ -56,13 +57,13 @@
 		<a href="boardupdate.jsp" ><button class="btn btn-primary">수정하기</button></a>
 		<br><br><br>
 		<form action="../../controller/replywritecontroller.jsp" method="post" class="row">
-			<input type="hidden" name="b_no" value="">
+			<input type="hidden" name="b_no" value="<%=b_no%>">
 				<div>
 					<h6> 댓글 작성 </h6>
 				</div>
 				
 				<div class="col-md-8">
-					<input type="text" class="form-control" name="contents">
+					<input type="text" class="form-control" name="r_contents">
 				</div>
 				<div class="col-md-2">
 					<input type="submit" value="등록" class="form-control">
@@ -73,14 +74,17 @@
 				<th>작성자</th><th>내용</th><th>작성일</th>
 			</tr>
 			<%
-				ArrayList<Reply> replies = BoardDao.getboardDao().replylist(b_no);
-				for(Reply reply : replies) {
+				ArrayList<Reply> replist = BoardDao.getboardDao().replylist(b_no);
+				for(Reply reply : replist) {
 			%>
 			<tr>
-				<th><%=reply.getB_no() %>
+				<th><%=reply.getM_no() %>
 				<th><%=reply.getR_contents() %>
 				<th><%=reply.getR_date() %>
-				<th><a href="../../controller/replydeletecontroller.jsp"></a>
+				<th><a href="../../controller/replydeletecontroller.jsp?r_no=<%=reply.getR_no()%>&b_no=<%=reply.getB_no()%>">
+				<button class="btn btn-danger">삭제</button>
+				
+				</a>
 			</tr>
 			<% } %>
 		</table>
