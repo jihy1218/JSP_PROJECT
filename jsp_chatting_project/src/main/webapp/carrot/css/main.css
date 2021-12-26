@@ -1,6 +1,7 @@
 
 @charset "UTF-8";
 
+
 @font-face {
     font-family: 'Cafe24Dongdong';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Dongdong.woff') format('woff');
@@ -24,8 +25,19 @@
   font-weight: 400;
   src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
 }
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#headtext{
+	font-family: 'yg-jalnan';
+	font-size: 38px;
+}
 body{
-	font-family: LotteMartDream;
+	font-family: 'Noto Sans KR', sans-serif;
+	 
 }
 .bottom {
 	background-color: #333333;
@@ -61,18 +73,20 @@ body{
 }
 .from{
 		font-size : 1.0rem;
-		background: #ffeb33;
-		border-radius: 10px;
-		padding: 7px;
+		background:	#66D965;
+		border-radius: 10px 10px 0px 10px;
+		padding: 10px;
+		color: white;
 	}
 	.msgtime{
 		font-size: 0.8rem;
 	}
 	.to{
 		font-size : 1.0rem;
-		background: white;
-		border-radius: 10px;
+		background:	#F5B638;
+		border-radius: 10px 10px 10px 0px;
 		padding: 10px;
+		color: white;
 	}
 #msgbox{
 	height : 550px;
@@ -83,66 +97,146 @@ body{
 	height : 590px;
 	margin-bottom: 10px;
 	overflow: auto;	/* 박스 크기보다 내용물이 넘쳤을때 스크롤 만들기 */
+	
 }
 .chattingmain{
-	background-color: #C4E8C4;
+	background-color: #EBF7ED;
+	width: 700px;
+	border-radius: 18px;
+	height: 680px;
+	margin-top: 33px;
 }
 .roomlist{
-	height: 535px;
-	background-color: #C4E8C4;
 	overflow: auto;
+	height: 502px;
+	border: solid 1px #E5E5E5; 
+	
 }
 .roomlist::-webkit-scrollbar{width: 16px;}
-.roomlist::-webkit-scrollbar-track {background-color:#C4E8C4;}
-.roomlist::-webkit-scrollbar-thumb {background-color:#f1ef79;border-radius: 15px;}
-.roomlist::-webkit-scrollbar-thumb:hover {background: #C4C4C4;}
+.roomlist::-webkit-scrollbar-track {background-color: white;}
+.roomlist::-webkit-scrollbar-thumb {background-color:#66D965; border-radius: 15px;}
+.roomlist::-webkit-scrollbar-thumb:hover {background: white;}
 .roomlist::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
-width:16px;height:16px;background:#f1ef79;} 
+width:16px;height:16px;background:#66D965;} 
 
-/* Modal창 띄우기 css */
-.background {
-  position: fixed;	/* 포지션 고정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3); /* 약간회색 */
-  z-index: 1000;
-  
-  /* 숨기기 */
-  z-index: -1;
-  opacity: 0;
+#btn1{
+	font-size : 16px;
+	color : white;
+	background-color: #66D965;
+	border:none;
+	border-radius: 0px 8px 8px 0px;
+	width: 60px; height: 52px; 
+}
+.intput1{
+	font-size : 16px;
+	color : black;
+	background-color: #F2F3F8;
+	border:none;
+	border-radius: 8px 0px 0px 8px;
+	width :240px; height: 52px;
+}
+.intput1::placeholder {
+  color: #ABABAB;
+  padding-left: 20px;
+}
+#serch{
+	padding: 32px 0px;
 }
 
-.show {
-  opacity: 1; 		/* 투명도 */
-  z-index: 1000;	/* z축 순서 */
-  transition: all .5s;
+#td1{
+	height: 84px;
+}
+#td_head{
+	height: 84px;
+	background-color: #EBF7ED;
+}
+.td1{
+	padding-top:16px;
+	font-size: 18px;
+}
+.td2{
+	padding-top:16px;
+	font-size: 18px;
+	color: #222222;
+}
+.td3{
+	padding-top:16px;
+	font-size: 18px;
+	color: #ABABAB;
+}
+#btn_enter1{
+	border: none;
+	height: 52px;
+	width: 100px;
+	background-color: #F5B638;
+	border-radius: 8px;
+	color: white;
+	margin-top: 46px; 
+	margin-right: 48px;
+}
+#btn_enter2{
+	border: none;
+	height: 52px;
+	width: 100px;
+	background-color: #66D965;
+	border-radius: 8px;
+	color: white;
+	margin-top: 46px; 
+	margin-left: 48px;
+}
+#room_title{
+	border: solid 1px #E5E5E5; 
+	border-radius: 28px 0px 0px 0px;
+}
+#chattingserch{
+	margin: 10px 36px 0px 36px;
+	border-radius: 28px;
+}
+#msginput{
+	height: 50px;
+	border-radius: 8px 0px 0px 8px;
+}
+#btnmsginput{
+	height: 50px;
+	border-radius: 0px 8px 8px 0px;
+	background-color: #66D965;
+}
+#nowroom{
+	background-color: #66D965;
+	border-radius: 18px 18px 0px 0px;
+ 	color: white;
+ 	font-size : 25 px;
+ 	padding: 15px 0px 15px 0px;
+}
+#nowroomname{
+	float: left;
+	padding-left: 20px;
 }
 
-.window {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
 
-.popup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
-  border-radius: 15px;
-  /* 팝업창 사이즈 */
-  width: 400px;
-  height: 150px;
-  
-  /* 초기에 약간 아래에 배치 */
-  transform: translate(-50%, -40%);
-}
 
-.show .popup {
-  transform: translate(-50%, -50%);
-  transition: all .5s;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
