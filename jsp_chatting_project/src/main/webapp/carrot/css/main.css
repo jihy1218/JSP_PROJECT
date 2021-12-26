@@ -216,30 +216,13 @@ width:16px;height:16px;background:#66D965;}
 	padding-left: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.show .popup {
+  transform: translate(-50%, -50%);
+  transition: all .5s;
+}
+.openroom{
+	border-radius: 10px;
+	background-color: white;
+	padding: 3px 5px 3px 5px;
+}
 
