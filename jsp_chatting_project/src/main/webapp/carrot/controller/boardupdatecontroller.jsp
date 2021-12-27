@@ -9,7 +9,7 @@
 	String folderpath = request.getSession().getServletContext().getRealPath("carrot/upload");
 	MultipartRequest multi = new MultipartRequest(request, folderpath, 1024*1024*10, "utf-8", new DefaultFileRenamePolicy());
 	
-	request.setCharacterEncoding("utf-8");
+	
 	String title = multi.getParameter("title");
 	String contents = multi.getParameter("content");
 	
