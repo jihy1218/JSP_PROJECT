@@ -84,6 +84,32 @@ public class MemberDao extends DB {
     	return member;
     }
     
+	// 회원번호 검색 메소드 
+	public int getmembernum( String id) {
+		
+		String sql ="select m_no from member where m_id=?";
+		try {
+		    preparedStatement =connection.prepareStatement(sql); preparedStatement.setString(1, id);
+		    resultSet = preparedStatement.executeQuery(); 
+			if( resultSet.next() ) { return resultSet.getInt(1); }
+		}catch (Exception e) {} return 0;
+		
+	}
+	//회원번호로 회원아이디 검색 메소드
+	public String getmemberid(int m_no) {
+	    String sql = "select m_id from member where m_no=?";
+	    try {
+		preparedStatement =connection.prepareStatement(sql);
+		preparedStatement.setInt(1, m_no);
+		resultSet=preparedStatement.executeQuery();
+		if(resultSet.next()) {
+		    return resultSet.getString(1);
+		}
+	    } catch (Exception e) {}return null;
+		
+	  
+	}
+    
     //친구 정보 가져오기
     public Member getlogin(int m_no ,int m_logincheck){
     	String sql = "select * from member where m_no="+m_no+" and m_logincheck="+m_logincheck;
@@ -172,9 +198,14 @@ public class MemberDao extends DB {
     }
   
   	// 채팅방 가져오기 
-	public ArrayList<Room> getroom(){
+	public ArrayList<Room> getroom(String keyword){
 		ArrayList<Room> room = new ArrayList<Room>();
-		String sql = "SELECT * FROM room";
+		String sql = null;
+		if(keyword==null) {
+			sql = "select * from room order by r_no desc";
+		}else if(keyword!=null) {
+			sql="select * from room where r_name like '%"+keyword+"%' order by r_no desc";
+		}
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet= preparedStatement.executeQuery();
