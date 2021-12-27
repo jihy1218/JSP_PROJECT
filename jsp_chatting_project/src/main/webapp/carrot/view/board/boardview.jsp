@@ -13,7 +13,7 @@
 	<%@include file="../header.jsp" %>
 	
 <%
-	int b_no = Integer.parseInt(request.getParameter("b_num"));
+	int b_no = Integer.parseInt(request.getParameter("b_no"));
 	System.out.println(b_no);
 	
 	String boardviews = logininfo.getM_id()+" : " + b_no;

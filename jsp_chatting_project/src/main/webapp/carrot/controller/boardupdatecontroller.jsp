@@ -22,7 +22,7 @@
 	
 	if(result) {
 		out.print("<script>alert('게시글이 수정 되었습니다.')</script>");
-		out.print("<script>location.href='/jsp_chatting_project/webapp/view/board/boardview.jsp?b_num="+b_no+"';<script>");
+		out.print("<script>location.href='/jsp_chatting_project/webapp/view/board/boardview.jsp?b_no="+b_no+"';<script>");
 	} else {
 		out.print("<script>alert('[관리자 문의] 게시글 수정 실패')</script>");
 	}

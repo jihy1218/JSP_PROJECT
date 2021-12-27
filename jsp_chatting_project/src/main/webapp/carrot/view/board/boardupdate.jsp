@@ -19,8 +19,9 @@
 	<br>
 	
 	<div class="container">
-	<form action="/jsp_chatting_project/carrot/view/board/boardview.jsp" method="POST">
+	<form action="/jsp_chatting_project/carrot/controller/boardupdatecontroller.jsp" method="POST" enctype="multipart/form-data">
 		<div class="form-group">
+		<input type="hidden" name="b_no" value="<%=b_no%>">
 			<label for="title">Title : </label>
 			<input type="text" class="form-control" placeholder="<%=board.getB_title() %>" id="title" name="title">
 		</div>
@@ -44,10 +45,7 @@
   </script>
 
 
-
-	
 <%@include file="../footer.jsp" %>
-
 
 </body>
 </html>

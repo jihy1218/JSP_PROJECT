@@ -193,8 +193,6 @@ public class BoardDao extends DB {
 	
 	
 	
-	
-	
 
 	
 	
