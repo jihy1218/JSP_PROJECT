@@ -22,6 +22,8 @@ public class FriendDao extends DB {
 			String sql = "select * from friend where f_type=1 and (m_no1="+m_no+" or m_no2="+m_no+")";
 			if(type==2) {
 				sql = "select * from friend where f_type=2 and m_no1="+m_no;
+			}else if(type==3) {
+				sql = "select * from friend where f_type=3 and m_no2="+m_no;
 			}
 		try {
 			preparedStatement=connection.prepareStatement(sql);
@@ -49,6 +51,54 @@ public class FriendDao extends DB {
 			System.out.println(" deletefriende db 오류");
 		}
 			return false;
+	}
+	
+	//친구 요청하기 
+	public boolean friendinvite(int from, int to) {
+		String sql = "insert into friend(m_no1,m_no2,f_type) value("+from+","+to+",3)";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("friendinvite db 오류");
+		}return false;
+	}
+	
+	//친구 요청 수락
+	
+	public boolean friendaccept(int type , int f_no) {
+		String sql = null;
+		try {
+		if(type==1) {
+			sql = "update friend set f_type=1 where f_no="+f_no;
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			return true;
+		}else {
+			sql = "delete from friend where f_no="+f_no;
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			return false;
+		}
+		} catch (Exception e) {
+			System.out.println("friendaccept db 오류");
+		}
+		return false;
+	}
+	
+	public int countinvite(int m_no) {
+		String sql = "select count(*) from friend where f_type=3 and m_no2="+m_no;
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet= preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println("countinvite db 오류");
+		}
+		return 0;
 	}
 	
 	

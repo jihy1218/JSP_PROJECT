@@ -8,7 +8,7 @@
 <body>
 	<%@include file="../header.jsp" %>
 	<div class="container">
-		<form id ="signupform" action="/jsp_chatting_project/carrot/controller/signupcontroller.jsp" method="post" onsubmit="return signupcheck()">
+		<form id ="signupform" action="/jsp_chatting_project/carrot/controller/signupcontroller.jsp" enctype="multipart/form-data" method="post" onsubmit="return signupcheck()">
 			<div class="row">
 				<div class="card offset-3 col-md-6" style="max-width: 350px; margin:0 auto;">
 					<div class="mt-3" style="text-align: center;">
@@ -53,6 +53,10 @@
 					<div>
 	                	<span id="phoneresult"></span>
 	               	</div>
+					<div class="my-2">
+						<label style="font-weight: bold;">프로필 사진 선택하기</label>
+						<input type="file" class="form-control" name="myimg">
+					</div>
 					<div class="p-2 my-2">
 						<input type="submit" value="가입하기" class="btn btn-lg btn-block" style="background: #3f7d1b; color: #ffaa21;" >
 					</div>
