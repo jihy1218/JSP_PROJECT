@@ -24,7 +24,7 @@
 			pagenum="1";
 		}
 		
-		int lastrow = NoteDao.getNoteDao().notecount(n_from);
+		int lastrow = NoteDao.getNoteDao().notecount(n_from,m_no);
 		int listsize = 5;	
 		int lastpage = 0;
 		
@@ -42,6 +42,7 @@
 	<div class="container">
 		<h3> 쪽지함 </h3>
 		<br><br>
+		<button class="btn-primary" onclick="shownote()">쪽지보내기</button>
 		<table class="table">
 			<tr style="border-top: solid 2px navy; border-bottom: solid 1.5px navy;">
 				<th> 확인 </th> <th> 내용 </th> <th> 보낸사람 </th> <th> 작성일 </th> <th> 삭제 </th>
@@ -84,7 +85,6 @@
 				</ul>
 			</div>
 		</div>
-		
 	</div>
 </body>
 </html>

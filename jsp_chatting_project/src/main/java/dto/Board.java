@@ -4,21 +4,23 @@ import dao.MemberDao;
 
 public class Board {
 
-        private int b_no;
-        private String b_title;
-        private String b_contents;
-        private String b_file;
+
+  private int b_no;
+  private String b_title;
+  private String b_contents;
+  private String b_file;
 	private int m_no;
 	private String b_date;
 	private int b_view;
 	private int b_like;
 	private String b_writer;
+
 	
 	public Board() { }
 	
 	// 전체 생성자
-	public Board(int b_no, String b_title, String b_contents, String b_file, int m_no, String b_date, int b_view,
-			int b_like) {
+	public Board(int b_no, String b_title, String b_contents, String b_file,
+			int m_no, String b_date, int b_view,int b_like) {
 		super();
 		this.b_no = b_no;
 		this.b_title = b_title;
@@ -32,27 +34,26 @@ public class Board {
 	}
 
 	// 등록 생성자
-	public Board(String b_title, String b_contents, String b_file, int m_no) {
-		super();
+	public Board(String b_title, String b_contents,  int m_no) {
 		this.b_title = b_title;
 		this.b_contents = b_contents;
-		this.b_file = b_file;
 		this.m_no = m_no;
 	}
-
+	
 	// 수정 생성자
-	public Board(int b_no, String b_title, String b_contents, String b_file) {
+	public Board(int b_no, String b_title, String b_contents) {
 		super();
 		this.b_no = b_no;
 		this.b_title = b_title;
 		this.b_contents = b_contents;
-		this.b_file = b_file;
 	}
-
+	
+	
 	// Get, Set
 	public int getB_no() {
 		return b_no;
 	}
+	
 
 	public void setB_no(int b_no) {
 		this.b_no = b_no;
