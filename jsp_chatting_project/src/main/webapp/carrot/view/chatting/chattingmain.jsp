@@ -11,15 +11,18 @@
 	<%@include file="../friendbar.jsp" %>
 	<%
 		request.setCharacterEncoding("UTF-8");
+		String folderpath = request.getSession().getServletContext().getRealPath("carrot/upload/");
 		String roomname = "자유방";
 		if(request.getParameter("roomname")!=null){
 			roomname = request.getParameter("roomname");
 		}
 		String keyword = request.getParameter("keyword");
 		ArrayList<Room> roomlist = MemberDao.getmMemberDao().getroom(keyword);
+		System.out.print(folderpath+logininfo.getM_img());
 	%>
 	<input type="hidden" value="<%=logininfo.getM_id()%>" id="m_id"> <input type="hidden" value="<%=roomname%>" id="roomname">
 	<input type="hidden" value="<%=logininfo.getM_grade()%>" id="m_grade"><input type="hidden" value="<%=logininfo.getM_nickname()%>" id="m_nickname">
+	<input type="hidden" value="<%=roomname %>" id="thisroom" ><input type="hidden" value="<%=logininfo.getM_img()%>" id="m_img">
 	<div class="background">
 		<div class="window">
 			<div class="popup">
@@ -45,7 +48,7 @@
 					<div class="roomlist" id="roomtable">
 						<table class="table table-hover" >
 							<tr>
-								<td id="td_head" > <div class="td2"  style="color: #222222;">현재방 :<span id="thisroom"><%=roomname %></span></div> </td>
+								<td id="td_head" > <div class="td2"  style="color: #222222;">현재방 :<%=roomname %></div> </td>
 							</tr>
 							<%
 								if(roomlist.size()==0){%>
@@ -88,6 +91,7 @@
 						<div class="text-center">
 							<div id="msgbox">	<!-- 채팅창 -->
 								<!-- 채팅 메시지가 추가 되는 위치 -->
+								
 							</div>
 							<div class="row no-gutters" id="chattingserch">	<!-- 채팅입력 창  , 전송버튼 -->
 								<div class="col-md-9"><!-- 채팅입력 창 -->
@@ -132,7 +136,10 @@
 		var roomname = document.getElementById("roomname").value;
 		// 현재아이디
 		var loginid = document.getElementById("m_id").value;
+		// 현재 닉네임
 		var nickname = document.getElementById("m_nickname").value;
+		// 보낸사람 프사
+		var fromimg = document.getElementById("m_img").value;
 		// 채팅창자리
 		var msgbox =  document.getElementById("msgbox");
 		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
@@ -165,7 +172,7 @@
 			let today = new Date(); // js에서 현재 날짜/시간 객체 
 			var time = today.toLocaleTimeString(); // 시간만 가져오기 
 			// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
-			var msg = nickname +","+time+","+msginput;
+			var msg = nickname +","+time+","+msginput+","+fromimg;
 			// 입력된 문자 와 날짜를 채팅발 div 에 추가
 			if(count=="0"){
 				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+nickname+"님이 입장했습니다.</span></div>";
@@ -188,7 +195,7 @@
 				let today = new Date(); // js에서 현재 날짜/시간 객체 
 				var time = today.toLocaleTimeString(); // 시간만 가져오기 
 				// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
-				var msg = nickname +","+time+","+msginput;
+				var msg = nickname +","+time+","+msginput+","+fromimg;
 				// 입력된 문자 와 날짜를 채팅발 div 에 추가
 				if(count=="0"){
 					msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+nickname+"님이 입장했습니다.</span></div>";
@@ -205,17 +212,23 @@
 			var from = event.data.split(",")[0];	// , 기준으로 문자열 분리해서 첫번째 문자열
 			var time = event.data.split(",")[1];	// , 기준으로 문자열 분리해서 두번째 문자열
 			var msg = event.data.split(",")[2];		// , 기준으로 문자열 분리해서 세번째 문자열
+			var img = event.data.split(",")[3]; 
 			if(count=="0"){
-				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>";
+				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+nickname+"님이 입장했습니다.</span></div>";
 				count++;
 			}
-			msgbox.innerHTML += "<div class='profile d-flex justify-content-start mx-2 my-2'>"+from+"</div>"
-			msgbox.innerHTML += "<div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div>"
+			alert(from);
+			alert(time);
+			alert(msg);
+			alert(img);
+			msgbox.innerHTML += "<div class='row' style='text-align: justify;'><div class='d-flex justify-content-start profileimg'><img src='../../upload/곰.jpg'></div><div class='align-middle'><span class='my-2 mx-2'>"+from+"</span><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
 		}
 		
 	</script>
-	
+
+
+										
 	
 	<%@include file="../footer.jsp" %>
 	<script type="text/javascript">
