@@ -42,7 +42,7 @@ public class Chatting {
 		
 		// 3. 클라이언트가 서버로부터 접속 해지
 		@OnClose // 소켓 닫는 어노테이션 
-		public void onClose( Session session ,@PathParam("roomname")String roomname,@PathParam("loginid")String loginid) {
+		public void onClose(Session session ,@PathParam("roomname")String roomname,@PathParam("loginid")String loginid) {
 			Set<Entry<String, Session>> entry = clients.entrySet();
 			for(Entry<String, Session> ent : entry)	{
 					//방이름이 같으면서 아이디가 다르면
