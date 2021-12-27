@@ -172,9 +172,14 @@ public class MemberDao extends DB {
     }
   
   	// 채팅방 가져오기 
-	public ArrayList<Room> getroom(){
+	public ArrayList<Room> getroom(String keyword){
 		ArrayList<Room> room = new ArrayList<Room>();
-		String sql = "SELECT * FROM room";
+		String sql = null;
+		if(keyword==null) {
+			sql = "select * from room order by r_no desc";
+		}else if(keyword!=null) {
+			sql="select * from room where r_name like '%"+keyword+"%' order by r_no desc";
+		}
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet= preparedStatement.executeQuery();
