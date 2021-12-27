@@ -17,8 +17,9 @@
 		Member logininfo2 = (Member)session.getAttribute("login");
 		int m_no2 =	logininfo2.getM_no();
 		int m_grade2 = logininfo2.getM_grade();
+		//친추 목록
+		ArrayList<Friend> friendinvite = FriendDao.getFriendDao().getfriendelist(m_no2, 3);
 		//친구 목록
-		
 		ArrayList<Friend> friends = FriendDao.getFriendDao().getfriendelist(m_no2 ,1);
 		//친구 정보
 		ArrayList<Member> friendsinfolist = new ArrayList<>();
@@ -85,6 +86,33 @@
                 <%} }%>
             </ul>
         </li>
+        <li>
+    		<a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-3">친구추가하기</a>	
+    		<ul id="menu-collapse-3" class="collapse in">
+    			<li>
+   					<div class="form-control">
+   						<input type="text" placeholder="추가할아이디" id="inviteid">
+   					</div>
+   					<div class="text-right">
+   						<button class="btn btn-primary" onclick="friendinvite()">친구요청</button>
+   					</div>
+    			</li>
+    		</ul>
+    	</li>
+    	<li>
+    		<a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-4">친구요청 <span style="color: red;"><%=FriendDao.getFriendDao().countinvite(m_no2)%></span></a>	
+    		<ul id="menu-collapse-4" class="collapse in">
+    			<li>
+   					<div class="row">
+   						 <%for(Friend friend : friendinvite){ %>
+   						 <div class="col-md-4 offset-1"> <%=MemberDao.getmMemberDao().getmemberid(friend.getM_no2()) %> </div>
+   						 <div class="text-right"> <button class="btn btn-success" onclick="friendCh(1,<%=friend.getF_no()%>)">수락</button> <button class="btn btn-danger" onclick="friendCh(2,<%=friend.getF_no()%>)">거절</button></div>   						 	
+   						 <%} %>
+
+   					</div>
+    			</li>
+    		</ul>
+    	</li>
         <li>
        		<img src="/jsp_chatting_project/carrot/img/당근친구만들기.png">
         </li>
