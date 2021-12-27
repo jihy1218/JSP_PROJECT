@@ -4,10 +4,9 @@
 <%@page import="dto.Board"%>
 <%@page import="dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%
 	String folderpath = request.getSession().getServletContext().getRealPath("carrot/upload");
-	MultipartRequest multi = new MultipartRequest(request, folderpath, 1024*1024*10, "UTF-8", new DefaultFileRenamePolicy());
+	MultipartRequest multi = new MultipartRequest(request, folderpath, 1024*1024*10,"UTF-8", new DefaultFileRenamePolicy());
 	
 	String title = multi.getParameter("title");
 	String contents = multi.getParameter("content");
