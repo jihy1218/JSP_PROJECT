@@ -24,7 +24,7 @@
 			pagenum="1";
 		}
 		
-		int lastrow = NoteDao.getNoteDao().notecount(n_from);
+		int lastrow = NoteDao.getNoteDao().notecount(n_from,m_no);
 		int listsize = 5;	
 		int lastpage = 0;
 		
