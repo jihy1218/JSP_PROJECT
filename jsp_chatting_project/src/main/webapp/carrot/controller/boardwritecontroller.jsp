@@ -1,3 +1,4 @@
+<%@page import="dto.Login"%>
 <%@page import="dao.BoardDao"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
@@ -10,7 +11,6 @@
 	request.setCharacterEncoding("utf-8");
 	String title = request.getParameter("title");
 	String contents = request.getParameter("content");
-	
 	//title = title.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\S)*(/)?", "");
 	//contents = contents.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
 	// String file = multi.getFilesystemName("file");

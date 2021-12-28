@@ -97,7 +97,7 @@
 			for(Board board : boards){%>
 			<tr>
 				<td><%=board.getB_no() %></td>
-				<td><a href ="boardview.jsp?b_num=<%=board.getB_no()%>"><%=board.getB_title() %></a></td>
+				<td><a href ="boardview.jsp?b_no=<%=board.getB_no()%>"><%=board.getB_title() %></a></td>
 				<td><%=board.getB_writer()%></td>
 				<td><%=board.getB_date() %></td>
 				<td><%=board.getB_view() %></td>
@@ -252,8 +252,5 @@
 		</form>
 	<%} %>
 </div>
-	
-	
-
 </body>
 </html>

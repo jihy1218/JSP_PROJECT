@@ -26,6 +26,7 @@ public class Reply {
 		this.m_no = m_no;
 		this.b_no = b_no;
 	}
+	
 
 	public int getR_no() {
 		return r_no;
