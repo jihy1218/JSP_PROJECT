@@ -131,7 +131,7 @@
 		<select class="custom-select col-cmd-3" name="key">
 			<option value="b_title">제목</option>
 			<option value="b_no">번호</option>
-			<option value="m_writer">작성자</option>
+			<option value="b_writer">작성자</option>
 		</select>
 		<input type="text" class="form-control" name="keyword"><!-- keyword 검색대상~! -->
 		<input type="submit"class=btn-outline-info value="검색">

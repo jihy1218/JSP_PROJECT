@@ -11,15 +11,18 @@
 	<%@include file="../friendbar.jsp" %>
 	<%
 		request.setCharacterEncoding("UTF-8");
+		String folderpath = request.getSession().getServletContext().getRealPath("carrot/upload/");
 		String roomname = "자유방";
 		if(request.getParameter("roomname")!=null){
 			roomname = request.getParameter("roomname");
 		}
 		String keyword = request.getParameter("keyword");
 		ArrayList<Room> roomlist = MemberDao.getmMemberDao().getroom(keyword);
+		System.out.print(folderpath+logininfo.getM_img());
 	%>
 	<input type="hidden" value="<%=logininfo.getM_id()%>" id="m_id"> <input type="hidden" value="<%=roomname%>" id="roomname">
-	<input type="hidden" value="<%=logininfo.getM_grade()%>" id="m_grade">
+	<input type="hidden" value="<%=logininfo.getM_grade()%>" id="m_grade"><input type="hidden" value="<%=logininfo.getM_nickname()%>" id="m_nickname">
+	<input type="hidden" value="<%=roomname %>" id="thisroom" ><input type="hidden" value="<%=logininfo.getM_img()%>" id="m_img">
 	<div class="background">
 		<div class="window">
 			<div class="popup">
@@ -36,7 +39,7 @@
 		<div style="border-radius: 28px; border: solid 1px #D9D9D9; height: 750px;" class="text-center">
 			<div class="row">
 				<div class="col-lg-4" style="">
-					<div class="" style="height: 116px;">
+					<div  style="height: 116px;">
 						<form action="chattingmain.jsp?search=<%=keyword %>" class="text-center" id="room_title">
 							<div id="serch"><input type="text" id="makeroom" name="keyword"  class="intput1" placeholder="방제목을입력해주세요!"><input type="submit" id="btn1" value="검색"></div>					
              				<input type="hidden" id="m_grade" value="<%=logininfo.getM_grade()%>">
@@ -45,7 +48,7 @@
 					<div class="roomlist" id="roomtable">
 						<table class="table table-hover" >
 							<tr>
-								<td id="td_head" > <div class="td2"  style="color: #222222;">현재방 : <%=roomname %></div> </td>
+								<td id="td_head" > <div class="td2"  style="color: #222222;">현재방 :<%=roomname %></div> </td>
 							</tr>
 							<%
 								if(roomlist.size()==0){%>
@@ -85,20 +88,14 @@
 						<div id="nowroom">
 							<div id="nowroomname"><%=roomname %></div>
 						</div>
-<!-- 						<div style="max-width: 100%" class="carousel slide col-d" data-ride="carousel" data-interval="5000">
-							<div class="carousel-inner">
-								<div class="carousel-item active"><img src="/jsp_chatting_project/carrot/img/유의사항1.png"></div>
-								<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/유의사항2.png"></div>
-								<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/유의사항3.png"></div>
-							</div>
-						</div> -->
 						<div class="text-center">
 							<div id="msgbox">	<!-- 채팅창 -->
 								<!-- 채팅 메시지가 추가 되는 위치 -->
+								
 							</div>
 							<div class="row no-gutters" id="chattingserch">	<!-- 채팅입력 창  , 전송버튼 -->
 								<div class="col-md-9"><!-- 채팅입력 창 -->
-									<input id="msginput" class="form-control" type="text" placeholder="내용 입력" onkeyup="entersend();">
+									<input id="msginput" class="form-control" type="text" placeholder="내용 입력" onkeyup="entersend();" maxlength="30">
 								</div>
 								<form class="col-md-1" id="emoji" action="">
 									<a class="nav-link dropdonw-toggle text-dark" href="#" id="navbarDropdown" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" ><i class="far fa-smile-beam"></i></a>
@@ -139,6 +136,10 @@
 		var roomname = document.getElementById("roomname").value;
 		// 현재아이디
 		var loginid = document.getElementById("m_id").value;
+		// 현재 닉네임
+		var nickname = document.getElementById("m_nickname").value;
+		// 보낸사람 프사
+		var fromimg = document.getElementById("m_img").value;
 		// 채팅창자리
 		var msgbox =  document.getElementById("msgbox");
 		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
@@ -171,10 +172,10 @@
 			let today = new Date(); // js에서 현재 날짜/시간 객체 
 			var time = today.toLocaleTimeString(); // 시간만 가져오기 
 			// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
-			var msg = loginid +","+time+","+msginput;
+			var msg = nickname +","+time+","+msginput+","+fromimg;
 			// 입력된 문자 와 날짜를 채팅발 div 에 추가
 			if(count=="0"){
-				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+loginid+"님이 입장했습니다.</span></div>";
+				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+nickname+"님이 입장했습니다.</span></div>";
 				count++;
 			}
 			msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'>"+msginput+"</span></div>";
@@ -194,10 +195,10 @@
 				let today = new Date(); // js에서 현재 날짜/시간 객체 
 				var time = today.toLocaleTimeString(); // 시간만 가져오기 
 				// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
-				var msg = loginid +","+time+","+msginput;
+				var msg = nickname +","+time+","+msginput+","+fromimg;
 				// 입력된 문자 와 날짜를 채팅발 div 에 추가
 				if(count=="0"){
-					msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+loginid+"님이 입장했습니다.</span></div>";
+					msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+nickname+"님이 입장했습니다.</span></div>";
 					count++;
 				}
 				msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'>"+msginput+"</span></div>";
@@ -211,17 +212,19 @@
 			var from = event.data.split(",")[0];	// , 기준으로 문자열 분리해서 첫번째 문자열
 			var time = event.data.split(",")[1];	// , 기준으로 문자열 분리해서 두번째 문자열
 			var msg = event.data.split(",")[2];		// , 기준으로 문자열 분리해서 세번째 문자열
+			var img = event.data.split(",")[3]; 
 			if(count=="0"){
 				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>";
 				count++;
 			}
-			msgbox.innerHTML += "<div class='profile d-flex justify-content-start mx-2 my-2'>"+from+"</div>"
-			msgbox.innerHTML += "<div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div>"
+			msgbox.innerHTML += "<div class='row' style='text-align: justify;'><div class='d-flex justify-content-start profileimg'><img src='../../upload/곰.jpg'></div><div class='align-middle'><span class='my-2 mx-2'>"+from+"</span><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
 		}
 		
 	</script>
-	
+
+
+										
 	
 	<%@include file="../footer.jsp" %>
 	<script type="text/javascript">
