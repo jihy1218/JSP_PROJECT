@@ -18,24 +18,11 @@
 		}
 		String keyword = request.getParameter("keyword");
 		ArrayList<Room> roomlist = MemberDao.getmMemberDao().getroom(keyword);
-		System.out.print(folderpath+logininfo.getM_img());
 	%>
 	<input type="hidden" value="<%=logininfo.getM_id()%>" id="m_id"> <input type="hidden" value="<%=roomname%>" id="roomname">
 	<input type="hidden" value="<%=logininfo.getM_grade()%>" id="m_grade"><input type="hidden" value="<%=logininfo.getM_nickname()%>" id="m_nickname">
 	<input type="hidden" value="<%=roomname %>" id="thisroom" ><input type="hidden" value="<%=logininfo.getM_img()%>" id="m_img">
 	<input type="hidden" value="<%=folderpath %>" id="folderpath">
-	<div class="background">
-		<div class="window">
-			<div class="popup">
-				<button id="close" class="btn btn-light" style="float: right; display: block;"><span class="text-danger">X</span></button>
-				<div style=" margin: 35px 0 33px 0;">
-					<p style="font-weight: bold; text-align: center"> 채팅방 이용시 바르고 고운말부탁드립니다.<br>
-					비속어,욕설 사용시 이용이 제한 될 수 있습니다.<br>
-					즐거운 이용되세요.</p>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="container">
 		<div style="border-radius: 28px; border: solid 1px #D9D9D9; height: 750px;" class="text-center">
 			<div class="row">
@@ -110,19 +97,6 @@
 		<br><br><br><br>
 	</div>
 	<script type="text/javascript">
-		var modal = document.getElementById("thisroom").innerHTML;
-		if(modal!="자유방"){
-		  document.querySelector(".background").className = "background show";
-			
-		}
-		function close () { // modal 닫기
-		  document.querySelector(".background").className = "background";
-		}	// 백그라운드의 클래스 이름을 background show 에서 background로 바꿔서 modal이 닫히게
-
-		document.querySelector("#close").addEventListener('click', close);	
-			// querySelector는 구체적인 그룹과 일치하는 문서 안의 첫번째 엘리먼트를 반환 없으면 null 반환
-			// 설명 :  id값이라서 #show 를 클릭하면 클릭시 이벤트를 show로 설정 
-			// addEventListener은 이벤트를 등록하는 가장 권장되는 방식
 		// 방이름
 		var count=0;
 		// 파일경로
@@ -137,9 +111,6 @@
 		// 채팅창자리
 		var msgbox =  document.getElementById("msgbox");
 		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
-		if(roomname!="null"){
-			webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
-		}
 		
 		
 		webSocket.onopen = function( event ) { onOpen(event) }; // 웹소켓 실행시 메소드 
@@ -149,7 +120,6 @@
 		
 		function onOpen(event) {
 			alert(roomname + " 에 접속 되었습니다.");
-			msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+roomname+"에 입장했습니다.</span></div>";
 		}
 		function onClose(event) { 
 			alert("퇴장 했습니다.");
@@ -211,10 +181,6 @@
 				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>";
 				count++;
 			}
-			alert(from);
-			alert(time);
-			alert(msg);
-			alert(img);
 			msgbox.innerHTML += "<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><span class='my-2 mx-2'>"+from+"</span><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
 		}
