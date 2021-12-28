@@ -136,9 +136,9 @@
 		var fromimg = document.getElementById("m_img").value;
 		// 채팅창자리
 		var msgbox =  document.getElementById("msgbox");
-		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
+		var webSocket = new WebSocket("ws://localhost:8085/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
 		if(roomname!="null"){
-			webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
+			webSocket = new WebSocket("ws://localhost:8085/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
 		}
 		
 		
