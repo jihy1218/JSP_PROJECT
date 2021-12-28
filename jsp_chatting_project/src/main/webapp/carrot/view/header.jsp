@@ -32,8 +32,6 @@
 			m_no =	logininfo.getM_no();
 			m_grade = logininfo.getM_grade();
 		}
-		
-		
 	%>
 	<!-- jquery js -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>

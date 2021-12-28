@@ -8,6 +8,11 @@
 <body>
 	<%@include file="../header.jsp" %>
 	<%
+	if(logininfo!=null) {
+		out.print("<script>alert('로그인이 되어 있습니다');</script>>");
+		out.print("<script>location.href='../main.jsp';</script>");
+	}
+	
 		if(request.getParameter("logout")!=null){
 			 session.invalidate();
 		}
