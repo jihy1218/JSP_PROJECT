@@ -95,7 +95,7 @@
 							</div>
 							<div class="row no-gutters" id="chattingserch">	<!-- 채팅입력 창  , 전송버튼 -->
 								<div class="col-md-9"><!-- 채팅입력 창 -->
-									<input id="msginput" class="form-control" type="text" placeholder="내용 입력" onkeyup="entersend();">
+									<input id="msginput" class="form-control" type="text" placeholder="내용 입력" onkeyup="entersend();" maxlength="30">
 								</div>
 								<form class="col-md-1" id="emoji" action="">
 									<a class="nav-link dropdonw-toggle text-dark" href="#" id="navbarDropdown" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" ><i class="far fa-smile-beam"></i></a>
@@ -214,13 +214,9 @@
 			var msg = event.data.split(",")[2];		// , 기준으로 문자열 분리해서 세번째 문자열
 			var img = event.data.split(",")[3]; 
 			if(count=="0"){
-				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+nickname+"님이 입장했습니다.</span></div>";
+				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>";
 				count++;
 			}
-			alert(from);
-			alert(time);
-			alert(msg);
-			alert(img);
 			msgbox.innerHTML += "<div class='row' style='text-align: justify;'><div class='d-flex justify-content-start profileimg'><img src='../../upload/곰.jpg'></div><div class='align-middle'><span class='my-2 mx-2'>"+from+"</span><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
 		}
