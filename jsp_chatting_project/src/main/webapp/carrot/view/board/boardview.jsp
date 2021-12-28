@@ -12,7 +12,7 @@
 	<%@include file="../header.jsp" %>
 	
 <%
-	int b_no = Integer.parseInt(request.getParameter("b_num"));
+	int b_no = Integer.parseInt(request.getParameter("b_no"));
 	System.out.println(b_no);
 	
 	String boardviews = logininfo.getM_id()+" : " + b_no;
@@ -30,6 +30,8 @@
 	<%@include file="../friendbar.jsp" %>
 	<div class ="container">
 		<div class="row">
+			<div class="m-2"><a href="boardlist.jsp"><button class="form-control">목록</button></a></div>
+			<div class="m-2"><a href="boardupdate.jsp?b_no=<%=b_no %>"><button class="btn btn-primary">수정</button></a></div>
 			<div class="m-2"><button class="form-control">목록</button></div>
 			<div class="m-2"><a href="boardupdate.jsp?b_num=<%=b_no %>"><button class="btn btn-primary">수정</button></a></div>
 			<div class="m-2"><button class="btn btn-danger" onclick="boarddelete(<%=b_no%>)">삭제</button></div>
@@ -52,8 +54,6 @@
 				<td colspan="2"></td>
 			</tr>
 		</table>
-		
-		<a href="boardupdate.jsp" ><button class="btn btn-primary">수정하기</button></a>
 		<br><br><br>
 		<form action="../../controller/replywritecontroller.jsp" method="post" class="row">
 			<input type="hidden" name="b_no" value="<%=b_no%>">
@@ -80,9 +80,9 @@
 				<th><%=reply.getM_no() %>
 				<th><%=reply.getR_contents() %>
 				<th><%=reply.getR_date() %>
-				<th><a href="../../controller/replydeletecontroller.jsp?r_no=<%=reply.getR_no()%>&b_no=<%=reply.getB_no()%>">
+				<th>
+				<a href="../../controller/replydeletecontroller.jsp?r_no=<%=reply.getR_no()%>&b_no=<%=reply.getB_no()%>">
 				<button class="btn btn-danger">삭제</button>
-				
 				</a>
 			</tr>
 			<% } %>

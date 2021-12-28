@@ -205,7 +205,7 @@ public class BoardDao extends DB {
 	
 	// 게시물 수정
 	public boolean boardupdate(Board board) {
-		String sql = "update board set b_title = ?, b_contents=? where b_no = ?";
+		String sql = "update board set b_title=?, b_contents=? where b_no=?";
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, board.getB_title());
@@ -215,10 +215,6 @@ public class BoardDao extends DB {
 			return true;
 		} catch (Exception e) {System.out.println("게시물 수정 오류");} return false;
 	}
-	
-	
-	
-
 	
 
 	

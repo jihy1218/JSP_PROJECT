@@ -7,6 +7,7 @@
     pageEncoding="UTF-8"%>
 
 <%
+	request.setCharacterEncoding("utf-8");
 	String r_contents = request.getParameter("r_contents");
 	int b_no = Integer.parseInt(request.getParameter("b_no"));
 	
