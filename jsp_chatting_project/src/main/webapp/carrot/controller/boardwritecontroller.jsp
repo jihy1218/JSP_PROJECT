@@ -1,3 +1,4 @@
+<%@page import="dto.Login"%>
 <%@page import="dao.BoardDao"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
@@ -12,11 +13,10 @@
 	String contents = multi.getParameter("content");
 	
 	title = title.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\S)*(/)?", "");
-	contents = contents.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
+	/* contents = contents.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>"); */
 	// String file = multi.getFilesystemName("file");
 	
-	Member login = (Member)session.getAttribute("login");
-	int m_no = login.getM_no();
+	int m_no = Integer.parseInt((multi.getParameter("m_no")));
 	
 	Board board = new Board(title, contents, m_no);
 

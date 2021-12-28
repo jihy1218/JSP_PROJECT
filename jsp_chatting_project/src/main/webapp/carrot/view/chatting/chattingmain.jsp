@@ -23,6 +23,7 @@
 	<input type="hidden" value="<%=logininfo.getM_id()%>" id="m_id"> <input type="hidden" value="<%=roomname%>" id="roomname">
 	<input type="hidden" value="<%=logininfo.getM_grade()%>" id="m_grade"><input type="hidden" value="<%=logininfo.getM_nickname()%>" id="m_nickname">
 	<input type="hidden" value="<%=roomname %>" id="thisroom" ><input type="hidden" value="<%=logininfo.getM_img()%>" id="m_img">
+	<input type="hidden" value="<%=folderpath %>" id="folderpath">
 	<div class="background">
 		<div class="window">
 			<div class="popup">
@@ -94,18 +95,9 @@
 								
 							</div>
 							<div class="row no-gutters" id="chattingserch">	<!-- 채팅입력 창  , 전송버튼 -->
-								<div class="col-md-9"><!-- 채팅입력 창 -->
+								<div class="col-md-10"><!-- 채팅입력 창 -->
 									<input id="msginput" class="form-control" type="text" placeholder="내용 입력" onkeyup="entersend();" maxlength="30">
 								</div>
-								<form class="col-md-1" id="emoji" action="">
-									<a class="nav-link dropdonw-toggle text-dark" href="#" id="navbarDropdown" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false" ><i class="far fa-smile-beam"></i></a>
-									<select class="dropdown-menu"><!-- 드랍다운메뉴 -->
-										<a class="dropdown-item"><i class="far fa-smile-beam"></i></a><!-- 드랍다운 아이템 -->
-										<a class="dropdown-item"><i class="far fa-surprise"></i></a>
-										<a class="dropdown-item"><i class="far fa-sad-cry"></i></a>
-										<a class="dropdown-item"><i class="far fa-grin-squint-tears"></i></a>	
-									</select> <!-- 버튼들을a태그로 할지 생각해봐야함 -->
-								</form>
 								<div class="col-md-2">	<!-- 전송버튼 -->
 									<button id="btnmsginput" class="form-control" onclick="btnsend();">전송</button>
 								</div>
@@ -133,6 +125,8 @@
 			// addEventListener은 이벤트를 등록하는 가장 권장되는 방식
 		// 방이름
 		var count=0;
+		// 파일경로
+		var folderpath = document.getElementById("folderpath").value;
 		var roomname = document.getElementById("roomname").value;
 		// 현재아이디
 		var loginid = document.getElementById("m_id").value;
@@ -217,7 +211,11 @@
 				msgbox.innerHTML += "<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>";
 				count++;
 			}
-			msgbox.innerHTML += "<div class='row' style='text-align: justify;'><div class='d-flex justify-content-start profileimg'><img src='../../upload/곰.jpg'></div><div class='align-middle'><span class='my-2 mx-2'>"+from+"</span><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
+			alert(from);
+			alert(time);
+			alert(msg);
+			alert(img);
+			msgbox.innerHTML += "<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><span class='my-2 mx-2'>"+from+"</span><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
 		}
 		
