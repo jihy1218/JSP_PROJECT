@@ -1,15 +1,5 @@
 package dto;
 
-import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
 public class Member {
 	
 	// 필드
@@ -22,14 +12,13 @@ public class Member {
     private String m_phone; 
     private int m_grade; 
     private int m_logincheck; 
-    private int m_enter; 
-       
+    private String m_img;
     //빈생성자
     public Member() {}
     
     //풀생성자
     public Member(int m_no, String m_id, String m_nickname, String m_password, String m_name, String m_email,
-    	String m_phone, int m_grade, int m_logincheck, int m_enter) {
+    	String m_phone, int m_grade, int m_logincheck,String m_img) {
         this.m_no = m_no;
         this.m_id = m_id;
         this.m_nickname = m_nickname;
@@ -39,15 +28,13 @@ public class Member {
         this.m_phone = m_phone;
         this.m_grade = m_grade;
         this.m_logincheck = m_logincheck;
-        this.m_enter = m_enter;
+        this.m_img = m_img;
     }
     
     //회원가입 생성자
-	public int getM_no() {return m_no;}
     public Member(String m_id, String m_nickname, String m_password, String m_name,
     		String m_email, String m_phone,
-			int m_grade, int m_logincheck, int m_enter) {
-		super();
+			int m_grade, int m_logincheck, String m_img) {
 		this.m_id = m_id;
 		this.m_nickname = m_nickname;
 		this.m_password = m_password;
@@ -56,18 +43,25 @@ public class Member {
 		this.m_phone = m_phone;
 		this.m_grade = m_grade;
 		this.m_logincheck = m_logincheck;
-		this.m_enter = m_enter;
+		this.m_img = m_img;
+	}
+    // 회원 수정시 생성자
+    public Member(String m_id,String m_nickname, String m_password, String m_img) {
+    	this.m_id = m_id;
+		this.m_nickname = m_nickname;
+		this.m_password = m_password;
+		this.m_img = m_img;
 	}
     
     // 로그인
     public Member(int m_no, String m_id) {
-		super();
 		this.m_no = m_no;
 		this.m_id = m_id;
 	}
   
     // get, set 메소드
 
+	public int getM_no() {return m_no;}
 	public void setM_no(int m_no) {this.m_no = m_no;}
 	public String getM_id() {return m_id;}
     public void setM_id(String m_id) {this.m_id = m_id;}
@@ -85,33 +79,7 @@ public class Member {
     public void setM_grade(int m_grade) {this.m_grade = m_grade;}
     public int getM_logincheck() {return m_logincheck;}
     public void setM_logincheck(int m_logincheck) {this.m_logincheck = m_logincheck;}
-    public int getM_enter() {return m_enter;}
-    public void setM_enter(int m_enter) {this.m_enter = m_enter;}
-    
-    // email 전송 메소드
- 	public static void sendmail(String tomail , String msg) {
- 		// 보낸사람 정보			// 받는사람 // 메일내용 // 메일타입
- 		String fromemail = "kimji1218@naver.com";
- 		String frompassword = "";
- 		Properties properties = new Properties();
- 		properties.put("mail.smtp.host", "smtp.naver.com");
- 		properties.put("mail.smtp.port", 465);
- 		properties.put("mail.smtp.auth", true);
- 		Session session = Session.getDefaultInstance(properties, new Authenticator() {
- 			// 익명구현객체
- 			@Override
- 			protected PasswordAuthentication getPasswordAuthentication() {
- 				return new PasswordAuthentication(fromemail, frompassword);
- 			}
- 		});
- 		try {
- 			MimeMessage message = new MimeMessage(session);
- 			message.setFrom(new InternetAddress(fromemail));
- 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(tomail));
- 			message.setSubject("회원님의 비밀번호 결과");
- 			message.setText("회원님의 비밀번호 : "+ msg);
- 			Transport.send(message);
- 		} catch (Exception e) { }
- 	}
-	
+    public String getM_img() {return m_img;}
+	public void setM_img(String m_img) {this.m_img = m_img;}
+
 }
