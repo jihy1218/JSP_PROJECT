@@ -41,7 +41,7 @@ public class MemberDao extends DB {
 						resultSet.getString(2), resultSet.getString(3),
 						resultSet.getString(4), resultSet.getString(5),
 						resultSet.getString(6), resultSet.getString(7),
-						resultSet.getInt(8), resultSet.getInt(9), resultSet.getInt(10));
+						resultSet.getInt(8), resultSet.getInt(9), resultSet.getString(10));
 				return member;
 			} else {
 				return null;
@@ -75,7 +75,7 @@ public class MemberDao extends DB {
 			if(resultSet.next()) {
 				member = new Member(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), 
 						resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7),
-						resultSet.getInt(8), resultSet.getInt(9), resultSet.getInt(10));
+						resultSet.getInt(8), resultSet.getInt(9), resultSet.getString(10));
 				return member;
 			}
 		} catch (Exception e) {
@@ -83,6 +83,32 @@ public class MemberDao extends DB {
 		}
     	return member;
     }
+    
+	// 회원번호 검색 메소드 
+	public int getmembernum( String id) {
+		
+		String sql ="select m_no from member where m_id=?";
+		try {
+		    preparedStatement =connection.prepareStatement(sql); preparedStatement.setString(1, id);
+		    resultSet = preparedStatement.executeQuery(); 
+			if( resultSet.next() ) { return resultSet.getInt(1); }
+		}catch (Exception e) {} return 0;
+		
+	}
+	//회원번호로 회원아이디 검색 메소드
+	public String getmemberid(int m_no) {
+	    String sql = "select m_id from member where m_no=?";
+	    try {
+		preparedStatement =connection.prepareStatement(sql);
+		preparedStatement.setInt(1, m_no);
+		resultSet=preparedStatement.executeQuery();
+		if(resultSet.next()) {
+		    return resultSet.getString(1);
+		}
+	    } catch (Exception e) {}return null;
+		
+	  
+	}
     
     //친구 정보 가져오기
     public Member getlogin(int m_no ,int m_logincheck){
@@ -94,7 +120,7 @@ public class MemberDao extends DB {
 			if(resultSet.next()) {
 				member = new Member(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), 
 						resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7),
-						resultSet.getInt(8), resultSet.getInt(9), resultSet.getInt(10));
+						resultSet.getInt(8), resultSet.getInt(9), resultSet.getString(10));
 				return member;
 			}
 		} catch (Exception e) {
@@ -150,8 +176,9 @@ public class MemberDao extends DB {
 		}
 		return null;
 	}
-  public boolean signup(Member member) {
-    	String sql = "insert into member(m_id,m_nickname,m_password,m_name,m_email,m_phone,m_grade,m_logincheck,m_enter)values(?,?,?,?,?,?,?,?,?)";
+	// 회원가입
+	public boolean signup(Member member) {
+    	String sql = "insert into member(m_id,m_nickname,m_password,m_name,m_email,m_phone,m_grade,m_logincheck,m_img)values(?,?,?,?,?,?,?,?,?)";
     	try {
 			preparedStatement= connection.prepareStatement(sql);
 			preparedStatement.setString(1, member.getM_id());
@@ -162,7 +189,7 @@ public class MemberDao extends DB {
 			preparedStatement.setString(6, member.getM_phone());
 			preparedStatement.setInt(7, member.getM_grade());
 			preparedStatement.setInt(8, member.getM_logincheck());
-			preparedStatement.setInt(9, member.getM_enter());
+			preparedStatement.setString(9, member.getM_img());
 			preparedStatement.executeUpdate();
 			return true;
 			
@@ -170,11 +197,29 @@ public class MemberDao extends DB {
 			System.out.println("signup DB오류");
 		}return false;
     }
+	// 회원수정
+	public boolean memberupdate(Member member) {
+		String sql = "update member set m_nickname=?, m_password=? , m_img=? where m_id=?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, member.getM_nickname());
+			preparedStatement.setString(2, member.getM_password());
+			preparedStatement.setString(3, member.getM_img());
+			preparedStatement.setString(4, member.getM_id());
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {	} return false;
+	}
   
   	// 채팅방 가져오기 
-	public ArrayList<Room> getroom(){
+	public ArrayList<Room> getroom(String keyword){
 		ArrayList<Room> room = new ArrayList<Room>();
-		String sql = "SELECT * FROM carrot.room";
+		String sql = null;
+		if(keyword==null) {
+			sql = "select * from room order by r_no desc";
+		}else if(keyword!=null) {
+			sql="select * from room where r_name like '%"+keyword+"%' order by r_no desc";
+		}
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			resultSet= preparedStatement.executeQuery();
@@ -191,7 +236,7 @@ public class MemberDao extends DB {
 	
 	// 채팅방 만들기
 	public boolean makeroom(String roomname) {
-		String sql = "insert into room(r_name , r_count) value(?,1)";
+		String sql = "insert into room(r_name , r_count)values(?,1)";
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, roomname);

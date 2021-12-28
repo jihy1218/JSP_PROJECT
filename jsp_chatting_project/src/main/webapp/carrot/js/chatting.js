@@ -77,7 +77,7 @@ function makeroom(){
 			})
 	}
 }
-
+	//빠른입장
 	function quickenter() {
 		
 		$.ajax({
@@ -85,6 +85,7 @@ function makeroom(){
 		});
 				
 	}
+	// 검색 버튼
 
 
 

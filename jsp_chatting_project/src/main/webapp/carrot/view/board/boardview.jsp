@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<%@include file="../header.jsp" %>
@@ -33,6 +32,8 @@
 		<div class="row">
 			<div class="m-2"><a href="boardlist.jsp"><button class="form-control">목록</button></a></div>
 			<div class="m-2"><a href="boardupdate.jsp?b_no=<%=b_no %>"><button class="btn btn-primary">수정</button></a></div>
+			<div class="m-2"><button class="form-control">목록</button></div>
+			<div class="m-2"><a href="boardupdate.jsp?b_num=<%=b_no %>"><button class="btn btn-primary">수정</button></a></div>
 			<div class="m-2"><button class="btn btn-danger" onclick="boarddelete(<%=b_no%>)">삭제</button></div>
 		</div>
 		

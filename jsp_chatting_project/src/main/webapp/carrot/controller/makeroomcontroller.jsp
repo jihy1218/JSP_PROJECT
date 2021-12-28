@@ -10,7 +10,7 @@
 		out.print(title);
 	}
 	String makeroom = request.getParameter("makeroom");
-	ArrayList<Room> roomlist = MemberDao.getmMemberDao().getroom();
+	ArrayList<Room> roomlist = MemberDao.getmMemberDao().getroom(null);
 	boolean check = true;
 	for(Room room : roomlist){
 		if(room.getR_name().equals(makeroom)){

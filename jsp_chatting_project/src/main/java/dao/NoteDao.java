@@ -33,12 +33,12 @@ public class NoteDao extends DB {
 	}
 	
 	//쪽지 총 개수 반환 
-	public int notecount(int n_from) {
+	public int notecount(int n_from ,int n_to) {
 		String sql ;
 		if(n_from==0) {
-			sql="select count(*) from note";
+			sql="select count(*) from note where n_to="+n_to;
 		}else {
-			sql="select count(*) from note where n_from="+n_from;
+			sql="select count(*) from note where n_from="+n_from+" and n_to="+n_to;
 		}
 		try {
 			preparedStatement=connection.prepareStatement(sql);

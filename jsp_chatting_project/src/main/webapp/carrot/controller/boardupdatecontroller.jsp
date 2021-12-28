@@ -16,7 +16,7 @@
 	title = title.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\S)*(/)?", "");
 	contents = contents.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
 	
-	int b_no = Integer.parseInt(multi.getParameter("b_no"));
+	int b_no = Integer.parseInt(multi.getParameter("b_num"));
 	Board board = new Board(b_no, title, contents);
 	boolean result = BoardDao.getboardDao().boardupdate(board);
 	

@@ -6,9 +6,6 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	
-	
-	
 	<%@include file="../header.jsp" %>
 	<%
 		if(request.getParameter("logout")!=null){
@@ -34,10 +31,10 @@
 					<a href="/jsp_chatting_project/carrot/view/member/findid.jsp" style="font-size: 0.7rem;">아이디/비밀번호 찾기</a> 
 				</div>
 				<div class="my-2">
-					<button class="btn btn-lg btn-block" onclick="login()" style="background: #3f7d1b; color: #ffaa21;">로그인</button>
+					<button class="btn btn-lg btn-block" onclick="login()" style="background: #3f7d1b; color: white;">로그인</button>
 				</div>
 				<div style="text-align: center; ">
-					<p style="font-size: 1rem;">당근회원이 아니신가요?<a href="signup.jsp" style="font-size: 1.2rem;">회원가입</a> 
+					<p style="font-size: 1rem;">당근회원이 아니신가요?<a href="signup.jsp" style="font-size: 1.0rem;">회원가입</a> 
 				</div>
 			</div>
 		</div>

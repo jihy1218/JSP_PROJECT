@@ -1,15 +1,20 @@
 package dto;
 
+import dao.MemberDao;
+
 public class Board {
+
 
   private int b_no;
   private String b_title;
   private String b_contents;
   private String b_file;
-  private int m_no;
-  private String b_date;
-  private int b_view;
-  private int b_like;
+	private int m_no;
+	private String b_date;
+	private int b_view;
+	private int b_like;
+	private String b_writer;
+
 	
 	public Board() { }
 	
@@ -25,6 +30,7 @@ public class Board {
 		this.b_date = b_date;
 		this.b_view = b_view;
 		this.b_like = b_like;
+		this.b_writer=MemberDao.getmMemberDao().getmemberid(m_no);
 	}
 
 	// 등록 생성자
@@ -107,5 +113,11 @@ public class Board {
 
 	public void setB_like(int b_like) {
 		this.b_like = b_like;
+	}
+	public String getB_writer() {
+		return b_writer;
+	}
+	public void setB_writer(String b_writer) {
+		this.b_writer = b_writer;
 	}
 }

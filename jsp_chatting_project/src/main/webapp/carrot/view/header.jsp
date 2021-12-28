@@ -18,7 +18,9 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"> <!-- 아이콘 불러오는 css -->
 		<!-- 글쓰기 호출 -->
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-  
+ 	 	<!-- 폰트 -->
+ 	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 <body>
 	<%	
@@ -55,39 +57,40 @@
   	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
   	<!-- 글쓰기 js 호출 -->
   	<script src="/jsp_chatting_project/carrot/js/board.js"></script>
+  	
 	
-	<div class="container">
+	<div class="container" >
 		<div class="row justify-content-between align-items-center">
-			<div class="col-3 offset-4 text-center mt-2">
+			<div class="col-3 offset-4 text-center mt-2" id="headtext" style="color: #66D965;">
 				<%if(logininfo!=null){ %>
-				<a href="/jsp_chatting_project/carrot/view/chatting/chattingmain.jsp"><img src="/jsp_chatting_project/carrot/img/당근후보3.png" style="max-width: 100%"></a>
+				<a href="/jsp_chatting_project/carrot/view/chatting/chattingmain.jsp" style="color: #66D965;"> <img alt="" src="/jsp_chatting_project/carrot/img/당근이.png" style="width: 20%;">당근</a>
 				<%}else{ %>
-				<img src="/jsp_chatting_project/carrot/img/당근후보3.png" style="max-width: 100%">
+				<p style="color: #66D965;"><img alt="" src="/jsp_chatting_project/carrot/img/당근이.png" style="width: 20%;">당근
 				<%} %>
 			</div>
-			<div class="col-5 d-flex justify-content-end align-items-center">
+			<div class="col-5 d-flex justify-content-end align-items-center" style="padding-top: 50px; ">
 				<ul class="nav header-topmenu">	<!-- 로그인 했을때 랑 안했을때 구별해서 해야합니다. 나중에 수정해야함 (12.15 15:58)-->
 					<%
 						if(session.getAttribute("login")!=null) {
 					%>
-					<li style="color : #ff7915; " ><%
+					<li style="color : #F5B638 " ><%
 						String grade;
 						if(logininfo.getM_grade()==1){
-								grade = "일반회원";%>
+								grade = "일반회원🥕";%>
 						<%=grade %>
 						<%}else if(logininfo.getM_grade()==2){
-							grade = "프리미엄회원";%>
+							grade = "프리미엄회원👑";%>
 						<%=grade %>
 						<%}	%>
 					</li>
-					<li class="text-success mx-1"><%=logininfo.getM_nickname() %>님<span style="color: black;"> | </span></li>
-					<li><a href="/jsp_chatting_project/carrot/view/board/boardlist.jsp" class="text-success mx-1">게시판</a>|</li>
-					<li><a href="/jsp_chatting_project/carrot/view/member/myinfo.jsp" class="text-success mx-1">내정보</a>|</li>
-					<li><a href="/jsp_chatting_project/carrot/view/note/notelist.jsp" class="text-success mx-1">쪽지</a>|</li>
-					<li><a href="/jsp_chatting_project/carrot/controller/logoutcontroller.jsp" class="text-success mx-1">로그아웃</a>|</li>
+					<li class="text-dark mx-2"><%=logininfo.getM_nickname() %>님</li>
+					<li><a href="/jsp_chatting_project/carrot/view/board/boardlist.jsp" class="mx-2" style="color: #707070;">게시판</a></li>
+					<li><a href="/jsp_chatting_project/carrot/view/member/myinfo.jsp" class="mx-2" style="color: #707070;">내정보</a></li>
+					<li><a href="/jsp_chatting_project/carrot/view/note/notelist.jsp" class="mx-2" style="color: #707070;">쪽지</a></li>
+					<li><a href="/jsp_chatting_project/carrot/controller/logoutcontroller.jsp" class="mx-2" style="color: #707070;">로그아웃</a></li>
 					<% }else{ %>
-					<li><a href="/jsp_chatting_project/carrot/view/member/login.jsp" class="text-success mx-1">로그인</a>|</li>
-					<li><a href="/jsp_chatting_project/carrot/view/member/signup.jsp" class="text-success mx-1">회원가입</a></li>
+					<li><a href="/jsp_chatting_project/carrot/view/member/login.jsp" class="mx-2" style="color: #707070;">로그인</a></li>
+					<li><a href="/jsp_chatting_project/carrot/view/member/signup.jsp" class="mx-2" style="color: #707070;">회원가입</a></li>
 					<%} %>
 				</ul>
 			</div>	
