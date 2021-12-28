@@ -19,7 +19,7 @@ public class BoardDao extends DB {
 			preparedStatement.setInt(3, board.getM_no());
 			preparedStatement.executeUpdate();
 			return true;
-		} catch (Exception e) {System.out.println("게시물 작성 오류");} return false;
+		} catch (Exception e) {System.out.println("게시물 작성 오류:"+e);} return false;
 	}
 	
 //	// 모든 게시물 출력

@@ -5,18 +5,18 @@
 <%@page import="dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	String folderpath = request.getSession().getServletContext().getRealPath("carrot/upload");
-	MultipartRequest multi = new MultipartRequest(request, folderpath, 1024*1024*10,"UTF-8", new DefaultFileRenamePolicy());
+	//String folderpath = request.getSession().getServletContext().getRealPath("carrot/upload");
+	//MultipartRequest multi = new MultipartRequest(request, folderpath, 1024*1024*10,"UTF-8", new DefaultFileRenamePolicy());
+	request.setCharacterEncoding("utf-8");
+	String title = request.getParameter("title");
+	String contents = request.getParameter("content");
 	
-	String title = multi.getParameter("title");
-	String contents = multi.getParameter("content");
-	
-	title = title.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\S)*(/)?", "");
-	contents = contents.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
+	//title = title.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\S)*(/)?", "");
+	//contents = contents.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
 	// String file = multi.getFilesystemName("file");
 	
-	Member login = (Member)session.getAttribute("login");
-	int m_no = login.getM_no();
+	int m_no = Integer.parseInt(request.getParameter("m_no"));
+	
 	
 	Board board = new Board(title, contents, m_no);
 
