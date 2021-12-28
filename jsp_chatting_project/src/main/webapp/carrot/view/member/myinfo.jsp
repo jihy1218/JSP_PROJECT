@@ -10,9 +10,9 @@
 	<%@include file="../header.jsp" %>
 	<%@include file="../friendbar.jsp" %>
 	<%
-		//친구 목록
-		friends = FriendDao.getFriendDao().getfriendelist(m_no,2);
-		//친구목록 받아와서
+		//차단 목록
+		friends = FriendDao.getFriendDao().getfriendelist(m_no,4);
+		//차단 받아와서
 		ArrayList<Member> blocklist = new ArrayList<>();
 		for(Friend temp : friends){
 			Member member = MemberDao.getmMemberDao().getinfo(temp.getM_no2());

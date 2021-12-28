@@ -298,6 +298,22 @@ public class MemberDao extends DB {
 			}
 		} catch (Exception e) {	} return null;
 	}
+	
+	//닉네임으로 아이디 찾기
+	public String getidfromnick(String nickname) {
+		String sql = "select m_id from member where m_nickname=?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, nickname);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getString(1);
+			}
+		} catch (Exception e) {
+			System.out.println("getidfromnick db 오류");
+		}
+		return null;
+	}
   
 }
 
