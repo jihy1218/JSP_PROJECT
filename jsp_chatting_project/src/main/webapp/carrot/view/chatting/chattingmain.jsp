@@ -47,7 +47,7 @@
 			<div class="row">
 				<div class="col-lg-4" style="">
 					<div  style="height: 116px;">
-						<form action="chattingmain.jsp?search=<%=keyword %>" class="text-center" id="room_title">
+						<form action="chattingmain.jsp?roomname=<%=roomname %>&search=<%=keyword %>" class="text-center" id="room_title">
 							<div id="serch"><input type="text" id="makeroom" name="keyword"  class="intput1" placeholder="방제목을입력해주세요!"><input type="submit" id="btn1" value="검색"></div>					
              				<input type="hidden" id="m_grade" value="<%=logininfo.getM_grade()%>">
 						</form>
@@ -57,8 +57,6 @@
 							<tr>
 								<td id="td_head" > <div class="td2"  style="color: #222222;">현재방 :<%=roomname %></div> </td>
 							</tr>
-							<%//if(!roomname.equals("자유방")){ %>
-							<%//} %>
 							<%
 								if(roomlist.size()==0){%>
 								<tr>
@@ -143,7 +141,7 @@
 		
 		var blocknames = document.getElementById("blocknames").value;
 		
-		var webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid+"/"+blocknames);
+		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid+"/"+blocknames);
 		
 		webSocket.onopen = function( event ) { onOpen(event) }; // 웹소켓 실행시 메소드 
 		webSocket.onclose = function( event ) { onClose(event) }; // 웹소켓 종료시 메소드 
@@ -218,9 +216,8 @@
 				msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 퇴장했습니다.</span></div>"
 			}
 			else{
-				msgbox.innerHTML += "<div class='row' style='text-align: justify;'><div class='d-flex justify-content-start profileimg'><img src='../../upload/곰.jpg'></div><div class='align-middle'><a href='#none' class='my-2 mx-2' id='you' onclick='blockuser()'>"+from+"</a><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
+				msgbox.innerHTML += "<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><a href='#none' class='my-2 mx-2' id='you' onclick='blockuser()'>"+from+"</a><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 			}
-			msgbox.innerHTML += "<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><span class='my-2 mx-2'>"+from+"</span><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
 
 		}
