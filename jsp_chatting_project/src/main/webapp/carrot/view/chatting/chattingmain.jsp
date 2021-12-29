@@ -23,6 +23,14 @@
 	<input type="hidden" value="<%=logininfo.getM_grade()%>" id="m_grade"><input type="hidden" value="<%=logininfo.getM_nickname()%>" id="m_nickname">
 	<input type="hidden" value="<%=roomname %>" id="thisroom" ><input type="hidden" value="<%=logininfo.getM_img()%>" id="m_img">
 	<input type="hidden" value="<%=folderpath %>" id="folderpath">
+    <div class="background">
+      <div class="window">
+        <div class="popup">
+          <button class="btn btn-danger col-md-1 offset-11" style="border-radius: 9px;" id="close">X</button>
+          <p class="text-center" style="font-weight: bold;">바르고 고운말 사용해주세요!<br>무심코 뱉은 말 한마디!<br>상대방에겐 상처입니다.
+        </div>
+      </div>
+    </div>
 	<div class="container">
 		<div style="border-radius: 28px; border: solid 1px #D9D9D9; height: 750px;" class="text-center">
 			<div class="row">
@@ -97,6 +105,15 @@
 		<br><br><br><br>
 	</div>
 	<script type="text/javascript">
+		var modal = document.getElementById("thisroom").value;
+		if(modal!="자유방"){
+			document.querySelector(".background").className = "background show";
+		}
+		function close () { 
+			document.querySelector(".background").className = "background";
+		}
+
+		document.querySelector("#close").addEventListener('click', close);
 		// 방이름
 		var count=0;
 		// 파일경로
@@ -111,7 +128,6 @@
 		// 채팅창자리
 		var msgbox =  document.getElementById("msgbox");
 		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid);
-		
 		
 		webSocket.onopen = function( event ) { onOpen(event) }; // 웹소켓 실행시 메소드 
 		webSocket.onclose = function( event ) { onClose(event) }; // 웹소켓 종료시 메소드 

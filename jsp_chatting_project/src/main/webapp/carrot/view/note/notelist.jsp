@@ -78,9 +78,9 @@
 						<li class="page-item"><a href="notelist.jsp?pagenum=<%=i %>&n_from=<%=n_from %>" class="page-link"> <%=i %> </a> </li>
 					<%} %>
 					<%if(currentpage == lastpage){ %>
-						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage%>&n_from=<%=n_from %>" class="page-link"> 이전 </a> </li>
+						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage%>&n_from=<%=n_from %>" class="page-link"> 다음 </a> </li>
 					<%}else{ %>
-						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage+1 %>&n_from=<%=n_from %>" class="page-link"> 이전 </a> </li>
+						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage+1 %>&n_from=<%=n_from %>" class="page-link"> 다음 </a> </li>
 					<%} %>
 				</ul>
 			</div>
