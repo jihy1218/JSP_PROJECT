@@ -6,11 +6,13 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	
-	
-	
 	<%@include file="../header.jsp" %>
 	<%
+	if(logininfo!=null) {
+		out.print("<script>alert('로그인이 되어 있습니다');</script>>");
+		out.print("<script>location.href='/jsp_chatting_project/carrot/view/chatting/chattingmain.jsp';</script>");
+	}
+	
 		if(request.getParameter("logout")!=null){
 			 session.invalidate();
 		}

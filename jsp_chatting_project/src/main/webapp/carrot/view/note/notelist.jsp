@@ -40,9 +40,9 @@
 	%>
 	
 	<div class="container">
-		<h3> 쪽지함 </h3>
+		<h3 style="color : navy;"> 쪽지함 </h3>
 		<br><br>
-		<button class="btn-primary" onclick="shownote()">쪽지보내기</button>
+		<button class="btn-primary btn my-3 float-right" onclick="shownote()">쪽지보내기</button>
 		<table class="table">
 			<tr style="border-top: solid 2px navy; border-bottom: solid 1.5px navy;">
 				<th> 확인 </th> <th> 내용 </th> <th> 보낸사람 </th> <th> 작성일 </th> <th> 삭제 </th>
@@ -62,7 +62,7 @@
 				<%} %>
 				<td><%=MemberDao.getmMemberDao().getnickname(noteList.get(i).getN_from())%></td>
 				<td><%=noteList.get(i).gettime() %></td>
-				<td> <button class="btn-danger" onclick="notedelete(<%=noteList.get(i).getN_no()%>)">삭제</button> </td>	
+				<td> <button class="btn btn-danger" onclick="notedelete(<%=noteList.get(i).getN_no()%>)">삭제</button> </td>	
 			</tr>		
 			<% }%>		
 		</table>
@@ -78,9 +78,9 @@
 						<li class="page-item"><a href="notelist.jsp?pagenum=<%=i %>&n_from=<%=n_from %>" class="page-link"> <%=i %> </a> </li>
 					<%} %>
 					<%if(currentpage == lastpage){ %>
-						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage%>&n_from=<%=n_from %>" class="page-link"> 이전 </a> </li>
+						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage%>&n_from=<%=n_from %>" class="page-link"> 다음 </a> </li>
 					<%}else{ %>
-						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage+1 %>&n_from=<%=n_from %>" class="page-link"> 이전 </a> </li>
+						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage+1 %>&n_from=<%=n_from %>" class="page-link"> 다음 </a> </li>
 					<%} %>
 				</ul>
 			</div>

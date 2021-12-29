@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<%@include file="../header.jsp" %>
@@ -19,13 +18,14 @@
 	<br>
 	
 	<div class="container">
-	<form action="/jsp_chatting_project/carrot/view/board/boardview.jsp" method="POST">
+	<form action="/jsp_chatting_project/carrot/controller/boardupdatecontroller.jsp" method="POST" enctype="multipart/form-data">
 		<div class="form-group">
-			<label for="title">Title: </label>
+		<input type="hidden" name="b_no" value="<%=b_no%>">
+			<label for="title">Title : </label>
 			<input type="text" class="form-control" placeholder="<%=board.getB_title() %>" id="title" name="title">
 		</div>
 		<div class="form-group">
-			<label for="content">Content:</label>
+			<label for="content">Content :</label>
 			<textarea class="form-control" rows="5" id="summernote" name="content"></textarea>
 		</div>
 		<div class ="text-right">
@@ -37,17 +37,14 @@
 
   <script>
     $('#summernote').summernote({
-      placeholder:'내용을 작성해주세요',
+      placeholder:'<%=board.getB_contents() %>',
       tabsize:2, //탭 두번
       height:400
     });
   </script>
 
 
-
-	
 <%@include file="../footer.jsp" %>
-
 
 </body>
 </html>

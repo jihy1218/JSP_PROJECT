@@ -10,9 +10,9 @@
 	
 	if(result) {
 		out.print("<script>alert('댓글삭제 되었습니다');</script>");
-		out.println("<script>location.href='../view/board/boardview.jsp?b_num="+b_no+"';</script>");
+		out.println("<script>location.href='../view/board/boardview.jsp?b_no="+b_no+"';</script>");
 	} else {
 		out.print("<script>alert('[관리자 문의] 댓글삭제 오류');</script>");
-		out.println("<script>location.href='../view/board/boardview.jsp?b_num="+b_no+"';</script>");
+		out.println("<script>location.href='../view/board/boardview.jsp?b_no="+b_no+"';</script>");
 	}
 %>

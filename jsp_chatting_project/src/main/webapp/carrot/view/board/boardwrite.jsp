@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<%@include file="/carrot/view/header.jsp" %>
@@ -12,7 +11,9 @@
 	<br>
 	<div class="container">
 	<form action="../../controller/boardwritecontroller.jsp" method="post" enctype="multipart/form-data">
+		<input type="hidden" value=<%=logininfo.getM_no() %> name="m_no">
 		<div class="form-group">
+			<input type ="text" value="<%=logininfo.getM_no() %>" name="m_no">
 			<label for="title">Title :</label>
 			<input type="text" class="form-control" placeholder="title" id="title" name="title">
 		</div>

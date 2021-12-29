@@ -19,7 +19,7 @@ public class BoardDao extends DB {
 			preparedStatement.setInt(3, board.getM_no());
 			preparedStatement.executeUpdate();
 			return true;
-		} catch (Exception e) {System.out.println("게시물 작성 오류");} return false;
+		} catch (Exception e) {System.out.println("게시물 작성 오류:"+e);} return false;
 	}
 	
 //	// 모든 게시물 출력
@@ -60,19 +60,48 @@ public class BoardDao extends DB {
 	// 모든 게시물 출력
 
 
-		public ArrayList<Board> boardlist(int startrow, int listsize, String key, String keyword){
+		public ArrayList<Board> boardlist(int startrow, int listsize, String key, String keyword, int type ){
 		    ArrayList<Board>boards= new ArrayList<Board>();
 		    String sql = null;
-		    if(key ==null && keyword ==null) {// 검색이 없을경우
-			sql = "select* from board order by b_no DESC limit ?, ?";
-		    }else {// 검색이 있을경우
-			if(key.equals("b_writer")) {
-			  int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
-			    sql = "select * from board where m_no ="+m_no+" order by b_no desc limit ? , ?";
-			}else if(key.equals(keyword)) {// 반호 검색 일치한 값만 검색
-			    sql ="select * from board where b_no ="+keyword;
-			}else {									//제목 혹은 내용 검색 : 포함된 값검색
-			    sql ="select * from board where "+key+" like '%"+keyword+"%' order by b_no desc limit ? , ?";
+		    if(type==1) {
+			if(key ==null && keyword ==null) {// 검색이 없을경우
+			    sql = "select * from board order by b_no DESC limit ?, ?";
+			}else {// 검색이 있을경우
+			    if(key.equals("b_writer")) {
+    				int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
+    				sql = "select * from board where m_no ="+m_no+" order by b_no desc limit ? , ?";
+			    }else if(key.equals(keyword)) {// 반호 검색 일치한 값만 검색
+				sql ="select * from board where b_no ="+keyword;
+			    }else {									//제목 혹은 내용 검색 : 포함된 값검색
+				sql ="select * from board where "+key+" like '%"+keyword+"%' order by b_no desc limit ? , ?";
+			    }
+			}
+		    }else if(type==2) {
+			if(key ==null && keyword ==null) {// 검색이 없을경우
+			    sql = "select * from board order by b_view desc limit ?,?";
+			}else {// 검색이 있을경우
+			    if(key.equals("b_writer")) {
+    				int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
+    				sql = "select * from board where m_no ="+m_no+" order by b_no desc limit ? , ?";
+			    }else if(key.equals(keyword)) {// 반호 검색 일치한 값만 검색
+				sql ="select * from board where b_no ="+keyword;
+			    }else {									//제목 혹은 내용 검색 : 포함된 값검색
+				sql ="select * from board where "+key+" like '%"+keyword+"%' order by b_no desc limit ? , ?";
+			    }
+			}
+		    }else if(type==3) {
+			
+			if(key ==null && keyword ==null) {// 검색이 없을경우
+			    sql = "select * from board where b_like>=5 order by b_no desc limit ?,?";
+			}else {// 검색이 있을경우
+			    if(key.equals("b_writer")) {
+    				int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
+    				sql = "select * from board where m_no ="+m_no+" order by b_no desc limit ? , ?";
+			    }else if(key.equals(keyword)) {// 반호 검색 일치한 값만 검색
+				sql ="select * from board where b_no ="+keyword;
+			    }else {									//제목 혹은 내용 검색 : 포함된 값검색
+				sql ="select * from board where "+key+" like '%"+keyword+"%' order by b_no desc limit ? , ?";
+			    }
 			}
 		    }
 		    try {
@@ -205,7 +234,7 @@ public class BoardDao extends DB {
 	
 	// 게시물 수정
 	public boolean boardupdate(Board board) {
-		String sql = "update board set b_title = ?, b_contents=? where b_no = ?";
+		String sql = "update board set b_title=?, b_contents=? where b_no=?";
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, board.getB_title());
@@ -215,10 +244,6 @@ public class BoardDao extends DB {
 			return true;
 		} catch (Exception e) {System.out.println("게시물 수정 오류");} return false;
 	}
-	
-	
-	
-
 	
 
 	
