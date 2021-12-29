@@ -82,7 +82,7 @@
 						<%}	%>
 					</li>
 					<li class="text-dark mx-2"><%=logininfo.getM_nickname() %>님</li>
-					<li><a href="/jsp_chatting_project/carrot/view/board/boardlist.jsp" class="mx-2" style="color: #707070;">게시판</a></li>
+					<li><a href="/jsp_chatting_project/carrot/view/board/boardlist.jsp?type=1" class="mx-2" style="color: #707070;">게시판</a></li>
 					<li><a href="/jsp_chatting_project/carrot/view/member/myinfo.jsp" class="mx-2" style="color: #707070;">내정보</a></li>
 					<li><a href="/jsp_chatting_project/carrot/view/note/notelist.jsp" class="mx-2" style="color: #707070;">쪽지</a></li>
 					<li><a href="/jsp_chatting_project/carrot/controller/logoutcontroller.jsp" class="mx-2" style="color: #707070;">로그아웃</a></li>

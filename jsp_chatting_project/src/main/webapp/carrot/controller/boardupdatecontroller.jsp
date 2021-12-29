@@ -14,15 +14,14 @@
 	String contents = multi.getParameter("content");
 	
 	title = title.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\S)*(/)?", "");
-	contents = contents.replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>");
 	
-	int b_no = Integer.parseInt(multi.getParameter("b_num"));
+	int b_no = Integer.parseInt(multi.getParameter("b_no"));
 	Board board = new Board(b_no, title, contents);
 	boolean result = BoardDao.getboardDao().boardupdate(board);
 	
 	if(result) {
 		out.print("<script>alert('게시글이 수정 되었습니다.')</script>");
-		out.print("<script>location.href='/jsp_chatting_project/webapp/view/board/boardview.jsp?b_no="+b_no+"';<script>");
+		out.print("<script>location.href='/jsp_chatting_project/carrot/view/board/boardview.jsp?b_no="+b_no+"';</script>");
 	} else {
 		out.print("<script>alert('[관리자 문의] 게시글 수정 실패')</script>");
 	}

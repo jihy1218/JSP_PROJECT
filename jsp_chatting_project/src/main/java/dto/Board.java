@@ -9,19 +9,18 @@ public class Board {
   private String b_title;
   private String b_contents;
   private String b_file;
-	private int m_no;
-	private String b_date;
-	private int b_view;
-	private int b_like;
-	private String b_writer;
+  private int m_no;
+  private String b_date;
+  private int b_view;
+  private int b_like;
+  private String b_writer;
 
 	
-	public Board() { }
+  public Board() { }
 	
 	// 전체 생성자
 	public Board(int b_no, String b_title, String b_contents, String b_file,
 			int m_no, String b_date, int b_view,int b_like) {
-		super();
 		this.b_no = b_no;
 		this.b_title = b_title;
 		this.b_contents = b_contents;
