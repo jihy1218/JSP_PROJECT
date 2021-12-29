@@ -2,16 +2,11 @@
  * 
  */
 	
-	function go(){
-		setInterval(dbload, 2000);
-	}
+	//setInterval(dbload, 1000);
+	
 	function dbload(){
 		$.ajax({ 
-			
-			url :  "/jsp_chatting_project/carrot/view/friendbar.jsp" ,
-			success : function( result ){
-				
-			}
+			url :  "/jsp_chatting_project/carrot/view/chatting/chattingmain.jsp" ,
 	});
 	}
 	
@@ -87,7 +82,28 @@
 			}
 		})
 	}
+	
+	//친구 삭제
+	function deletefriend(m_no){
+			if(confirm("친구를 삭제할까요?")==true){
+				$.ajax({
+					url : "../../controller/frienddeletecontroller.jsp",
+					data : {
+						m_no : m_no
+					},
+					success : function(re){
+						if(re==1){
+							alert("친구삭제 되었습니다");
+							location.reload();
+						}else{
+							alert("친구삭제 오류");
+							location.reload();
+						}
+					}
+				})				
+			}
 
+	}
 
 
 

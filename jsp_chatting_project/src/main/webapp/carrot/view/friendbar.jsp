@@ -33,6 +33,7 @@
 				friendsinfolist.add(member);
 			}
 		}
+		
 	%>
 	<div class="sidebar">
     <span class="sidebar-brand">
@@ -50,13 +51,14 @@
                 <li>
                 	<div class="row">
 	                	<div class="col-md-4 offset-1">
-	                		<span><%=loginM.getM_name() %></span><span style="color: #3BA55D;"><i class="fas fa-circle"></i></span>
+	                		<span><%=loginM.getM_nickname() %></span><span style="color: #3BA55D;"><i class="fas fa-circle"></i></span>
 	                	</div>
 	                	<div class="col-md-5">
 	                		<a class="message" href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=loginM.getM_no()%>">
 	                		<button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">
 	                		<%if(NoteDao.getNoteDao().countN_check(loginM.getM_no(), m_no2)!=0)out.print(NoteDao.getNoteDao().countN_check(loginM.getM_no(), m_no2)); %> 
 	                		</span></button></a>
+	                		<a href="#none" onclick="deletefriend(<%=loginM.getM_no()%>)">x</a>
 	                	</div>
                 	</div>
                 </li>
@@ -73,13 +75,14 @@
                 <li>
                 	<div class="row">
 	                	<div class="col-md-4 offset-1">
-	                		<span><%=logoutM.getM_name() %></span><span style="color: #747F8D;"><i class="far fa-circle"></i></span>
+	                		<span><%=logoutM.getM_nickname() %></span><span style="color: #747F8D;"><i class="far fa-circle"></i></span>
 	                	</div>
 	                	<div class="col-md-5">
 	                		<a class="message" href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=logoutM.getM_no()%>">
 	                		<button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">
 	                		<%if(NoteDao.getNoteDao().countN_check(logoutM.getM_no(), m_no2)!=0)out.print(NoteDao.getNoteDao().countN_check(logoutM.getM_no(), m_no2)); %> 
 	                		</span></button></a>
+	                		<a href="#none" onclick="deletefriend(<%=logoutM.getM_no()%>)">x</a>
 	                	</div>
                 	</div>
                 </li>
