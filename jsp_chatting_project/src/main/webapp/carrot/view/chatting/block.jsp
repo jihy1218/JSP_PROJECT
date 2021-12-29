@@ -1,3 +1,4 @@
+<%@page import="dto.Member"%>
 <%@page import="dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,19 +14,23 @@
 	<%
 		String nickname = request.getParameter("you");
 		String id = MemberDao.getmMemberDao().getidfromnick(nickname);
+		int from_num = MemberDao.getmMemberDao().getmembernum(id);
+		Member member = MemberDao.getmMemberDao().getinfo(from_num);
+		
 	%>
 
-	<div class="container">
-		<div class="" style="height: 450px; width: 450px;">
+	<div class="container" style="background-color: #FFD19B;">
+		<div class="text-center" style="width: 300px; height: 400px;">
+		<br>
 			<div>
-				대상 : <%=nickname %>
+				<img style="max-height: 200px; border-radius: 70%; padding-top: 25px; border-color: " src="/jsp_chatting_project/carrot/upload/<%=member.getM_img() %>">
+				<p style="padding-top: 10px; font-weight: bold; "><span style="font-size: 1.6rem;"><%=member.getM_nickname() %></span><br>
+					ID: <%=member.getM_id() %><br>
 			</div>
 			<div class="row">
-				<div>
-					<button onclick="friendinvite('<%=id%>')">친구추가</button>			
-				</div>
-				<div>
-					<button onclick="block('<%=id%>')">차단하기</button>			
+				<div class="col-sm-1">
+					<button class="btn" style="background-color: #66D965; color: white;" onclick="friendinvite('<%=id%>')">친구추가</button>			
+					<button class="btn" style="background-color: #C76B4E; color: white;" onclick="block('<%=id%>')">차단하기</button>			
 				</div>
 			</div>
 		</div>	
@@ -36,7 +41,7 @@
 	<!-- 부트스트랩 js설정 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    	<!-- 노트 js 호출 -->
+    	<!-- 채팅 js 호출 -->
 	<script src="/jsp_chatting_project/carrot/js/chatting.js"></script>
 		
 </body>

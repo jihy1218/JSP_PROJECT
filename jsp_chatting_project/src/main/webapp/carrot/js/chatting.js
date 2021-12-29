@@ -93,7 +93,7 @@ function makeroom(){
 			
 		var url = "block.jsp?you="+you;
         var name = "popup test";
-        var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+        var option = "width = 330, height = 401, top = 100, left = 200, location = no"
 
         window.open(url, name, option);
 	}
