@@ -1,6 +1,9 @@
 package dao;
 
+import java.util.ArrayList;
+
 import dto.Member;
+import dto.Room;
 
 public class MemberDao extends DB {
     
@@ -38,7 +41,7 @@ public class MemberDao extends DB {
 						resultSet.getString(2), resultSet.getString(3),
 						resultSet.getString(4), resultSet.getString(5),
 						resultSet.getString(6), resultSet.getString(7),
-						resultSet.getInt(8), resultSet.getInt(9), resultSet.getInt(10));
+						resultSet.getInt(8), resultSet.getInt(9), resultSet.getString(10));
 				return member;
 			} else {
 				return null;
@@ -72,7 +75,7 @@ public class MemberDao extends DB {
 			if(resultSet.next()) {
 				member = new Member(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), 
 						resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7),
-						resultSet.getInt(8), resultSet.getInt(9), resultSet.getInt(10));
+						resultSet.getInt(8), resultSet.getInt(9), resultSet.getString(10));
 				return member;
 			}
 		} catch (Exception e) {
@@ -80,6 +83,32 @@ public class MemberDao extends DB {
 		}
     	return member;
     }
+    
+	// 회원번호 검색 메소드 
+	public int getmembernum( String id) {
+		
+		String sql ="select m_no from member where m_id=?";
+		try {
+		    preparedStatement =connection.prepareStatement(sql); preparedStatement.setString(1, id);
+		    resultSet = preparedStatement.executeQuery(); 
+			if( resultSet.next() ) { return resultSet.getInt(1); }
+		}catch (Exception e) {} return 0;
+		
+	}
+	//회원번호로 회원아이디 검색 메소드
+	public String getmemberid(int m_no) {
+	    String sql = "select m_id from member where m_no=?";
+	    try {
+		preparedStatement =connection.prepareStatement(sql);
+		preparedStatement.setInt(1, m_no);
+		resultSet=preparedStatement.executeQuery();
+		if(resultSet.next()) {
+		    return resultSet.getString(1);
+		}
+	    } catch (Exception e) {}return null;
+		
+	  
+	}
     
     //친구 정보 가져오기
     public Member getlogin(int m_no ,int m_logincheck){
@@ -91,7 +120,7 @@ public class MemberDao extends DB {
 			if(resultSet.next()) {
 				member = new Member(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), 
 						resultSet.getString(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7),
-						resultSet.getInt(8), resultSet.getInt(9), resultSet.getInt(10));
+						resultSet.getInt(8), resultSet.getInt(9), resultSet.getString(10));
 				return member;
 			}
 		} catch (Exception e) {
@@ -101,7 +130,7 @@ public class MemberDao extends DB {
     }
     // 결제 업데이트
     public boolean gradeupdate(int m_no) {
-    	String sql ="update member set m_grade = m_grade+1 where m_no=?";
+    	String sql ="update member set m_grade =2  where m_no=?";
     	try {
     		preparedStatement =connection.prepareStatement(sql);
     		preparedStatement.setInt(1, m_no);
@@ -147,8 +176,9 @@ public class MemberDao extends DB {
 		}
 		return null;
 	}
-  public boolean signup(Member member) {
-    	String sql = "insert into member(m_id,m_nickname,m_password,m_name,m_email,m_phone,m_grade,m_logincheck,m_enter) value(?,?,?,?,?,?,?,?,?)";
+	// 회원가입
+	public boolean signup(Member member) {
+    	String sql = "insert into member(m_id,m_nickname,m_password,m_name,m_email,m_phone,m_grade,m_logincheck,m_img)values(?,?,?,?,?,?,?,?,?)";
     	try {
 			preparedStatement= connection.prepareStatement(sql);
 			preparedStatement.setString(1, member.getM_id());
@@ -159,7 +189,7 @@ public class MemberDao extends DB {
 			preparedStatement.setString(6, member.getM_phone());
 			preparedStatement.setInt(7, member.getM_grade());
 			preparedStatement.setInt(8, member.getM_logincheck());
-			preparedStatement.setInt(9, member.getM_enter());
+			preparedStatement.setString(9, member.getM_img());
 			preparedStatement.executeUpdate();
 			return true;
 			
@@ -167,6 +197,124 @@ public class MemberDao extends DB {
 			System.out.println("signup DB오류");
 		}return false;
     }
+	// 회원수정
+	public boolean memberupdate(Member member) {
+		String sql = "update member set m_nickname=?, m_password=? , m_img=? where m_id=?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, member.getM_nickname());
+			preparedStatement.setString(2, member.getM_password());
+			preparedStatement.setString(3, member.getM_img());
+			preparedStatement.setString(4, member.getM_id());
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {	} return false;
+	}
+  
+  	// 채팅방 가져오기 
+	public ArrayList<Room> getroom(String keyword){
+		ArrayList<Room> room = new ArrayList<Room>();
+		String sql = null;
+		if(keyword==null) {
+			sql = "select * from room order by r_no desc";
+		}else if(keyword!=null) {
+			sql="select * from room where r_name like '%"+keyword+"%' order by r_no desc";
+		}
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet= preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				Room rom = new Room(resultSet.getInt(1),resultSet.getString(2), resultSet.getInt(3));
+				room.add(rom);
+			}
+			return room;
+		} catch (Exception e) {
+			System.out.println("getroom() db 오류");
+		}
+		return null;
+	}
+	
+	// 채팅방 만들기
+	public boolean makeroom(String roomname) {
+		String sql = "insert into room(r_name , r_count)values(?,1)";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, roomname);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("makeroom() db 오류");
+		}
+		return false;
+	}
+	
+	//채팅방 입장
+	public boolean enterroom(String roomname) {
+		String sql = "select r_count from room WHERE r_name='"+roomname+"'";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				if(resultSet.getInt(1)==2) {
+					return false;
+				}
+			}
+		} catch (Exception e) {	}
+		sql = "UPDATE room SET r_count = r_count+1 WHERE r_name='"+roomname+"'";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {	System.out.println("enterroom() db 오류");}
+		return false;
+	}
+	// 채팅방 나가기
+	public boolean outroom(String roomname) {
+		String sql = "UPDATE room SET r_count = r_count-1 WHERE r_name='"+roomname+"'";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			sql = "select r_count from room WHERE r_name='"+roomname+"'";
+				preparedStatement = connection.prepareStatement(sql);
+				resultSet= preparedStatement.executeQuery();
+				if(resultSet.next()) {
+					if(resultSet.getInt(1)==0) {
+						sql="delete from room where r_name='"+roomname+"'";
+						preparedStatement=connection.prepareStatement(sql);
+						preparedStatement.executeUpdate();
+						return true;
+					}
+				}else {return false;}
+		} catch (Exception e) {	System.out.println("outroom() db 오류");}return false;
+	}
+	// 빠른방입장
+	public String quickenter() {
+		String sql = "select r_name from room where r_count=1 order by rand() limit 1";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getString(1);
+			}
+		} catch (Exception e) {	} return null;
+	}
+	
+	//닉네임으로 아이디 찾기
+	public String getidfromnick(String nickname) {
+		String sql = "select m_id from member where m_nickname=?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, nickname);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getString(1);
+			}
+		} catch (Exception e) {
+			System.out.println("getidfromnick db 오류");
+		}
+		return null;
+	}
+  
 }
 
 

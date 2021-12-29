@@ -8,7 +8,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 	<%@ include file="../header.jsp" %>
@@ -20,13 +19,13 @@
 		//보낸사람 정보
 		Member member = MemberDao.getmMemberDao().getinfo(note.getN_from());
 		//메시지 확인 체크
-		int n_check = Integer.parseInt(request.getParameter("n_check"));
-		System.out.print(n_check);
-		System.out.print(n_no);
+		int n_check = 0;
+		if(request.getParameter("n_check")!=null){
+			n_check = Integer.parseInt(request.getParameter("n_check"));
+		}
 		if(n_check==2){
 			NoteDao.getNoteDao().updaten_check(n_no);
 		}
-		
 	%>
 	<!-- 쪽지 확인 -->
 	<br><br><br>
@@ -48,7 +47,7 @@
 				<br><br><br><br>
 			</div>
 			<div style="position: absolute; bottom : 700px; right : 800px;">
-				<a href="/jsp_chatting_project/carrot/view/note/notelist.jsp">뒤로가기</a>
+				<a href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=note.getN_from()%>">뒤로가기</a>
 				</div>
 		</div>
 	</div>
