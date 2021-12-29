@@ -85,7 +85,80 @@ function makeroom(){
 		});
 				
 	}
-	// 검색 버튼
+	
+	//차단하기
+	function blockuser(){
+		
+		var you = document.getElementById("you").innerText;
+			
+		var url = "block.jsp?you="+you;
+        var name = "popup test";
+        var option = "width = 330, height = 401, top = 100, left = 200, location = no"
+
+        window.open(url, name, option);
+	}
+	
+		//친구 초대
+	function friendinvite(inviteid){
+			var inviteid = inviteid;
+			
+		$.ajax({
+			url : "../../controller/friendinvitecontroller.jsp",
+			data : {
+				inviteid : inviteid
+			},
+			success : function(result){
+				if(result==1){
+					alert("친구요청을 보냈습니다");
+				}
+				else if(result==3){
+					alert("존재하지 않는 아이디입니다");
+				}
+				else if(result==2){
+					alert("이미 친구인 회원입니다");
+				}
+				else if(result==4){
+					alert("차단 중인 회원입니다");
+				}
+				else if(result==5){
+					alert("초대 중인 회원입니다");
+				}
+
+				
+			}
+		}) 
+	}
+	
+	//차단하기 
+	function block(id){
+		
+		$.ajax({
+			url : "../../controller/blockcontroller.jsp",
+			data : {
+				id : id
+			},
+			success : function(result){
+				if(result==1){
+					alert("차단되었습니다");
+				}else if(result==2){
+					alert("이미 차단된 회원입니다");
+				}else{
+					alert("차단 오류");
+				}
+				
+				
+			}
+			
+		})
+	}
+	
+
+
+				
+
+
+
+
 
 
 
