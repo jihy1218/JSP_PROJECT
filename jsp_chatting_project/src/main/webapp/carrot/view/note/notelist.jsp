@@ -12,6 +12,7 @@
 <body>
 	<%@ include file="../header.jsp" %>
 	<%@include file="/carrot/view/friendbar.jsp" %>
+	
 	<%
 		//보낸사람 번호
 		int n_from = 0;
@@ -23,7 +24,7 @@
 			pagenum="1";
 		}
 		
-		int lastrow = NoteDao.getNoteDao().notecount(n_from);
+		int lastrow = NoteDao.getNoteDao().notecount(n_from,m_no);
 		int listsize = 5;	
 		int lastpage = 0;
 		
@@ -37,9 +38,13 @@
 		int startrow = (currentpage-1)*listsize; 
 		ArrayList<Note> noteList = NoteDao.getNoteDao().notelist(startrow, listsize ,m_no,n_from);
 	%>
+	
 	<div class="container">
-		<table class="table" style="max-width: 1000px; margin: 0 auto;">
-			<tr>
+		<h3 style="color : navy;"> 쪽지함 </h3>
+		<br><br>
+		<button class="btn-primary btn my-3 float-right" onclick="shownote()">쪽지보내기</button>
+		<table class="table">
+			<tr style="border-top: solid 2px navy; border-bottom: solid 1.5px navy;">
 				<th> 확인 </th> <th> 내용 </th> <th> 보낸사람 </th> <th> 작성일 </th> <th> 삭제 </th>
 			</tr>
 			<%if(noteList.size()==0){ %>	
@@ -53,11 +58,11 @@
 				<%if(noteList.get(i).getN_check()==1){ %>
 				<td> <a href="noteview.jsp?n_no=<%=noteList.get(i).getN_no()%>&n_check=2"><%=noteList.get(i).getN_contents() %></a> </td>
 				<%}else{ %>
-				<td> <a style="color: #B6B6B6" href="noteview.jsp?n_no=<%=noteList.get(i).getN_no()%>&n_check=2"><%=noteList.get(i).getN_contents() %></a> </td>
+				<td> <a style="color: #B6B6B6" href="noteview.jsp?n_no=<%=noteList.get(i).getN_no()%>"><%=noteList.get(i).getN_contents() %></a> </td>
 				<%} %>
 				<td><%=MemberDao.getmMemberDao().getnickname(noteList.get(i).getN_from())%></td>
 				<td><%=noteList.get(i).gettime() %></td>
-				<td> <button class="btn-danger" onclick="notedelete(<%=noteList.get(i).getN_no()%>)">삭제</button> </td>	
+				<td> <button class="btn btn-danger" onclick="notedelete(<%=noteList.get(i).getN_no()%>)">삭제</button> </td>	
 			</tr>		
 			<% }%>		
 		</table>
@@ -73,14 +78,13 @@
 						<li class="page-item"><a href="notelist.jsp?pagenum=<%=i %>&n_from=<%=n_from %>" class="page-link"> <%=i %> </a> </li>
 					<%} %>
 					<%if(currentpage == lastpage){ %>
-						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage%>&n_from=<%=n_from %>" class="page-link"> 이전 </a> </li>
+						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage%>&n_from=<%=n_from %>" class="page-link"> 다음 </a> </li>
 					<%}else{ %>
-						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage+1 %>&n_from=<%=n_from %>" class="page-link"> 이전 </a> </li>
+						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage+1 %>&n_from=<%=n_from %>" class="page-link"> 다음 </a> </li>
 					<%} %>
 				</ul>
 			</div>
 		</div>
-		
 	</div>
 </body>
 </html>
