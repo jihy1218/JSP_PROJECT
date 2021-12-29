@@ -34,9 +34,9 @@
 	<input type="hidden" value="<%=roomname %>" id="thisroom" ><input type="hidden" value="<%=logininfo.getM_img()%>" id="m_img">
 	<input type="hidden" id="blocknames" value="<%=blocknames%>">
 	<input type="hidden" value="<%=folderpath %>" id="folderpath">
-    <div class="background">
-      <div class="window">
-        <div class="popup">
+    <div class="background2">
+      <div class="window2">
+        <div class="popup2">
           <button class="btn btn-danger col-md-1 offset-11" style="border-radius: 9px;" id="close">X</button>
           <p class="text-center" style="font-weight: bold;">바르고 고운말 사용해주세요!<br>무심코 뱉은 말 한마디!<br>상대방에겐 상처입니다.
         </div>
@@ -48,6 +48,7 @@
 				<div class="col-lg-4" style="">
 					<div  style="height: 116px;">
 						<form action="chattingmain.jsp?roomname=<%=roomname %>&search=<%=keyword %>" class="text-center" id="room_title">
+							<input type="hidden" value="<%=roomname%>" name="roomname">
 							<div id="serch"><input type="text" id="makeroom" name="keyword"  class="intput1" placeholder="방제목을입력해주세요!"><input type="submit" id="btn1" value="검색"></div>					
              				<input type="hidden" id="m_grade" value="<%=logininfo.getM_grade()%>">
 						</form>
@@ -118,10 +119,10 @@
 	<script type="text/javascript">
 		var modal = document.getElementById("thisroom").value;
 		if(modal!="자유방"){
-			document.querySelector(".background").className = "background show";
+			document.querySelector(".background2").className = "background2 show2";
 		}
 		function close () { 
-			document.querySelector(".background").className = "background";
+			document.querySelector(".background2").className = "background2";
 		}
 
 		document.querySelector("#close").addEventListener('click', close);
@@ -210,13 +211,12 @@
 			
 			if(msg=="enter"){
 				msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>"
-				document.getElementById("blockid").innerHTML = from;					
 			}
 			else if(msg=="out"){
 				msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 퇴장했습니다.</span></div>"
 			}
 			else{
-				msgbox.innerHTML += "<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><a href='#none' class='my-2 mx-2' id='you' onclick='blockuser()'>"+from+"</a><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
+				msgbox.innerHTML += "<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><a href='#none' class='my-2 mx-2' style='color : black;' id='you' onclick='blockuser()'>"+from+"</a><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 			}
 			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
 
