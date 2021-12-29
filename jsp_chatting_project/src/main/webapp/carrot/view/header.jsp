@@ -59,14 +59,14 @@
 	
 	<div class="container" >
 		<div class="row justify-content-between align-items-center">
-			<div class="col-3 offset-4 text-center mt-2" id="headtext" style="color: #66D965;">
+			<div class="col-md-3 offset-4 text-center mt-2" id="headtext" style="color: #66D965;">
 				<%if(logininfo!=null){ %>
 				<a href="/jsp_chatting_project/carrot/view/chatting/chattingmain.jsp" style="color: #66D965;"> <img alt="" src="/jsp_chatting_project/carrot/img/당근이.png" style="width: 20%;">당근</a>
 				<%}else{ %>
 				<p style="color: #66D965;"><img alt="" src="/jsp_chatting_project/carrot/img/당근이.png" style="width: 20%;">당근
 				<%} %>
 			</div>
-			<div class="col-5 d-flex justify-content-end align-items-center" style="padding-top: 50px; ">
+			<div class="col-md-5 d-flex justify-content-end align-items-center" style="padding-top: 50px; ">
 				<ul class="nav header-topmenu">	<!-- 로그인 했을때 랑 안했을때 구별해서 해야합니다. 나중에 수정해야함 (12.15 15:58)-->
 					<%
 						if(session.getAttribute("login")!=null) {
@@ -101,7 +101,7 @@
 	%>
 	<div id="sidead" style="position: absolute; top :200px; left: 20px;" class="col-md-2 col-sm-4 sidead">
 	    <button data-toggle="sidead" id="adtoggle" onclick="sideadtoggle();" class="btn" style="background-color :#ffffff;  margin: auto; position: absolute ; top: 0px; left:180px;"><span id="adtext" class="text-danger">X</span></button>
-		<img src="/jsp_chatting_project/carrot/img/당근광고.png" style="max-width: 80%;">
+		<img src="/jsp_chatting_project/carrot/img/adimg2.png" style="max-width: 180px;">
 	</div>
 	<%} %>
 </body>

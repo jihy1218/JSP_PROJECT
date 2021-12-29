@@ -118,7 +118,7 @@ body{
 .roomlist::-webkit-scrollbar-thumb:hover {background: white;}
 .roomlist::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
 width:16px;height:16px;background:#66D965;} 
-.background {
+.background2 {
   position: fixed;
   top: 0;
   left: 0;
@@ -132,19 +132,19 @@ width:16px;height:16px;background:#66D965;}
   opacity: 0;
 }
 
-.show {
+.show2 {
   opacity: 1;
   z-index: 1000;
   transition: all .5s;
 }
 
-.window {
+.window2 {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.popup {
+.popup2 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -161,7 +161,7 @@ width:16px;height:16px;background:#66D965;}
   transform: translate(-50%, -40%);
 }
 
-.show .popup {
+.show2 .popup2 {
   transform: translate(-50%, -50%);
   transition: all .5s;
 }

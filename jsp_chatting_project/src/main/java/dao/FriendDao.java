@@ -21,9 +21,13 @@ public class FriendDao extends DB {
 		
 			String sql = "select * from friend where f_type=1 and (m_no1="+m_no+" or m_no2="+m_no+")";
 			if(type==2) {
-				sql = "select * from friend where f_type=2 and m_no1="+m_no;
+				//나를 차단한 사람
+				sql = "select * from friend where f_type=2 and m_no2="+m_no;
 			}else if(type==3) {
 				sql = "select * from friend where f_type=3 and m_no2="+m_no;
+			}else if(type==4) {
+				//내가 차단한 사람
+				sql = "select * from friend where f_type=2 and m_no1="+m_no;
 			}
 		try {
 			preparedStatement=connection.prepareStatement(sql);
@@ -86,7 +90,7 @@ public class FriendDao extends DB {
 		}
 		return false;
 	}
-	
+	//친구요청수
 	public int countinvite(int m_no) {
 		String sql = "select count(*) from friend where f_type=3 and m_no2="+m_no;
 		try {
@@ -101,6 +105,39 @@ public class FriendDao extends DB {
 		return 0;
 	}
 	
+	// 차단하기
+	public boolean blockid(int from, int to) {
+		String sql = "insert into friend(m_no1,m_no2,f_type) value("+from+","+to+",2)";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("blockid db 오류");
+		}return false;
+	}
+	
+	//친구번호 불러오기
+	public int getf_no(int m_no1 , int m_no2) {
+		String sql ="select f_no from friend where f_type=1 and m_no1="+m_no1+" and m_no2="+m_no2;
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			resultSet=preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				return resultSet.getInt(1);
+			}else {
+				sql ="select f_no from friend where f_type=1 and m_no2="+m_no1+" and m_no1="+m_no2;
+				preparedStatement=connection.prepareStatement(sql);
+				resultSet=preparedStatement.executeQuery();
+				if(resultSet.next()) {
+					return resultSet.getInt(1);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("getf_no db 오류");
+		}
+		return 0;
+	}
 	
 
 }
