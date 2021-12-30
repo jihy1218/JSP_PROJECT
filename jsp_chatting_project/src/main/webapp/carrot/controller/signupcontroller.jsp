@@ -25,8 +25,6 @@
 			out.print("<script>alert('회원 가입 실패');</script>");
 			out.print("<script>location.href='../view/member/login.jsp';</script>");
 		}
-		
-
 %>
 
 

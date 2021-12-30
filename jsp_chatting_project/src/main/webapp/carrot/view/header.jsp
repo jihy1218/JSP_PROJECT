@@ -85,7 +85,7 @@
 					<li><a href="/jsp_chatting_project/carrot/view/board/boardlist.jsp?type=1" class="mx-2" style="color: #707070;">게시판</a></li>
 					<li><a href="/jsp_chatting_project/carrot/view/member/myinfo.jsp" class="mx-2" style="color: #707070;">내정보</a></li>
 					<li><a href="/jsp_chatting_project/carrot/view/note/notelist.jsp" class="mx-2" style="color: #707070;">쪽지</a></li>
-					<li><a href="/jsp_chatting_project/carrot/controller/logoutcontroller.jsp" class="mx-2" style="color: #707070;">로그아웃</a></li>
+					<li><a href="/jsp_chatting_project/carrot/controller/logoutcontroller.jsp?m_no=<%=logininfo.getM_no() %>" class="mx-2" style="color: #707070;">로그아웃</a></li>
 					<% }else{ %>
 					<li><a href="/jsp_chatting_project/carrot/view/member/login.jsp" class="mx-2" style="color: #707070;">로그인</a></li>
 					<li><a href="/jsp_chatting_project/carrot/view/member/signup.jsp" class="mx-2" style="color: #707070;">회원가입</a></li>

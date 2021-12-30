@@ -8,12 +8,16 @@
 	String m_password = request.getParameter("m_password");
 	
 	boolean result = MemberDao.getmMemberDao().login(m_id, m_password);
+
 	
 	if(result){
 		Member memberinfo = MemberDao.getmMemberDao().getmemberinfo(m_id, m_password);
 		session.setAttribute("login", memberinfo);
+		MemberDao.getmMemberDao().logincheck(memberinfo.getM_no(), memberinfo.getM_logincheck());
 		out.print("1");
 	} else {
 		out.print("2");
 	}
+	
+	
 %>
