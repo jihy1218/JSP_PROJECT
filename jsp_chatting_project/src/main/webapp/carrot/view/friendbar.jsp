@@ -10,8 +10,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<!-- 부트스트랩 설정 4.0 버전 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<%
 		
 		Member logininfo2 = (Member)session.getAttribute("login");
@@ -40,25 +43,27 @@
     	<br><br><br><br>
         <a href="javascript:void(0)" data-toggle="sidebar"><i class="glyphicon glyphicon-arrow-left"></i> HIDE</a><br>
         <%if(m_grade2==2){%>
-        <span>친구 목록 </span>
+        <span>친구 목록</span>
     </span>
     <ul class="sidebar-nav">
         <li>
-            <a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-1">로그인된 친구</a>
+            <a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-1">접속중인 친구</a>
             <ul id="menu-collapse-1" class="collapse in">
             	<%for(Member loginM : friendsinfolist) {%>
             	<%if(loginM.getM_logincheck()==1){ %>
                 <li>
                 	<div class="row">
-	                	<div class="col-md-4 offset-1">
+	                	<div class="col-md-7 offset-1" style="font-size: 0.95em;">
 	                		<span><%=loginM.getM_nickname() %></span><span style="color: #3BA55D;"><i class="fas fa-circle"></i></span>
 	                	</div>
-	                	<div class="col-md-5">
-	                		<a class="message" href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=loginM.getM_no()%>">
-	                		<button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">
+                		<div class="col-md-1">
+	                		<button class="btn btn-outline-danger" onclick="deletefriend(<%=loginM.getM_no()%>)">X</button>
+	                	</div>
+	                	<div class="col-md-2 ml-1">
+	                		<a href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=loginM.getM_no()%>">
+	                		<button class="btn btn-outline-dark"><i class="far fa-sticky-note"></i><span class="text-danger">
 	                		<%if(NoteDao.getNoteDao().countN_check(loginM.getM_no(), m_no2)!=0)out.print(NoteDao.getNoteDao().countN_check(loginM.getM_no(), m_no2)); %> 
 	                		</span></button></a>
-	                		<a href="#none" onclick="deletefriend(<%=loginM.getM_no()%>)">x</a>
 	                	</div>
                 	</div>
                 </li>
@@ -67,22 +72,24 @@
         </li>
         <li>
             <a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-2">
-               로그아웃 친구
+               미접속 친구
             </a>
             <ul id="menu-collapse-2" class="collapse in">
             	<%for(Member logoutM : friendsinfolist) {%>
             	<%if(logoutM.getM_logincheck()==2){ %>
                 <li>
                 	<div class="row">
-	                	<div class="col-md-4 offset-1">
+	                	<div class="col-md-7 offset-1">
 	                		<span><%=logoutM.getM_nickname() %></span><span style="color: #747F8D;"><i class="far fa-circle"></i></span>
 	                	</div>
-	                	<div class="col-md-5">
+	                	<div class="col-md-1">
+	                		<button class="btn btn-outline-danger"  onclick="deletefriend(<%=logoutM.getM_no()%>)">X</button>
+	                	</div>
+	                	<div class="col-md-2 ml-1">
 	                		<a class="message" href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=logoutM.getM_no()%>">
-	                		<button class="form-control"><i class="far fa-sticky-note"></i><span class="text-danger">
+	                		<button class="btn btn-outline-dark"><i class="far fa-sticky-note"></i><span class="text-danger">
 	                		<%if(NoteDao.getNoteDao().countN_check(logoutM.getM_no(), m_no2)!=0)out.print(NoteDao.getNoteDao().countN_check(logoutM.getM_no(), m_no2)); %> 
 	                		</span></button></a>
-	                		<a href="#none" onclick="deletefriend(<%=logoutM.getM_no()%>)">x</a>
 	                	</div>
                 	</div>
                 </li>
@@ -93,11 +100,11 @@
     		<a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-3">친구추가하기</a>	
     		<ul id="menu-collapse-3" class="collapse in">
     			<li>
-   					<div class="form-control">
-   						<input type="text" placeholder="추가할아이디" id="inviteid">
-   					</div>
-   					<div class="text-right">
-   						<button class="btn btn-primary" onclick="friendinvite()">친구요청</button>
+   					<div class="row">
+   						<div class="col-md-7 offset-1">
+   							<input class="form-control" type="text" placeholder="추가할아이디" id="inviteid">
+   						</div>
+	   						<button class="btn btn-primary" onclick="friendinvite()">친구요청</button>
    					</div>
     			</li>
     		</ul>
@@ -117,7 +124,7 @@
     		</ul>
     	</li>
         <li>
-       		<img src="/jsp_chatting_project/carrot/img/당근친구만들기.png">
+       		<img src="/jsp_chatting_project/carrot/img/adimg1.jpg" style="max-width: 290px;">
         </li>
     </ul>
     <%}else{ %>
@@ -128,7 +135,7 @@
 
 <!-- 사이드바 열기 버튼 -->
 <!-- 결제한 사람이면 바로 친구목록 아니면 결제페이지 이동 --> 
-<a href="javascript:void(0)" data-toggle="sidebar" style="margin: auto; position: fixed; top: 120px; right:180px; z-index: 10;">
+<a href="javascript:void(0)" data-toggle="sidebar" style="margin: auto; position: fixed; top: 120px; right:230px; z-index: 10;">
 	<button class="btn"><i class="fas fa-users fa-2x" style="color: #3f7d1b;"></i></button>
 </a>
  
