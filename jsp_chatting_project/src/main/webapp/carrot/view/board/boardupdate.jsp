@@ -22,7 +22,7 @@
 		<div class="form-group">
 		<input type="hidden" name="b_no" value="<%=b_no%>">
 			<label for="title">Title : </label>
-			<input type="text" class="form-control" placeholder="<%=board.getB_title() %>" id="title" name="title">
+			<input type="text" class="form-control" id="title" name="title"><%=board.getB_title() %>
 		</div>
 		<div class="form-group">
 			<label for="content">Content :</label>

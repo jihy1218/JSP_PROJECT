@@ -92,7 +92,7 @@ public class BoardDao extends DB {
 		    }else if(type==3) {
 			
 			if(key ==null && keyword ==null) {// 검색이 없을경우
-			    sql = "select * from board where b_like>=5 order by b_no desc limit ?,?";
+			    sql = "select * from board where b_like>=5 order by b_no desc limit ?,?";  // blike가 아닌 다른테이블을 참조해야됨
 			}else {// 검색이 있을경우
 			    if(key.equals("b_writer")) {
     				int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  

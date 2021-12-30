@@ -55,7 +55,6 @@ function makeroom(){
 			})
 		}
 	}
-	
 	function outroom(makeroom){
 		if(confirm("방을 나가시겠습니까?")==true){
 			$.ajax({
@@ -68,13 +67,11 @@ function makeroom(){
 						alert("채팅을종료합니다.");
 						location.href="chattingmain.jsp";
 					}else{
-						alert("나가기 오류");
+						alert("방을나갑니다.");
 						location.href="chattingmain.jsp";
 					}
-					
-					
-				}
-			})
+			}
+		});
 	}
 }
 	//빠른입장
