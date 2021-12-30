@@ -11,12 +11,9 @@
 <head>
 <meta charset="UTF-8">
 	<!-- 부트스트랩 설정 4.0 버전 -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<%
-		
 		Member logininfo2 = (Member)session.getAttribute("login");
 		int m_no2 =	logininfo2.getM_no();
 		int m_grade2 = logininfo2.getM_grade();
@@ -100,11 +97,11 @@
     		<a href="javascript:void(0)" data-toggle="collapse" data-target="#menu-collapse-3">친구추가하기</a>	
     		<ul id="menu-collapse-3" class="collapse in">
     			<li>
-   					<div class="form-control">
-   						<input type="text" placeholder="추가할아이디" id="inviteid">
-   					</div>
-   					<div class="text-right">
-   						<button class="btn btn-primary" onclick="friendinvite()">친구요청</button>
+   					<div class="row">
+   						<div class="col-md-7 offset-1">
+   							<input class="form-control" type="text" placeholder="추가할아이디" id="inviteid">
+   						</div>
+	   						<button class="btn btn-primary" onclick="friendinvite()">친구요청</button>
    					</div>
     			</li>
     		</ul>

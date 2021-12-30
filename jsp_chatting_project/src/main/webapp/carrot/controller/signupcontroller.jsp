@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 	/* String folderpath = request.getSession().getServletContext().getRealPath("carrot/upload"); */
+	
 	String folderpath = "C:/Users/505/git/JSP_PROJECT/jsp_chatting_project/src/main/webapp/carrot/upload"; 
 	MultipartRequest multi = new MultipartRequest(request, folderpath, 1024*1024*10,"UTF-8", new DefaultFileRenamePolicy());
 	String id = multi.getParameter("id");
@@ -24,8 +25,6 @@
 			out.print("<script>alert('회원 가입 실패');</script>");
 			out.print("<script>location.href='../view/member/login.jsp';</script>");
 		}
-		
-
 %>
 
 

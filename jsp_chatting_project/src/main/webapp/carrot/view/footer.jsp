@@ -27,7 +27,7 @@
 				<a href="https://facebook.com" class="me-4 mr-2"><i class="fab fa-facebook fa-2x mr-3"></i></a>
 				<a href="https://www.apple.com/kr/" class="me-4 mr-2"><i class="fab fa-apple fa-2x mr-3"></i></a>
 				<a href="https://www.instagram.com" class="me-4 mr-2"><i class="fab fa-instagram fa-2x"></i></a><br>
-					이용약관 개인정보처리방침<br>
+					<br>이용약관 개인정보처리방침<br>
 					Copyright &copy 당근
 			</div>	
 		</div>
