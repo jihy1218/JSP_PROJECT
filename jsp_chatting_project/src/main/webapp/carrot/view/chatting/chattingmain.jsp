@@ -92,7 +92,7 @@
 						</div>
 				</div>
 				<div class="col-lg-8 col-sm-9" >
-					<div class="card chattingmain">
+					<div class="card" id="chattingmain">
 						<div id="nowroom">
 							<div id="nowroomname"><%=roomname %> <div id="username"> </div> </div>
 						</div>
@@ -107,6 +107,12 @@
 								</div>
 								<div class="col-md-2">	<!-- 전송버튼 -->
 									<button id="btnmsginput" class="form-control" onclick="btnsend();">전송</button>
+								</div>
+								<div class="col-md-2">	<!-- 전송버튼 -->
+									<form id="fileForm" method="post" enctype="multipart/form-data">
+										<input type="file" name="file">
+									</form>
+									<button onclick="chattingfile()">파일보내기</button>
 								</div>
 							</div>
 						</div>

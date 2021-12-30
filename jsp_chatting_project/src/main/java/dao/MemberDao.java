@@ -315,8 +315,29 @@ public class MemberDao extends DB {
 		return null;
 	}
   
+	// 회원 상태 변경
+	public boolean logincheck(int m_no, int m_logincheck) {
+		String sql=null;
+		if(m_logincheck==1) {
+			sql="update member set m_logincheck=2 where m_no=?";
+			try {
+				preparedStatement=connection.prepareStatement(sql);
+				preparedStatement.setInt(1, m_no);
+				preparedStatement.executeUpdate();
+				return true;
+			} catch (Exception e) {System.out.println("회원 상태 오류 1");} return false;
+	} else {
+		sql="update member set m_logincheck=1 where m_no=?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setInt(1, m_no);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch (Exception e) {System.out.println("회원 상태 오류 2");} return false;
+	}
+	}
+	
 }
-
 
 
 

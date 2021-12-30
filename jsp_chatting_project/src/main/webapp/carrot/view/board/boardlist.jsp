@@ -12,6 +12,7 @@
 	<%@include file="../header.jsp" %>
 	<%@include file="../friendbar.jsp" %>
 	<%   
+		request.setCharacterEncoding("UTF-8");
 		//검색처리 :키워드 입력하고 검색 버튼을 눌렀을떄
 		String key = request.getParameter("key");
 		String keyword = request.getParameter("keyword");
