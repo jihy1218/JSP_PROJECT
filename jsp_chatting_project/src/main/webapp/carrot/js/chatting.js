@@ -149,28 +149,50 @@ function makeroom(){
 		})
 	}
 	
+	function uploadFunction() {
+		
+		var form = document.getElementById("profile").value;
+		alert("form : "+data);
+		
+		var data = new FormData(form);
+		alert("data : "+data);
+		$.ajax({
+			type: "POST",
+			enctype: 'multipart/form-data',
+			url: "/uploader",
+			data:{
+				data : data
+			} ,
+			processData: false,
+			contentType: false,
+			cache: false,
+			timeout: 600000,
+			success: function(data) {
+				alert(data);
 
-	//채팅 파일
-	function chattingfile(){
-		
-		
-	var formData = new FormData($('#fileForm')[0]);
-	alert(formData);
-		
-	$.ajax({ 
-		type: "POST",
-		enctype: 'multipart/form-data',
-	 	url: '../../controller/chattingimgcontroller.jsp',
-	 	data: {
-			formData : formData
-		},
-		processData: false,
-		contentType: false
-
+			}
 		});
+	}
+	
+	function uploadajax(){
+		
+		var fileInput = document.getElementById("profile");
+	
+	    var file = fileInput.files[0];
+	
+	    var formData = new FormData();
+	
+	    formData.append("profile" , file);
+	
+	    var xhr = new XMLHttpRequest();
+
+		var url = "C:/Users/minwook/git/JSP_PROJECT/jsp_chatting_project/src/main/webapp/carrot/upload";
+	
+	    xhr.open("POST" , "/upload/request_url" , true);
+	
+	    xhr.send(formData);
 
 	}
-
 
 
 

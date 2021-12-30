@@ -109,10 +109,10 @@
 									<button id="btnmsginput" class="form-control" onclick="btnsend();">전송</button>
 								</div>
 								<div class="col-md-2">	<!-- 전송버튼 -->
-									<form id="fileForm" method="post" enctype="multipart/form-data">
-										<input type="file" name="file">
+									<form method="POST" enctype="multipart/form-data" id="form">
+										<input type="file" name="profile" id="profile">
+										<button type="button" onclick="uploadFunction();" class="form-control btn btn-primary">파일업로드</button>
 									</form>
-									<button onclick="chattingfile()">파일보내기</button>
 								</div>
 							</div>
 						</div>
@@ -148,7 +148,7 @@
 		
 		var blocknames = document.getElementById("blocknames").value;
 		
-		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid+"/"+blocknames);
+		var webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid+"/"+blocknames);
 		
 		webSocket.onopen = function( event ) { onOpen(event) }; // 웹소켓 실행시 메소드 
 		webSocket.onclose = function( event ) { onClose(event) }; // 웹소켓 종료시 메소드 
