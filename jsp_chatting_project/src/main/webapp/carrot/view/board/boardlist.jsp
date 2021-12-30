@@ -49,37 +49,44 @@
 	%>
 	
 	<div class="container">
-		<h3> 자유 게시판 </h3>
+		<h2 style="color : navy;"style="font-weight: bold; "> 📌자유게시판 </h2>
 		<br><br>
 		<div class="row">
 		<%if(type==1) {%>
-		    <a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger active"> 전체글 </button></a>
-			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 🔥인기글🔥 </button></a>
-			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 👍개념글👍</button>	</a>
+		    <a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger active"> 📝전체글 </button></a>
+			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 🔥인기글 </button></a>
+			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 👍개념글</button>	</a>
 		<%}else if(type==2){%>
 			<a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger"> 전체글 </button></a>
-			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success active"> 🔥인기글🔥 </button></a>
-			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 👍개념글👍 </button>	</a>
+			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success active"> 🔥인기글 </button></a>
+			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 👍개념글 </button>	</a>
 		<%}else if(type==3) {%>
 			<a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger"> 전체글 </button></a>
-			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 🔥인기글🔥 </button></a>
-			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info active"> 👍개념글👍 </button>	</a>
+			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 🔥인기글 </button></a>
+			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info active"> 👍개념글 </button>	</a>
 		<%} %>	
-		<div class="offset-6">
-			<a href="boardwrite.jsp" ><button style="background-color:green;">글쓰기</button></a>
+		<div class="offset-5">
+			<a href="boardwrite.jsp" ><button class="mr-2 ml-3 btn btn-outline-info active">글쓰기✏</button></a>
 			<%if(type==1){%>
-				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=15 %>" ><button style="background-color:green;">15</button></a>
+				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=15 %>" ><button class="btn btn-outline-info">15</button></a>
 			<% }else if(type==2){%>
-				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=15 %>" ><button style="background-color:green;">15</button></a>
+				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=15 %>" ><button class="btn btn-outline-info">15</button></a>
 			<%} else if(type==3){%>
-				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=15 %>" ><button style="background-color:green;">15</button></a>
+				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=15 %>" ><button class="btn btn-outline-info">15</button></a>
 			<%} %>
 			<%if(type==1){%>
 				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=20 %>" ><button class="btn btn-outline-info">20</button></a>
 			<% }else if(type==2){%>
-				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=20 %>" ><button style="background-color:green;">20</button></a>
+				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=20 %>" ><button class="btn btn-outline-info">20</button></a>
 			<%} else if(type==3){%>
-				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=20 %>" ><button style="background-color:green;">20</button></a>
+				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=20 %>" ><button class="btn btn-outline-info">20</button></a>
+			<%} %>
+			<%if(type==1){%>
+				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=30 %>" ><button class="btn btn-outline-info">30</button></a>
+			<% }else if(type==2){%>
+				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=30 %>" ><button class="btn btn-outline-info">30</button></a>
+			<%} else if(type==3){%>
+				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=30 %>" ><button class="btn btn-outline-info">30</button></a>
 			<%} %>
 			</div>
 		</div><br>
