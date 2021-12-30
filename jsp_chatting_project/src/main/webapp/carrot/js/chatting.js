@@ -158,7 +158,6 @@ function makeroom(){
 		
 		
 	var formData = new FormData($('#fileForm')[0]);
-
 	alert(formData);
 		
 	$.ajax({ 
