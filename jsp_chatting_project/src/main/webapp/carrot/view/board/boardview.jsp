@@ -91,8 +91,10 @@
 				<th><%=reply.getR_contents() %>
 				<th><%=reply.getR_date() %>
 				<th>
-				<a href="../../controller/replydeletecontroller.jsp?r_no=<%=reply.getR_no()%>&b_no=<%=reply.getB_no()%>">
-				<button class="btn btn-danger">삭제</button>
+				<% if(logininfo.getM_id()!=null && logininfo.getM_id().equals(board.getB_writer())) { %>
+					<a href="../../controller/replydeletecontroller.jsp?r_no=<%=reply.getR_no()%>&b_no=<%=reply.getB_no()%>">
+					<button class="btn btn-danger">삭제</button>
+				<% } %>
 				</a>
 			</tr>
 			<% } %>
