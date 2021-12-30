@@ -30,7 +30,7 @@
 	<%@include file="../friendbar.jsp" %>
 	<div class ="container">
 		<div class="row">
-			<div class="m-2"><a href="boardlist.jsp"><button class="form-control">목록</button></a></div>
+			<div class="m-2"><a href="boardlist.jsp?type=1"><button class="form-control">목록</button></a></div>
 			<div class="m-2"><a href="boardupdate.jsp?b_no=<%=b_no %>"><button class="btn btn-primary">수정</button></a></div>
 			<div class="m-2"><button class="btn btn-danger" onclick="boarddelete(<%=b_no%>)">삭제</button></div>
 		</div>
@@ -53,9 +53,13 @@
 			</tr>
 		</table>
 		<div class="offset-5" >
-			<button onclick="best();" id="btnlike" class="mr-2 ml-3 btn btn-outline-info active btn btn-default btn-lg" ></button>
+			<%if(BoardDao.getboardDao().likecheck(b_no, logininfo.getM_no())) {%>
+				<button onclick="best();" id="btnlike" class="mr-2 ml-3 btn btn-outline-info active btn btn-default btn-lg">👍</button>
+			<%}else{ %>
+				<button onclick="best();" id="btnlike" class="mr-2 ml-3 btn btn-outline-info active btn btn-default btn-lg">🤜</button>
+			<%} %>
 			<input type="hidden" value="<%=board.getB_no()%>" id="blikebno">
-			<input type="hidden" value="<%=board.getM_no()%>" id="blikemno">
+			<input type="hidden" value="<%=logininfo.getM_no()%>" id="blikemno">
 			
 		</div>
 		<br>

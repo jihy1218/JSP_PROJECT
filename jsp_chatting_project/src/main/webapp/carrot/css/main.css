@@ -1,19 +1,7 @@
 
 @charset "UTF-8";
 
-
 @font-face {
-    font-family: 'Cafe24Dongdong';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Dongdong.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'EliceDigitalBaeum_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}@font-face {
   font-family: 'LotteMartHappy';
   font-style: normal;
   font-weight: 400;
@@ -31,13 +19,14 @@
     font-weight: normal;
     font-style: normal;
 }
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 #headtext{
 	font-family: 'yg-jalnan';
 	font-size: 38px;
 }
 body{
 	font-family: 'Noto Sans KR', sans-serif;
-	 
 }
 .bottom {
 	background-color: #333333;
@@ -99,7 +88,7 @@ body{
 	overflow: auto;	/* 박스 크기보다 내용물이 넘쳤을때 스크롤 만들기 */
 	
 }
-.chattingmain{
+#chattingmain{
 	background-color: #EBF7ED;
 	width: 700px;
 	border-radius: 18px;
@@ -113,9 +102,9 @@ body{
 	
 }
 .roomlist::-webkit-scrollbar{width: 16px;}
-.roomlist::-webkit-scrollbar-track {background-color: white;}
+.roomlist::-webkit-scrollbar-track {background-color:#EBF7ED;}
 .roomlist::-webkit-scrollbar-thumb {background-color:#66D965; border-radius: 15px;}
-.roomlist::-webkit-scrollbar-thumb:hover {background: white;}
+.roomlist::-webkit-scrollbar-thumb:hover {background:#EBF7ED;}
 .roomlist::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
 width:16px;height:16px;background:#66D965;} 
 .background2 {

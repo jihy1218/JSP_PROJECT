@@ -5,15 +5,13 @@
 
     
 <%
-		String folderpath ="C:/Users/minwook/git/JSP_PROJECT/jsp_chatting_project/src/main/webapp/carrot/upload";
-		String path = request.getSession().getServletContext().getRealPath("website/upload");
+	
+		String folderpath ="C:/Users/505/git/JSP_PROJECT/jsp_chatting_project/src/main/webapp/carrot/upload";
+		String path = request.getSession().getServletContext().getRealPath("carrot/upload");
 		
-		DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
-		
-		MultipartRequest multi = new MultipartRequest( request ,  folderpath , 
-		1024*1024*10 ,"UTF-8" , policy );
+		MultipartRequest multi = new MultipartRequest( request ,  path , 
+		1024*1024*10 ,"UTF-8" , new DefaultFileRenamePolicy() );
 
-		request.setCharacterEncoding("utf-8");
 		
 		String file = multi.getFilesystemName("file");
 		

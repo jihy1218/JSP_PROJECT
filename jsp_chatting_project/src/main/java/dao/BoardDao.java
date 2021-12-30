@@ -92,7 +92,7 @@ public class BoardDao extends DB {
 		    }else if(type==3) {
 			
 			if(key ==null && keyword ==null) {// 검색이 없을경우
-			    sql = "select * from board where b_like>=5 order by b_no desc limit ?,?";
+			    sql = "select * from board where b_like>=5 order by b_no desc limit ?,?";  // blike가 아닌 다른테이블을 참조해야됨
 			}else {// 검색이 있을경우
 			    if(key.equals("b_writer")) {
     				int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
@@ -266,6 +266,31 @@ public class BoardDao extends DB {
 	    } catch (Exception e) {}return 0;
 	    
 	}
+	// 게시물 좋아요 수 반환 메소드
+	public int likecount(int b_no) {
+	    String sql = "select count(*) from blike where b_no=?";
+	    try {
+		preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, b_no);
+		resultSet= preparedStatement.executeQuery();
+		if(resultSet.next()) {
+		    return resultSet.getInt(1);
+		}
+	    } catch (Exception e) { } return 0;
+	}
+	// 게시물 좋아요 확인 메소드
+	public boolean likecheck(int b_no, int m_no) {
+	    String sql="select * from blike where b_no = "+b_no+" and m_no="+m_no;
+	    try {
+		preparedStatement = connection.prepareStatement(sql);
+		resultSet =preparedStatement.executeQuery();
+		if(resultSet.next()) {
+		    return true;
+		}
+	    } catch (Exception e) {   } return false;
+	}
+	
+
 	
 	
 }
