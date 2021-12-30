@@ -48,6 +48,11 @@ public class Board {
 	}
 	
 	
+	// 따봉 버튼
+	public Board(int b_like) { 
+	    this.b_like = b_like;
+	}
+
 	// Get, Set
 	public int getB_no() {
 		return b_no;

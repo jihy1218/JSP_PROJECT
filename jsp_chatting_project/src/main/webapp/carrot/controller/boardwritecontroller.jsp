@@ -22,7 +22,7 @@
 
 	boolean result = BoardDao.getboardDao().boardwrite(board);
 	if(result){
-	response.sendRedirect("../view/board/boardlist.jsp");
+	response.sendRedirect("../view/board/boardlist.jsp?type=1");
 	} else {
 		response.sendRedirect("../view/board/boardwrite.jsp");
 	}
