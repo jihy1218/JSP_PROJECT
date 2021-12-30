@@ -13,6 +13,7 @@ public class Member {
     private int m_grade; 
     private int m_logincheck; 
     private String m_img;
+    
     //빈생성자
     public Member() {}
     
@@ -45,6 +46,7 @@ public class Member {
 		this.m_logincheck = m_logincheck;
 		this.m_img = m_img;
 	}
+    
     // 회원 수정시 생성자
     public Member(String m_id,String m_nickname, String m_password, String m_img) {
     	this.m_id = m_id;
@@ -58,9 +60,9 @@ public class Member {
 		this.m_no = m_no;
 		this.m_id = m_id;
 	}
-  
+    
+    
     // get, set 메소드
-
 	public int getM_no() {return m_no;}
 	public void setM_no(int m_no) {this.m_no = m_no;}
 	public String getM_id() {return m_id;}
