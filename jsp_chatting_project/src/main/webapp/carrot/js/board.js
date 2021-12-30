@@ -32,4 +32,24 @@ function boarddelete(b_no) {
 	
 	
 }
+/*게시판 상세 보기에 따봉버튼 */
+function best(){
+	var b_no = document.getElementById("blikebno").value;
+	var m_no = document.getElementById("blikemno").value;
+	
+	$.ajax({
+		url : "/jsp_chatting_project/carrot/controller/boardbestcontroller.jsp",
+		data:{b_no:b_no,m_no:m_no},
+		success : function(result){
+			if(result==1){
+				document.getElementById("btnlike").innerHTML="🤜";	
+			}else if(result==2){
+				document.getElementById("btnlike").innerHTML="👍";
+			}
+		}
+		
+		
+	});
+}
+/*게시판 상세 보기에 따봉버튼end */
 
