@@ -46,6 +46,10 @@ public class Board {
 		this.b_title = b_title;
 		this.b_contents = b_contents;
 	}
+	// 게시물 번호 생성자
+	public Board(int b_no) {
+		this.b_no=b_no;
+	}
 	
 
 	// Get, Set

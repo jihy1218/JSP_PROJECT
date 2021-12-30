@@ -22,7 +22,7 @@ public class BoardDao extends DB {
 		} catch (Exception e) {System.out.println("게시물 작성 오류:"+e);} return false;
 	}
 	// 모든 게시물 출력
-	public ArrayList<Board> boardlist(int startrow, int listsize, String key, String keyword, int type ){
+	public ArrayList<Board> boardlist(int startrow, int listsize, String key, String keyword, int type, ArrayList<Board> b_no ){
 	    ArrayList<Board>boards= new ArrayList<Board>();
 	    String sql = null;
 	    if(type==1) {
@@ -53,7 +53,9 @@ public class BoardDao extends DB {
 			}
 	    }else if(type==3) {
 			if(key ==null && keyword ==null) {// 검색이 없을경우
-			    sql = "select * from board where b_like>=5 order by b_no desc limit ?,?";  // blike가 아닌 다른테이블을 참조해야됨
+				
+				// select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*) from blike where b_no=1) from board where (select count(*) from blike where b_no=1)>=5 order by b_no desc limit ? , ?
+			    sql = "select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*) from blike where b_no="+b_no+") from board where (select count(*) from blike where b_no="+b_no+")>=5 limit ? , ?";  // blike가 아닌 다른테이블을 참조해야됨
 			}else {// 검색이 있을경우
 			    if(key.equals("b_writer")) {
 					int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
@@ -84,6 +86,9 @@ public class BoardDao extends DB {
 			return boards;
 	    } catch (Exception e) {System.out.println("boardlist123");} return null;
 	}
+	// 개념글 게시물 출력
+	
+	
 	//게시물 개수 반환 메소드
 	public int boardcount1(String key, String keyword) {
 	    String sql = null;
@@ -254,7 +259,20 @@ public class BoardDao extends DB {
 			}
 		} catch (Exception e) {	} return 0;
 	}
-
+	// 모든 게시물 번호 가져오기 메소드
+	public ArrayList<Board> b_nolist(){
+		ArrayList<Board> boards = new ArrayList<Board>();
+		String sql="select b_no from board";
+		try {
+			preparedStatement= connection.prepareStatement(sql);
+			resultSet= preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				Board board = new Board(resultSet.getInt(1));
+				boards.add(board);
+			}	
+			return boards;
+		} catch (Exception e) {} return null;
+	}
 	
 	
 }
