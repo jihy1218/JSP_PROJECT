@@ -266,6 +266,31 @@ public class BoardDao extends DB {
 	    } catch (Exception e) {}return 0;
 	    
 	}
+	// 게시물 좋아요 수 반환 메소드
+	public int likecount(int b_no) {
+	    String sql = "select count(*) from blike where b_no=?";
+	    try {
+		preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, b_no);
+		resultSet= preparedStatement.executeQuery();
+		if(resultSet.next()) {
+		    return resultSet.getInt(1);
+		}
+	    } catch (Exception e) { } return 0;
+	}
+	// 게시물 좋아요 확인 메소드
+	public boolean likecheck(int b_no, int m_no) {
+	    String sql="select * from blike where b_no = "+b_no+" and m_no="+m_no;
+	    try {
+		preparedStatement = connection.prepareStatement(sql);
+		resultSet =preparedStatement.executeQuery();
+		if(resultSet.next()) {
+		    return true;
+		}
+	    } catch (Exception e) {   } return false;
+	}
+	
+
 	
 	
 }
