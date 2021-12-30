@@ -108,6 +108,12 @@
 								<div class="col-md-2">	<!-- 전송버튼 -->
 									<button id="btnmsginput" class="form-control" onclick="btnsend();">전송</button>
 								</div>
+								<div class="col-md-2">	<!-- 전송버튼 -->
+									<form id="fileForm" method="post" enctype="multipart/form-data">
+										<input type="file" name="file">
+									</form>
+									<button onclick="chattingfile()">파일보내기</button>
+								</div>
 							</div>
 						</div>
 					</div>
