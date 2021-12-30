@@ -11,10 +11,8 @@
 <head>
 <meta charset="UTF-8">
 	<!-- 부트스트랩 설정 4.0 버전 -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<%
 		
 		Member logininfo2 = (Member)session.getAttribute("login");

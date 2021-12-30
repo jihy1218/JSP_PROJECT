@@ -92,7 +92,7 @@
 						</div>
 				</div>
 				<div class="col-lg-8 col-sm-9" >
-					<div class="card chattingmain">
+					<div class="card" id="chattingmain">
 						<div id="nowroom">
 							<div id="nowroomname"><%=roomname %> <div id="username"> </div> </div>
 						</div>

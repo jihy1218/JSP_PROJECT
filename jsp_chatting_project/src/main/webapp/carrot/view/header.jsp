@@ -99,9 +99,15 @@
 	<%
 		if(m_grade==1){
 	%>
-	<div id="sidead" style="position: absolute; top :200px; left: 20px;" class="col-md-2 col-sm-4 sidead">
-	    <button data-toggle="sidead" id="adtoggle" onclick="sideadtoggle();" class="btn" style="background-color :#ffffff;  margin: auto; position: absolute ; top: 0px; left:180px;"><span id="adtext" class="text-danger">X</span></button>
-		<img src="/jsp_chatting_project/carrot/img/adimg2.png" style="max-width: 180px;">
+	<div id="sidead" style="position: absolute; top :180px; left: 20px;" class="col-md-2 col-sm-4 sidead">
+		<div class="carousel slide" data-ride="carousel" data-interval="3500">
+			<div class="carousel-inner">
+				<div class="carousel-item active"><img src="/jsp_chatting_project/carrot/img/광고1.jpg"></div>
+				<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/광고2.jpg"></div>
+				<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/광고3.jpg"></div>
+				<div class="carousel-item"><img src="/jsp_chatting_project/carrot/img/광고4.jpg"></div>
+			</div>
+		</div>
 	</div>
 	<%} %>
 </body>
