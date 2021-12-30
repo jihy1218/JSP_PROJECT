@@ -52,7 +52,15 @@
 				<td colspan="2"></td>
 			</tr>
 		</table>
-		<br><br><br>
+		<div class="offset-5" >
+			<button onclick="best();" id="btnlike" class="mr-2 ml-3 btn btn-outline-info active btn btn-default btn-lg" ></button>
+			<input type="hidden" value="<%=board.getB_no()%>" id="blikebno">
+			<input type="hidden" value="<%=board.getM_no()%>" id="blikemno">
+			
+		</div>
+		<br>
+		<br>
+		<br><br><br><br>
 		<form action="../../controller/replywritecontroller.jsp" method="post" class="row">
 			<input type="hidden" name="b_no" value="<%=b_no%>">
 				<div>

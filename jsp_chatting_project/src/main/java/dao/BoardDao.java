@@ -245,8 +245,27 @@ public class BoardDao extends DB {
 		} catch (Exception e) {System.out.println("게시물 수정 오류");} return false;
 	}
 	
-
-	
+	//게시물 따봉버튼
+	public int blike(int b_no, int m_no) {
+	    String sql = null;
+	    sql="select * from blike where b_no = "+b_no+" and m_no="+m_no;
+	    try {
+		preparedStatement =  connection.prepareStatement(sql);
+		resultSet = preparedStatement.executeQuery();
+		if(resultSet.next()) {
+		   sql="delete from blike where b_no="+b_no+" and m_no="+m_no; 
+		   preparedStatement = connection.prepareStatement(sql);
+		   preparedStatement.executeUpdate();
+		   return 1;
+		}else {
+		    sql="insert into blike(b_no,m_no) values("+b_no+","+m_no+")";
+		    preparedStatement=connection.prepareStatement(sql);
+		    preparedStatement.executeUpdate();
+		    return 2;
+		}
+	    } catch (Exception e) {}return 0;
+	    
+	}
 	
 	
 }
