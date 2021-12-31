@@ -1,4 +1,3 @@
-
 <%@page import="dao.BoardDao"%>
 <%@page import="dto.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,7 +11,6 @@
 	<%@include file="../header.jsp" %>
 	<%@include file="../friendbar.jsp" %>
 	<%   
-		request.setCharacterEncoding("UTF-8");
 		//검색처리 :키워드 입력하고 검색 버튼을 눌렀을떄
 		String key = request.getParameter("key");
 		String keyword = request.getParameter("keyword");
@@ -50,7 +48,7 @@
 	%>
 	
 	<div class="container">
-		<h2 style="color : navy;"style="font-weight: bold; "> 📌자유게시판 </h2>
+		<h3> 자유 게시판 </h3>
 		<br><br>
 		<div class="row">
 		<%if(type==1) {%>
@@ -69,25 +67,18 @@
 		<div class="offset-5">
 			<a href="boardwrite.jsp" ><button class="mr-2 ml-3 btn btn-outline-info ">글쓰기✏</button></a>
 			<%if(type==1){%>
-				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=15 %>" ><button class="btn btn-outline-info">15</button></a>
+				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=15 %>" ><button style="background-color:green;">15</button></a>
 			<% }else if(type==2){%>
-				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=15 %>" ><button class="btn btn-outline-info">15</button></a>
+				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=15 %>" ><button style="background-color:green;">15</button></a>
 			<%} else if(type==3){%>
-				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=15 %>" ><button class="btn btn-outline-info">15</button></a>
+				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=15 %>" ><button style="background-color:green;">15</button></a>
 			<%} %>
 			<%if(type==1){%>
 				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=20 %>" ><button class="btn btn-outline-info">20</button></a>
 			<% }else if(type==2){%>
-				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=20 %>" ><button class="btn btn-outline-info">20</button></a>
+				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=20 %>" ><button style="background-color:green;">20</button></a>
 			<%} else if(type==3){%>
-				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=20 %>" ><button class="btn btn-outline-info">20</button></a>
-			<%} %>
-			<%if(type==1){%>
-				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=30 %>" ><button class="btn btn-outline-info">30</button></a>
-			<% }else if(type==2){%>
-				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=30 %>" ><button class="btn btn-outline-info">30</button></a>
-			<%} else if(type==3){%>
-				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=30 %>" ><button class="btn btn-outline-info">30</button></a>
+				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=20 %>" ><button style="background-color:green;">20</button></a>
 			<%} %>
 			</div>
 		</div><br>
@@ -103,16 +94,14 @@
 			<th>추천</th>
 		</tr>
 		<%
-			for(Board board : boards){
-			
-			%>
+			for(Board board : boards){%>
 			<tr>
 				<td><%=board.getB_no() %></td>
 				<td><a href ="boardview.jsp?b_no=<%=board.getB_no()%>"><%=board.getB_title() %></a></td>
 				<td><%=board.getB_writer()%></td>
 				<td><%=board.getB_date() %></td>
 				<td><%=board.getB_view() %></td>
-				<td><%=BoardDao.getboardDao().likecount(board.getB_no()) %></td>
+				<td><%=board.getB_like() %></td>
 			</tr>
 		
 		<%} %>

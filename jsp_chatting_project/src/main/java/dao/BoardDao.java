@@ -50,16 +50,7 @@ public class BoardDao extends DB {
 //	    return null;  
 //	}
 	
-	
-	
-	
-	
-	
-	
-	
 	// 모든 게시물 출력
-
-
 		public ArrayList<Board> boardlist(int startrow, int listsize, String key, String keyword, int type ){
 		    ArrayList<Board>boards= new ArrayList<Board>();
 		    String sql = null;
@@ -151,8 +142,6 @@ public class BoardDao extends DB {
 	    return 0;
 	}
 	
-	
-
 	// 게시불 번호의 해당 게시물 가져오기
 	public Board getboard(int b_no) {
 		String sql="select * from board where b_no=?";
@@ -160,7 +149,6 @@ public class BoardDao extends DB {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setInt(1, b_no);
 			resultSet=preparedStatement.executeQuery();
-			
 			if(resultSet.next()) {
 				Board board = new Board(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
 						resultSet.getString(4), resultSet.getInt(5), resultSet.getString(6), resultSet.getInt(7), resultSet.getInt(8));
@@ -289,8 +277,6 @@ public class BoardDao extends DB {
 		}
 	    } catch (Exception e) {   } return false;
 	}
-	
-
 	
 	
 }
