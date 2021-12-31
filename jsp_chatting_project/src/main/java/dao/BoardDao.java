@@ -1,5 +1,7 @@
 package dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import dto.Board;
@@ -52,22 +54,31 @@ public class BoardDao extends DB {
 				sql ="select * from board where "+key+" like '%"+keyword+"%' order by b_no desc limit ? , ?";
 			    }
 			}
-	    }else if(type==3) {
-			if(key ==null && keyword ==null) {// 검색이 없을경우
-				
-				// select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*) from blike where b_no=1) from board where (select count(*) from blike where b_no=1)>=5 order by b_no desc limit ? , ?
-			    sql = "select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*) from blike where b_no=?) from board where (select count(*) from blike where b_no=?)>=5 limit ? , ?";  // blike가 아닌 다른테이블을 참조해야됨
-			}else {// 검색이 있을경우
-			    if(key.equals("b_writer")) {
-					int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
-					sql = "select * from board where m_no ="+m_no+" order by b_no desc limit ? , ?";
-			    }else if(key.equals(keyword)) {// 반호 검색 일치한 값만 검색
-				sql ="select * from board where b_no ="+keyword;
-			    }else {									//제목 혹은 내용 검색 : 포함된 값검색
-				sql ="select * from board where "+key+" like '%"+keyword+"%' order by b_no desc limit ? , ?";
-			    }
-			}
-	    }
+		} /*
+			 * else if(type==3) { if(key ==null && keyword ==null) {// 검색이 없을경우
+			 * 
+			 * // select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*)
+			 * from blike where b_no=1) from board where (select count(*) from blike where
+			 * b_no=1)>=5 order by b_no desc limit ? , ? //sql =
+			 * "select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*) from blike where b_no=?) from board where (select count(*) from blike where b_no=?)>=5 limit ? , ?"
+			 * ; // blike가 아닌 다른테이블을 참조해야됨 sql
+			 * ="select b_no,count(*) from blike group by b_no having count(*)>=5"; try {
+			 * PreparedStatement preparedStatement2 = connection.prepareStatement(sql);
+			 * ResultSet resultSet2 = preparedStatement2.executeQuery(); while(
+			 * resultSet2.next() ) { sql =
+			 * "select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*) from blike where b_no="
+			 * +resultSet2.getInt(1)
+			 * +") from board where (select count(*) from blike where b_no="+resultSet2.
+			 * getInt(1)+")>=5 limit ? , ?"; } } catch (Exception e) {}
+			 * 
+			 * }else {// 검색이 있을경우 if(key.equals("b_writer")) { int m_no =
+			 * MemberDao.getmMemberDao().getmembernum(keyword); sql =
+			 * "select * from board where m_no ="+m_no+" order by b_no desc limit ? , ?";
+			 * }else if(key.equals(keyword)) {// 반호 검색 일치한 값만 검색 sql
+			 * ="select * from board where b_no ="+keyword; }else { //제목 혹은 내용 검색 : 포함된 값검색
+			 * sql ="select * from board where "+key+" like '%"
+			 * +keyword+"%' order by b_no desc limit ? , ?"; } } }
+			 */
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, startrow); preparedStatement.setInt(2, listsize);
