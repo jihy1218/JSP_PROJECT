@@ -245,8 +245,8 @@
 			var time = event.data.split(",")[1];	// , 기준으로 문자열 분리해서 두번째 문자열
 			var msg = event.data.split(",")[2];		// , 기준으로 문자열 분리해서 세번째 문자열
 			var img = event.data.split(",")[3];	
-			var love = event.data.split(",")[5];
 			var img2= event.data.split(",")[4];
+			var love = event.data.split(",")[5];
 			
 			if( img2 == "null"){
 				if(love!=null){
@@ -273,7 +273,7 @@
 					msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 퇴장했습니다.</span></div>"
 				}
 				else{
-					msgbox.innerHTML +="<img style='width : 200px' src='../../upload/"+img2+"'>";
+					msgbox.innerHTML +="<img style='width : 200px; margin-left : 100px;' class='d-flex justify-content-start'  src='../../upload/"+img2+"'>";
 					msgbox.innerHTML +="<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><a href='#none' class='my-2 mx-2' style='color : black;' id='you' onclick='blockuser()'>"+from+"</a><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 				}
 				msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
