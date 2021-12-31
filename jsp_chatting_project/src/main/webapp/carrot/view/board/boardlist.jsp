@@ -55,19 +55,19 @@
 		<div class="row">
 		<%if(type==1) {%>
 		    <a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger active"> 📝전체글 </button></a>
-			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 🔥인기글 </button></a>
-			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 👍개념글</button>	</a>
+			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 인기글 </button></a>
+			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 개념글</button>	</a>
 		<%}else if(type==2){%>
 			<a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger"> 전체글 </button></a>
 			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success active"> 🔥인기글 </button></a>
-			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 👍개념글 </button>	</a>
+			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 개념글 </button>	</a>
 		<%}else if(type==3) {%>
 			<a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger"> 전체글 </button></a>
-			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 🔥인기글 </button></a>
+			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 인기글 </button></a>
 			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info active"> 👍개념글 </button>	</a>
 		<%} %>	
 		<div class="offset-5">
-			<a href="boardwrite.jsp" ><button class="mr-2 ml-3 btn btn-outline-info active">글쓰기✏</button></a>
+			<a href="boardwrite.jsp" ><button class="mr-2 ml-3 btn btn-outline-info ">글쓰기✏</button></a>
 			<%if(type==1){%>
 				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=15 %>" ><button class="btn btn-outline-info">15</button></a>
 			<% }else if(type==2){%>
