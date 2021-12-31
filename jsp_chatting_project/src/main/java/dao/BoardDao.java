@@ -21,11 +21,12 @@ public class BoardDao extends DB {
 			return true;
 		} catch (Exception e) {System.out.println("게시물 작성 오류:"+e);} return false;
 	}
+	
 	// 모든 게시물 출력
-	public ArrayList<Board> boardlist(int startrow, int listsize, String key, String keyword, int type, ArrayList<Board> b_no ){
-	    ArrayList<Board>boards= new ArrayList<Board>();
-	    String sql = null;
-	    if(type==1) {
+		public ArrayList<Board> boardlist(int startrow, int listsize, String key, String keyword, int type ){
+		    ArrayList<Board>boards= new ArrayList<Board>();
+		    String sql = null;
+		    if(type==1) {
 			if(key ==null && keyword ==null) {// 검색이 없을경우
 			    sql = "select * from board order by b_no DESC limit ?, ?";
 			}else {// 검색이 있을경우
@@ -55,7 +56,7 @@ public class BoardDao extends DB {
 			if(key ==null && keyword ==null) {// 검색이 없을경우
 				
 				// select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*) from blike where b_no=1) from board where (select count(*) from blike where b_no=1)>=5 order by b_no desc limit ? , ?
-			    sql = "select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*) from blike where b_no="+b_no+") from board where (select count(*) from blike where b_no="+b_no+")>=5 limit ? , ?";  // blike가 아닌 다른테이블을 참조해야됨
+			    sql = "select b_no,b_title,b_contents,b_file,m_no,b_date,b_view,(select count(*) from blike where b_no=?) from board where (select count(*) from blike where b_no=?)>=5 limit ? , ?";  // blike가 아닌 다른테이블을 참조해야됨
 			}else {// 검색이 있을경우
 			    if(key.equals("b_writer")) {
 					int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
@@ -110,7 +111,6 @@ public class BoardDao extends DB {
     		if(resultSet.next()) { return resultSet.getInt(1);}
     	}catch(Exception e) {System.out.println("boardcount1 이에오");} return 0;
 	}
-
 	// 게시불 번호의 해당 게시물 가져오기
 	public Board getboard(int b_no) {
 		String sql="select * from board where b_no=?";

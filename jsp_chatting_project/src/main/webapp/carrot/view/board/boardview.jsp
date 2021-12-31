@@ -1,3 +1,4 @@
+<%@page import="dto.Login"%>
 <%@page import="dto.Board"%>
 <%@page import="dao.BoardDao"%>
 <%@page import="dto.Reply"%>
@@ -42,9 +43,11 @@
 	<%@include file="../friendbar.jsp" %>
 	<div class ="container">
 		<div class="row">
-			<div class="m-2"><a href="boardlist.jsp?type=1"><button class="form-control">목록</button></a></div>
-			<div class="m-2"><a href="boardupdate.jsp?b_no=<%=b_no %>"><button class="btn btn-primary">수정</button></a></div>
-			<div class="m-2"><button class="btn btn-danger" onclick="boarddelete(<%=b_no%>)">삭제</button></div>
+			<div class="m-2"><a href="boardlist.jsp?type=1"><button class="form-control">📃목록</button></a></div>
+			<%if(logininfo.getM_no()==board.getM_no()){%>
+			<div class="m-2"><a href="boardupdate.jsp?b_no=<%=b_no %>"><button class="btn btn-primary">✓수정</button></a></div>
+			<div class="m-2"><button class="btn btn-danger" onclick="boarddelete(<%=b_no%>)">✗삭제</button></div>
+		<%} %>		
 		</div>
 		<table class="table">
 			<tr>
