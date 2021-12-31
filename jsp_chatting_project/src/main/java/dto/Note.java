@@ -13,6 +13,7 @@ public class Note {
 	private int n_check;
 	private String n_date;
 	
+	
 	// 빈생성자
 	public Note() {}
 	
@@ -22,9 +23,7 @@ public class Note {
 		try {
 			Date date =  datetimeformat1.parse( n_date );
 			return datetimeformat.format(date);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		} catch (Exception e) {}
 		return n_date;
 	}
 

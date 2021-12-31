@@ -42,7 +42,8 @@
 		
 		int type = Integer.parseInt(request.getParameter("type"));
 		// 등록 시 
-		ArrayList<Board> boards = BoardDao.getboardDao().boardlist(startrow, listsize, key, keyword , type);
+		ArrayList<Board> b_no = BoardDao.getboardDao().b_nolist();
+		ArrayList<Board> boards = BoardDao.getboardDao().boardlist(startrow, listsize, key, keyword , type, b_no);
 		
 	
 	%>
