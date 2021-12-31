@@ -12,7 +12,6 @@
 <body>
 	<%@ include file="../header.jsp" %>
 	<%@include file="/carrot/view/friendbar.jsp" %>
-	
 	<%
 		//보낸사람 번호
 		int n_from = 0;
@@ -68,7 +67,7 @@
 		</table>
 		<div class="row">
 			<div class="col-md-4 offset-4">
-				<ul class="pagination">
+				<ul class="pagination d-flex justify-content-center">
 					<%if(currentpage==1){ %>
 						<li class="page-item"><a href="notelist.jsp?pagenum=<%=currentpage%>&n_from=<%=n_from %>" class="page-link"> 이전 </a> </li>
 					<%}else{ %>

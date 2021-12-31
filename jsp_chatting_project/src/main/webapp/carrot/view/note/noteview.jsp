@@ -31,24 +31,27 @@
 	<br><br><br>
 	<div class="container">
 		<div class="row">
-			<div class="card offset-3 col-md-6" style="height: 350px;">
-				<div>
-					<p class="text-center">메시지</p>
-				</div>
-				<div style="border-bottom: 1px #000000 solid;">
-					<p><%=member.getM_name() %> </p>
-				</div>
-				<div style="border-bottom: 1px #000000 solid;">
-					<p><%=note.getN_date() %></p>
-				</div>
-				<div>
-					<p><%=note.getN_contents() %></p>
-				</div>
-				<br><br><br><br>
+			<div class="card offset-3 col-md-6" style="height: 400px;">
+				<table class="table">
+					<tr class="text-center" style="height: 40px; ">
+						<th colspan="4">쪽지보기</th>
+					</tr>
+					<tr>
+						<th>보낸사람</th><td colspan="3"><%=MemberDao.getmMemberDao().getmemberid(note.getN_from()) %></td>
+					</tr>
+					<tr>
+						<th>보낸날짜</th><td colspan="3"><%=note.getN_date() %></td>
+					</tr>
+					<tr>
+						<th>내용</th><td colspan="3"  style="height: 200px;"><%=note.getN_contents() %></td>
+					</tr>
+					<tr>
+						<td colspan="3" class="text-right"><a class="text-info" style="font-weight: bold;" href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=note.getN_from()%>">뒤로가기</a></td>
+					</tr>
+				</table>
 			</div>
-			<div style="position: absolute; bottom : 700px; right : 800px;">
-				<a href="/jsp_chatting_project/carrot/view/note/notelist.jsp?n_from=<%=note.getN_from()%>">뒤로가기</a>
-				</div>
+			<div>
+			</div>
 		</div>
 	</div>
 	<br><br><br><br><br>

@@ -42,6 +42,7 @@
 		
 		int type = Integer.parseInt(request.getParameter("type"));
 		// 등록 시 
+		ArrayList<Board> b_no = BoardDao.getboardDao().b_nolist();
 		ArrayList<Board> boards = BoardDao.getboardDao().boardlist(startrow, listsize, key, keyword , type);
 		
 	
@@ -54,31 +55,21 @@
 		<%if(type==1) {%>
 		    <a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger active"> 📝전체글 </button></a>
 			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 인기글 </button></a>
-			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 개념글</button>	</a>
 		<%}else if(type==2){%>
 			<a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger"> 전체글 </button></a>
 			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success active"> 🔥인기글 </button></a>
-			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info"> 개념글 </button>	</a>
-		<%}else if(type==3) {%>
-			<a href ="boardlist.jsp?type=<%=1%>"><button class="mr-2 ml-3 btn btn-outline-danger"> 전체글 </button></a>
-			<a href ="boardlist.jsp?type=<%=2%>"><button class="mr-2 ml-3 btn btn-outline-success"> 인기글 </button></a>
-			<a href ="boardlist.jsp?type=<%=3%>"><button class="mr-2 ml-3 btn btn-outline-info active"> 👍개념글 </button>	</a>
 		<%} %>	
-		<div class="offset-5">
+		<div class="offset-7">
 			<a href="boardwrite.jsp" ><button class="mr-2 ml-3 btn btn-outline-info ">글쓰기✏</button></a>
 			<%if(type==1){%>
-				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=15 %>" ><button style="background-color:green;">15</button></a>
+				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=15 %>" ><button class="btn btn-outline-info">15</button></a>
 			<% }else if(type==2){%>
-				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=15 %>" ><button style="background-color:green;">15</button></a>
-			<%} else if(type==3){%>
-				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=15 %>" ><button style="background-color:green;">15</button></a>
+				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=15 %>" ><button class="btn btn-outline-info">15</button></a>
 			<%} %>
 			<%if(type==1){%>
 				<a href="boardlist.jsp?type=<%=1 %>&listsize=<%=20 %>" ><button class="btn btn-outline-info">20</button></a>
 			<% }else if(type==2){%>
-				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=20 %>" ><button style="background-color:green;">20</button></a>
-			<%} else if(type==3){%>
-				<a href="boardlist.jsp?type=<%=3 %>&listsize=<%=20 %>" ><button style="background-color:green;">20</button></a>
+				<a href="boardlist.jsp?type=<%=2 %>&listsize=<%=20 %>" ><button class="btn btn-outline-info">20</button></a>
 			<%} %>
 			</div>
 		</div><br>
@@ -101,7 +92,7 @@
 				<td><%=board.getB_writer()%></td>
 				<td><%=board.getB_date() %></td>
 				<td><%=board.getB_view() %></td>
-				<td><%=board.getB_like() %></td>
+				<td><%=BoardDao.getboardDao().likecount(board.getB_no()) %></td>
 			</tr>
 		
 		<%} %>
@@ -111,7 +102,7 @@
 	<!-- 페이징 시작 -->
 	
 		<div class="row">	<!-- 가로 배치 -->
-			<div class="col-md-4 offset-4 my-3">
+			<div class="col-md-4 offset-4 my-3 d-flex justify-content-center">
 			<ul class="pagination">
 				
 						<!-- 첫페이지에서 이전버튼 눌렀을때 첫페이지 고정  -->
@@ -181,44 +172,9 @@
 					<%}else{ %>
 						<li class="page-item"><a href="boardlist.jsp?type=2&pagenum=<%=currentpage+1 %>&key=<%=key %>&keyword=<%=keyword %>" class="page-link"> 다음</a> </li>
 					<%}} %>		
-					<%if(type==3) {%>
-					<% if( currentpage == 1){ %>
-						<% if( keyword == null ){ %>
-						<li class="page-item"><a href="boardlist.jsp?type=3&pagenum=<%=currentpage%>" class="page-link"> 이전 </a> </li>
-						<%}else{%>
-						<li class="page-item"><a href="boardlist.jsp?type=3&pagenum=<%=currentpage%>&key=<%=key %>&keyword=<%=keyword %>" class="page-link"> 이전 </a> </li>	
-						<%} %>
-					<%}else{ %>
-						<li class="page-item"><a href="boardlist.jsp?type=3&pagenum=<%=currentpage-1 %>&key=<%=key %>&keyword=<%=keyword %>" class="page-link"> 이전 </a> </li>
-					<%} %>										<!-- 현재페이지번호 -1  -->
-					
-						<!-- 게시물의 수만큼 페이지 번호 생성 -->
-					<% for( int i = 1 ; i<=lastpage; i++){ %>
-					
-						<% if( keyword == null ){ %>
-							<li class="page-item"><a href="boardlist.jsp?type=3&pagenum=<%=i %>" class="page-link"> <%=i %> </a> </li>
-									<!-- i 클릭했을때 현재 페이지 이동 [ 클릭한 페이지번호 ] -->
-							<%}else{%>
-							<li class="page-item"><a href="boardlist.jsp?type=3&pagenum=<%=i %>&key=<%=key %>&keyword=<%=keyword %>" class="page-link"> <%=i %> </a> </li>
-							<%} %>
-						
-					<%} %>
-					
-						<!-- 마지막페이지에서 다음버튼 눌렀을때 마지막페이지 고정 -->
-					<% if( currentpage == lastpage ){ %>
-					<% if( keyword == null ){ %>
-						<li class="page-item"><a href="boardlist.jsp?type=3&pagenum=<%=currentpage%>" class="page-link"> 다음 </a> </li>
-						<%}else{%>
-						<li class="page-item"><a href="boardlist.jsp?type=3&pagenum=<%=currentpage%>&key=<%=key %>&keyword=<%=keyword %>" class="page-link"> 다음 </a> </li>	
-						<%} %>
-					<%}else{ %>
-						<li class="page-item"><a href="boardlist.jsp?type=3&pagenum=<%=currentpage+1 %>&key=<%=key %>&keyword=<%=keyword %>" class="page-link"> 다음</a> </li>
-					<%}} %>		
-					
 				</ul>
 			</div>
 		</div>
-	
 	<!-- 검색 -->
 	<%if(type==1){ %>
 		<form action ="boardlist.jsp?type=<%=1 %>&pagenum=<%=currentpage%>"method="post" class="col-md-5 offset-3 input-group my-3">
@@ -232,16 +188,6 @@
 		</form>
 	<%}else if(type==2){ %>
 		<form action ="boardlist.jsp?type=<%=2 %>&pagenum=<%=currentpage%>"method="post" class="col-md-5 offset-3 input-group my-3">
-			<select class="custom-select col-cmd-3" name="key">
-				<option value="b_title">제목</option>
-				<option value="b_no">번호</option>
-				<option value="b_writer">작성자</option>
-			</select>
-			<input type="text" class="form-control" name="keyword"><!-- keyword 검색대상~! -->
-			<input type="submit"class=btn-outline-info value="검색">
-		</form>
-	<%}else if(type==3){ %>
-		<form action ="boardlist.jsp?type=<%=3 %>&pagenum=<%=currentpage%>"method="post" class="col-md-5 offset-3 input-group my-3">
 			<select class="custom-select col-cmd-3" name="key">
 				<option value="b_title">제목</option>
 				<option value="b_no">번호</option>
