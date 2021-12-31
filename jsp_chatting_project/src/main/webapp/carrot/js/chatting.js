@@ -150,28 +150,6 @@ function makeroom(){
 	}
 	
 
-	//채팅 파일
-	function chattingfile(){
-		
-		
-	var formData = new FormData($('#fileForm')[0]);
-	alert(formData);
-		
-	$.ajax({ 
-		type: "POST",
-		enctype: 'multipart/form-data',
-	 	url: '../../controller/chattingimgcontroller.jsp',
-	 	data: {
-			formData : formData
-		},
-		processData: false,
-		contentType: false
-
-		});
-
-	}
-
-
 
 
 

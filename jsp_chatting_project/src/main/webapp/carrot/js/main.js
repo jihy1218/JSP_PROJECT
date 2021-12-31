@@ -37,7 +37,7 @@
 			document.getElementById("pwresult").innerHTML="사용가능한 패스워드 입니다."
 		}
 		//닉네임
-		if(!nicknamej.test(name)){
+		if(!nicknamej.test(nickname)){
 			document.getElementById("nicknameresult").innerHTML="닉네임을 입력해주세요[특수문자는 제외]";return false;
 		}else{
 			document.getElementById("nicknameresult").innerHTML="사용가능한 닉네임 입니다.";
