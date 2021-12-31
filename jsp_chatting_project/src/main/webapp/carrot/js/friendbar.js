@@ -35,7 +35,6 @@
 	//친구 초대
 	function friendinvite(){
 		var inviteid = document.getElementById("inviteid").value;
-		alert(inviteid);
 		$.ajax({
 			url : "../../controller/friendinvitecontroller.jsp",
 			data : {

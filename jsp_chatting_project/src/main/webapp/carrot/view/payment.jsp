@@ -17,7 +17,7 @@
 			<img src="/jsp_chatting_project/carrot/img/당근프리미엄.png"  style="max-width: 100%">
 			<p style="font-size: 2rem;">당근프리미엄에서 광고없는 채팅,<br> 친구기능 그리고 채팅방 만들기</p>
 			<button class="btn btn-primary p-2 mb-3" onclick="payment();">당근프리미엄 가입하기</button>
-			<p style="color:#ff7915; font-size: 2rem;"> 9,900원
+			<p style="color:#ff7915; font-size: 2rem;"> 3,900원
 			<p style="font-size: 1.7rem;">한번 결제로 · 평생 누리세요</p>
 			<p class="text-secondary mb-3">프리미엄 가입후 즉시 해지는 청약 철회 가능하지만<br> 기능을 이용하셨을 경우 청약철회는 제한됩니다.</p>  
 		</div>

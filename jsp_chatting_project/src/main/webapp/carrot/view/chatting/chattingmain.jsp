@@ -182,7 +182,7 @@
 					cache: false,
 					timeout: 600000,
 					success: function(data) {
-						msgbox.innerHTML +="<img  src='../../upload/"+data+"'>";
+						msgbox.innerHTML +="<img style='width : 200px; margin-left : 440px;' class='d-flex justify-content-start' src='../../upload/"+data+"'>"; 
 						
 						// 1. 입력창에 입력된 데이터를 가져온다
 						var msginput = document.getElementById("msginput").value;
