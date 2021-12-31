@@ -92,6 +92,7 @@
 						</div>
 				</div>
 				<div class="col-lg-8 col-sm-9" >
+				
 					<div class="card" id="chattingmain">
 						<div id="nowroom">
 							<div id="nowroomname"><%=roomname %> <div id="username"> </div> </div>
@@ -101,20 +102,19 @@
 								<!-- 채팅 메시지가 추가 되는 위치 -->
 								
 							</div>
+							<form  enctype="multipart/form-data" id="form" action="abcd" method="post">
+										<input type="file" name="file" id="file"> <br/>
+							</form>	 
 							<div class="row no-gutters" id="chattingserch">	<!-- 채팅입력 창  , 전송버튼 -->
 								<div class="col-md-10"><!-- 채팅입력 창 -->
 									<input id="msginput" class="form-control" type="text" placeholder="내용 입력" onkeyup="entersend();" maxlength="30">
 								</div>
 								<div class="col-md-2">	<!-- 전송버튼 -->
-									<button id="btnmsginput" class="form-control" onclick="btnsend();">전송</button>
-								</div>
-								<div class="col-md-2">	<!-- 전송버튼 -->
-									<form id="fileForm" method="post" enctype="multipart/form-data">
-										<input type="file" name="file">
-									</form>
-									<button onclick="chattingfile()">파일보내기</button>
+									<button id="btnmsginput" class="form-control" onclick="btnsend();" >전송</button>
 								</div>
 							</div>
+								
+							
 						</div>
 					</div>
 				</div>
@@ -130,7 +130,6 @@
 		function close () { 
 			document.querySelector(".background2").className = "background2";
 		}
-
 		document.querySelector("#close").addEventListener('click', close);
 		// 방이름
 		var count=0;
@@ -168,22 +167,58 @@
 		}
 				
 		function btnsend() {
-			// 1. 입력창에 입력된 데이터를 가져온다
-			var msginput = document.getElementById("msginput").value;
+			var file = document.getElementById("file").value;
+			alert(file);
+			if(file!=""){
+				var data = new FormData(form);
+				var img = null;
+				$.ajax({
+					type: "POST",
+					enctype: 'multipart/form-data',
+					url: "abcd",
+					data: data,
+					processData: false,
+					contentType: false,
+					cache: false,
+					timeout: 600000,
+					success: function(data) {
+						msgbox.innerHTML +="<img  src='../../upload/"+data+"'>";
+						
+						// 1. 입력창에 입력된 데이터를 가져온다
+						var msginput = document.getElementById("msginput").value;
+							// 입력이 없을때 유효성검사 [ 전송 막기 ]
+							if( msginput == ""){  return; }
+						// 날짜 
+						let today = new Date(); // js에서 현재 날짜/시간 객체 
+						var time = today.toLocaleTimeString(); // 시간만 가져오기 
+						// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
+						var msg = nickname +","+time+","+msginput+","+fromimg + ","+data;
+						// 입력된 문자 와 날짜를 채팅발 div 에 추가
+						msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'>"+msginput+"</span></div>";
+						webSocket.send( msg );	 // *****************서버로 부터 메시지 전송 
+						document.getElementById("msginput").value = "";	// 전송후 입력창 내용물 지우기 [ 초기화 ]
+						// 스크롤 있을경우 스크롤 위치를 가장 아래로 이동 
+						msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이[ 바닥 ] */
+						
+						$('#multiform')[0].reset(); //폼 초기화(리셋);
+					}
+				});
+			}else{
+				var msginput = document.getElementById("msginput").value;
 				// 입력이 없을때 유효성검사 [ 전송 막기 ]
 				if( msginput == ""){  return; }
-			// 날짜 
-			let today = new Date(); // js에서 현재 날짜/시간 객체 
-			var time = today.toLocaleTimeString(); // 시간만 가져오기 
-			// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
-			var msg = nickname +","+time+","+msginput+","+fromimg;
-			// 입력된 문자 와 날짜를 채팅발 div 에 추가
-			msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'>"+msginput+"</span></div>";
-			webSocket.send( msg );	 // *****************서버로 부터 메시지 전송 
-			document.getElementById("msginput").value = "";	// 전송후 입력창 내용물 지우기 [ 초기화 ]
-			// 스크롤 있을경우 스크롤 위치를 가장 아래로 이동 
-			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이[ 바닥 ] */
-			
+				// 날짜 
+				let today = new Date(); // js에서 현재 날짜/시간 객체 
+				var time = today.toLocaleTimeString(); // 시간만 가져오기 
+				// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
+				var msg = nickname +","+time+","+msginput+","+fromimg+","+"null";
+				// 입력된 문자 와 날짜를 채팅발 div 에 추가
+				msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'>"+msginput+"</span></div>";
+				webSocket.send( msg );	 // *****************서버로 부터 메시지 전송 
+				document.getElementById("msginput").value = "";	// 전송후 입력창 내용물 지우기 [ 초기화 ]
+				// 스크롤 있을경우 스크롤 위치를 가장 아래로 이동 
+				msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이[ 바닥 ] */
+			}
 		}
 		function entersend() {
 			// 1. 입력창에 입력된 데이터를 가져온다
@@ -195,7 +230,7 @@
 				let today = new Date(); // js에서 현재 날짜/시간 객체 
 				var time = today.toLocaleTimeString(); // 시간만 가져오기 
 				// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
-				var msg = nickname +","+time+","+msginput+","+fromimg;
+				var msg = nickname +","+time+","+msginput+","+fromimg+","+"null";
 				// 입력된 문자 와 날짜를 채팅발 div 에 추가
 				msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'>"+msginput+"</span></div>";
 				webSocket.send( msg );	 // *****************서버로 부터 메시지 전송 
@@ -205,64 +240,46 @@
 			}
 		}
 		function onMessage(event) {
+			
 			var from = event.data.split(",")[0];	// , 기준으로 문자열 분리해서 첫번째 문자열
 			var time = event.data.split(",")[1];	// , 기준으로 문자열 분리해서 두번째 문자열
 			var msg = event.data.split(",")[2];		// , 기준으로 문자열 분리해서 세번째 문자열
 			var img = event.data.split(",")[3];	
-			var love = event.data.split(",")[4];
+			var love = event.data.split(",")[5];
+			var img2= event.data.split(",")[4];
 			
-			if(love!=null){
-				msg=love
+			if( img2 == "null"){
+				if(love!=null){
+					msg=love
+				}
+				if(msg=="enter"){
+					msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>"
+				}
+				else if(msg=="out"){
+					msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 퇴장했습니다.</span></div>"
+				}
+				else{
+					msgbox.innerHTML += "<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><a href='#none' class='my-2 mx-2' style='color : black;' id='you' onclick='blockuser()'>"+from+"</a><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
+				}
+				msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
+			}else{
+				if(love!=null){
+					msg=love
+				}
+				if(msg=="enter"){
+					msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>"
+				}
+				else if(msg=="out"){
+					msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 퇴장했습니다.</span></div>"
+				}
+				else{
+					msgbox.innerHTML +="<img style='width : 200px' src='../../upload/"+img2+"'>";
+					msgbox.innerHTML +="<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><a href='#none' class='my-2 mx-2' style='color : black;' id='you' onclick='blockuser()'>"+from+"</a><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
+				}
+				msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
 			}
-			
-			if(msg=="enter"){
-				msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 입장했습니다.</span></div>"
-			}
-			else if(msg=="out"){
-				msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 퇴장했습니다.</span></div>"
-			}
-			else{
-				msgbox.innerHTML += "<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><a href='#none' class='my-2 mx-2' style='color : black;' id='you' onclick='blockuser()'>"+from+"</a><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'>"+msg+"</span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
-			}
-			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이 [ 바닥 ]
-
 		}
-		
 	</script>
-
-
-										
-	
 	<%@include file="../footer.jsp" %>
-	<script type="text/javascript">
-	
-	
-	</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

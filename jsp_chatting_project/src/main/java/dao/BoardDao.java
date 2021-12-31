@@ -35,8 +35,25 @@ public class BoardDao extends DB {
 			    if(key.equals("b_writer")) {
 					int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
 					sql = "select * from board where m_no ="+m_no+" order by b_no desc limit ? , ?";
-			    }else if(key.equals(keyword)) {// 반호 검색 일치한 값만 검색
+			    }else if(key.equals("b_no")) {// 반호 검색 일치한 값만 검색
 				sql ="select * from board where b_no ="+keyword;
+				try {
+					preparedStatement = connection.prepareStatement(sql);
+					resultSet = preparedStatement.executeQuery();
+					while(resultSet.next()) {
+					    Board board = new Board(
+						    resultSet.getInt(1),
+						    resultSet.getString(2),
+						    resultSet.getString(3),
+						    resultSet.getString(4),
+						    resultSet.getInt(5),
+						    resultSet.getString(6),
+						    resultSet.getInt(7),
+						    resultSet.getInt(8));
+						boards.add(board);
+					}
+					return boards;
+			    } catch (Exception e) {System.out.println("boardlist123");} return null;
 			    }else {									//제목 혹은 내용 검색 : 포함된 값검색
 				sql ="select * from board where "+key+" like '%"+keyword+"%' order by b_no desc limit ? , ?";
 			    }
@@ -48,8 +65,25 @@ public class BoardDao extends DB {
 			    if(key.equals("b_writer")) {
 					int  m_no = MemberDao.getmMemberDao().getmembernum(keyword); 			  
 					sql = "select * from board where m_no ="+m_no+" order by b_no desc limit ? , ?";
-			    }else if(key.equals(keyword)) {// 반호 검색 일치한 값만 검색
-				sql ="select * from board where b_no ="+keyword;
+			    }else if(key.equals("b_no")) {// 반호 검색 일치한 값만 검색
+					sql ="select * from board where b_no ="+keyword;
+					try {
+						preparedStatement = connection.prepareStatement(sql);
+						resultSet = preparedStatement.executeQuery();
+						while(resultSet.next()) {
+						    Board board = new Board(
+							    resultSet.getInt(1),
+							    resultSet.getString(2),
+							    resultSet.getString(3),
+							    resultSet.getString(4),
+							    resultSet.getInt(5),
+							    resultSet.getString(6),
+							    resultSet.getInt(7),
+							    resultSet.getInt(8));
+							boards.add(board);
+						}
+						return boards;
+				    } catch (Exception e) {System.out.println("boardlist123");} return null;
 			    }else {									//제목 혹은 내용 검색 : 포함된 값검색
 				sql ="select * from board where "+key+" like '%"+keyword+"%' order by b_no desc limit ? , ?";
 			    }
