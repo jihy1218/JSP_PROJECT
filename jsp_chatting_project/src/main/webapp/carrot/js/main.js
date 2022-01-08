@@ -37,7 +37,7 @@
 			document.getElementById("pwresult").innerHTML="사용가능한 패스워드 입니다."
 		}
 		//닉네임
-		if(!nicknamej.test(name)){
+		if(!nicknamej.test(nickname)){
 			document.getElementById("nicknameresult").innerHTML="닉네임을 입력해주세요[특수문자는 제외]";return false;
 		}else{
 			document.getElementById("nicknameresult").innerHTML="사용가능한 닉네임 입니다.";
@@ -74,7 +74,7 @@ function payment(){
           pay_method: "card",	
           merchant_uid: "ORD20180131-0000011",
           name: "당근프리미엄",
-          amount: 9900,
+          amount: 3900,
           buyer_email: "gildong@gmail.com",
           buyer_name: "가입시받아온이름",
           buyer_tel: "가입시받아온폰",
