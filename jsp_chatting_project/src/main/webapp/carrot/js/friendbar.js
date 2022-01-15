@@ -13,6 +13,7 @@
 	//차단 취소
 	function frienddelete(){
 		var f_no = document.getElementById("f_no").value;
+		alert(f_no);
 		if(confirm("차단을 취소할까요?")==true){
 		$.ajax({
 			url : "../../controller/frienddeletecontroller.jsp",
@@ -20,6 +21,7 @@
 				f_no : f_no
 			},
 			success : function(result){
+				alert(result);
 				if(result==1){
 					alert("삭제 되었습니다");
 					location.reload();	

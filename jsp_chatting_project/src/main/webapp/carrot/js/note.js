@@ -66,7 +66,7 @@
 //쪽지 쓰기 팝업
 function shownote(){
 	var width = 500;
-	var height = 600;
+	var height = 500;
 	
 	var left = (window.screen.width / 2) - (width/2); 
 	var top = (window.screen.height / 4);

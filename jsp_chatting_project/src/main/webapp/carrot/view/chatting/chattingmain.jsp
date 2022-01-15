@@ -9,6 +9,7 @@
 <body>
 	<%@include file="../header.jsp" %>
 	<%@include file="../friendbar.jsp" %>
+	<script src="/jsp_chatting_project/carrot/js/emoticon.js"></script>
 	<%
 		request.setCharacterEncoding("UTF-8");
 		String folderpath = request.getSession().getServletContext().getRealPath("carrot/upload/");
@@ -102,13 +103,41 @@
 								<!-- 채팅 메시지가 추가 되는 위치 -->
 								
 							</div>
-							<form  enctype="multipart/form-data" id="form" action="abcd" method="post">
-										<input type="file" name="file" id="file"> <br/>
-							</form>	 
+							<div>
+								<form  enctype="multipart/form-data" id="form" action="abcd" method="post">
+											<input type="file" name="file" id="file"> 
+								</form>
+							</div>	 
 							<div class="row no-gutters" id="chattingserch">	<!-- 채팅입력 창  , 전송버튼 -->
-								<div class="col-md-10"><!-- 채팅입력 창 -->
+								<div class="col-md-9"><!-- 채팅입력 창 -->
 									<input id="msginput" class="form-control" type="text" placeholder="내용 입력" onkeyup="entersend();" maxlength="30">
 								</div>
+								<div class="col-md-1">
+									<button id="btnemo" class="form-control" data-toggle="modal" data-target="#exampleModal">😀</button>
+								</div>	
+								
+									<!-- Modal -->
+									<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									  <div class="modal-dialog modal-dialog-centered" role="document">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <h5 class="modal-title" id="exampleModalLabel">이모티콘 보내기</h5>
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									          <span aria-hidden="true">&times;</span>
+									        </button>
+									      </div>
+									      <div class="modal-body">
+											<%for(int i=1; i<10; i++){ %>
+												<img style="width: 140px" src="/jsp_chatting_project/carrot/img/emoticon/<%=i%>.png" onclick="btnEmo(<%=i%>)">
+											<%} %>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									      </div>
+									    </div>
+									  </div>
+									</div>
+								
 								<div class="col-md-2">	<!-- 전송버튼 -->
 									<button id="btnmsginput" class="form-control" onclick="btnsend();" >전송</button>
 								</div>
@@ -120,6 +149,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<br><br><br><br>
 	</div>
 	<script type="text/javascript">
@@ -147,7 +177,7 @@
 		
 		var blocknames = document.getElementById("blocknames").value;
 		
-		var webSocket = new WebSocket("ws://localhost:8081/jsp_chatting_project/chatting/"+roomname+"/"+loginid+"/"+blocknames);
+		var webSocket = new WebSocket("ws://localhost:8080/jsp_chatting_project/chatting/"+roomname+"/"+loginid+"/"+blocknames);
 		
 		webSocket.onopen = function( event ) { onOpen(event) }; // 웹소켓 실행시 메소드 
 		webSocket.onclose = function( event ) { onClose(event) }; // 웹소켓 종료시 메소드 
@@ -164,6 +194,23 @@
 		
 		function block(){
 			
+		}
+		
+		function btnEmo(emoNum) {
+			var img = emoNum+".png"
+			var msginput = document.getElementById("msginput").value;
+			// 날짜 
+			let today = new Date(); // js에서 현재 날짜/시간 객체 
+			var time = today.toLocaleTimeString(); // 시간만 가져오기 
+			// 누가 보냈는지 메시지에 포함 하기  	// 언제 보냈는지 시간도 메시지에 포함 하기 
+			var msg = nickname +","+time+",emoticon,"+fromimg + ","+img;
+			// 입력된 문자 와 날짜를 채팅발 div 에 추가
+			msgbox.innerHTML += "<div class='d-flex justify-content-end mx-2 my-2'><span class='msgtime d-flex align-items-end'>"+time+"</span><span class='from mx-1'><img src='../../img/emoticon/"+img+"' style='width : 50px';></span></div>";
+			webSocket.send( msg );	 // *****************서버로 부터 메시지 전송 
+			document.getElementById("msginput").value = "";	// 전송후 입력창 내용물 지우기 [ 초기화 ]
+			// 스크롤 있을경우 스크롤 위치를 가장 아래로 이동 
+			msgbox.scrollTop = msgbox.scrollHeight; // 현 스크롤 위치 =  스크롤 전체높이[ 바닥 ] */	
+		
 		}
 				
 		function btnsend() {
@@ -183,7 +230,6 @@
 					timeout: 600000,
 					success: function(data) {
 						msgbox.innerHTML +="<img style='width : 200px; margin-left : 440px;' class='d-flex justify-content-start' src='../../upload/"+data+"'>"; 
-						
 						// 1. 입력창에 입력된 데이터를 가져온다
 						var msginput = document.getElementById("msginput").value;
 							// 입력이 없을때 유효성검사 [ 전송 막기 ]
@@ -271,6 +317,9 @@
 				}
 				else if(msg=="out"){
 					msgbox.innerHTML +=	"<div class='d-flex justify-content-center mx-2 my-2'><span class='openroom'>"+from+"님이 퇴장했습니다.</span></div>"
+				}
+				else if(msg=="emoticon"){
+					msgbox.innerHTML +="<div class='row' style='text-align: justify; width:682px;'><div class='d-flex justify-content-start profileimg'><img src='/jsp_chatting_project/carrot/upload/"+img+"'></div><div class='align-middle'><a href='#none' class='my-2 mx-2' style='color : black;' id='you' onclick='blockuser()'>"+from+"</a><div class='d-flex justify-content-start mx-2 my-2'><span class='to mx-1'><img src='../../img/emoticon/"+img2+"' style='width : 50px';></span><span class='msgtime d-flex align-items-end'>"+time+"</span></div></div></div>"
 				}
 				else{
 					msgbox.innerHTML +="<img style='width : 200px; margin-left : 100px;' class='d-flex justify-content-start'  src='../../upload/"+img2+"'>";
